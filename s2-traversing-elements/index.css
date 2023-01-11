@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.myContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #F3DFCB;
+    padding: 5rem 5rem;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    transition: background 0.5s ease-in-out;
+}
+
+.myContainer p {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background: #f8ece0;
+    width: 100%;
+    height: auto;
+    padding: 1em;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.result em {
+    color: orangered;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    column-gap: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    font-size: 1em;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 25px;
+    position: relative;
+}
+
+ul li::before {
+    content: attr(title);
+    position: absolute;
+    top: -10px;
+    right: -30px;
+    border: 1px solid black;
+    background-color: #f8ece0;
+    color: black;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: smaller;
+    display: none;
+}
+
+ul li:hover::before {
+    display: block;
+}
+
+#current {
+    color: orangered;
+}
+
+#would-love-to-try {
+    color: green;
+}
+
+#nice-to-learn {
+    color: brown;
+}
+
+.icon-container {
+    display: flex;
+    column-gap: 20px;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.icons {
+    font-size: 2.5rem;
+}
+
+.icon-holder {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 auto;
+    position: static;
+    bottom: 0;
+    letter-spacing: 1px;
+}

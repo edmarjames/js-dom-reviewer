@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./index.css" type="text/css">
+
+    <!-- Box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>Session 2 - Traversing elements</title>
+</head>
+<body>
+    
+    <div class="myContainer" id="container">
+        <p id="heading">Session 2 - Traversing elements</p>
+
+        <h2>Which one is your desired programming field?</h2>
+        <ul id="prog_field">
+            <li id="current" title="Current">Web Development</li>
+            <li id="would-love-to-try" title="Would love to try">Mobile Development</li>
+            <li id="nice-to-learn" title="Nice to learn">Machine Learning</li>
+            <li>Embedded programming</li>
+            <li>Game development</li>
+        </ul>
+
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>firstChild</em></h3>
+                <h5>The firstChild of UL is</h5>
+                <h5>#text</h5>
+            </div>
+            <div class="result">
+                <h3>Using <em>firstElementChild</em></h3>
+                <h5>The firstElementChild of UL is</h5>
+                <li>Web Development</li>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>lastChild</em></h3>
+                <h5>The lastChild of UL is</h5>
+                <h5>#text</h5>
+            </div>
+            <div class="result">
+                <h3>Using <em>lastElementChild</em></h3>
+                <h5>The lastElementChild of UL is</h5>
+                <li>Game Development</li>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>childNodes</em></h3>
+                <h5>This are all the child nodes of UL with ANY node type</h5>
+                <code>text</code>
+                <code>li</code>
+                <code>text</code>
+                <code>li</code>
+                <code>text</code>
+                <code>li</code>
+                <code>text</code>
+                <code>li</code>
+                <code>text</code>
+                <code>li</code>
+                <code>text</code>
+            </div>
+            <div class="result">
+                <h3>Using <em>children</em></h3>
+                <h5>This are all the child nodes of UL with ELEMENT node type</h5>
+                <code>li</code>
+                <code>li</code>
+                <code>li</code>
+                <code>li</code>
+                <code>li</code>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>nextElementSibling</em></h3>
+                <h5>This is the next sibling element of the element with id="current"</h5>
+                <li>Mobile Development</li>
+            </div>
+            <div class="result">
+                <h3>Using <em>previousElementSibling</em></h3>
+                <h5>This is the previous sibling element of the element with id="would-love-to-try"</h5>
+                <li>Web Development</li>
+            </div>
+        </div>
+
+        <h3>languages used for this page</h3>
+        <div class="icon-container">
+            <div class="icon-holder">
+                <i class='bx bxl-html5 icons'></i>
+                <small>HTML5</small>
+            </div>
+            <div class="icon-holder">
+                <i class='bx bxl-css3 icons'></i>
+                <small>CSS3</small>
+            </div>
+            <div class="icon-holder">
+                <i class='bx bxl-javascript icons'></i>
+                <small>JavaScript</small>
+            </div>
+        </div>
+
+        <p><span class="copyright">Copyright &#169; 2023, All rights reserved.</span></p>
+    </div>
+
+    
+
+    <!-- External JS -->
+    <script src="./index.js" type="text/javascript"></script>
+
+</body>
+</html>
