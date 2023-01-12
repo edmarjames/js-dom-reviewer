@@ -1,0 +1,1 @@
+console.log('Hello, this JS file is loaded to the body dynamically using "createElement"');
