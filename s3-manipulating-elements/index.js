@@ -587,13 +587,75 @@ choices.removeChild(choiceFirstElement)
 */
 
 
+// 14. insertBefore
+
+/* 
+    - method used to insert a node before another node as a child node of a specified parent node.
+    - it returns the inserted child node.
+
+    Syntax:
+      parentNode.insertBefore(newNode, existingNode);
+
+    Parameters
+      - 'newnode' is the new node to be inserted
+      - 'existingNode' is the node before which the new node is inserted. If the 'existingNode' is null, the insertBefore() inserts the newNode at the end of the parentNode's child nodes.
+*/
+
+// create a new Li element
+const newChoice = document.createElement('li');
+
+// create a new label element for the li and assign its attributes
+const newChoiceLabel = document.createElement('label');
+newChoiceLabel.textContent = "10 (ten)"
+newChoiceLabel.for = "answer-10"
+
+// create a new radio element for the li and assign its attributes
+const newChoiceRadio = document.createElement('input');
+newChoiceRadio.type = "radio";
+newChoiceRadio.name = "answer"
+newChoiceRadio.id = "answer-10"
+
+// append the radio and label element to the newChoice li
+newChoice.appendChild(newChoiceRadio);
+newChoice.appendChild(newChoiceLabel);
+
+// insert the newChoice li before the firstElementChild of choices
+choices.insertBefore(newChoice, choices.firstElementChild);
 
 
+// 15. insertAfter() helper function
 
+/* 
+    - method that allows you to insert a new node after an existing node as a child node
 
+    Syntax:
+      parentNode.insertAfter(newNode, existingNode)
+*/
+// create a new Li element
+const newChoice_2 = document.createElement('li');
 
+// create a new label element for the li and assign its attributes
+const newChoice_2_Label = document.createElement('label');
+newChoice_2_Label.textContent = "11 (eleven)"
+newChoice_2_Label.for = "answer-11"
 
+// create a new radio element for the li and assign its attributes
+const newChoice_2_Radio = document.createElement('input');
+newChoice_2_Radio.type = "radio";
+newChoice_2_Radio.name = "answer"
+newChoice_2_Radio.id = "answer-11"
 
+// append the radio and label element to the newChoice li
+newChoice_2.appendChild(newChoice_2_Radio);
+newChoice_2.appendChild(newChoice_2_Label);
+
+// NOTE: JS DOM hasn't supported the insertAfter() method yet
+// Use the insertBefore() method and the nextSibling property to insert a new node after an existing node as a child of a parent node
+insertAfter(newChoice_2, choices.lastElementChild);
+
+function insertAfter(newNode, existingNode) {
+  existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
 
 // Footer
 const footer = document.querySelector(".footer");
