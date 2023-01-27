@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./index.css" type="text/css">
+
+    <!-- Box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <title>Session 4 - Working with attributes</title>
+</head>
+<body>
+    
+    <!-- Container -->
+    <div class="myContainer" id="container">
+        <!-- Session number and title -->
+        <p id="heading" class="header">Session 4 - Working with attributes</p>
+
+        <!-- Checkbox for selecting a theme -->
+        <div class="theme-container" data-status="not-selected" data-value="color">
+            <label for="default">
+                <input type="radio" name="theme" id="default" value="#F3DFCB"> Default
+            </label>
+            <label for="dark">
+                <input type="radio" name="theme" id="dark" value="#131313"> Dark
+            </label>
+            <label for="light">
+                <input type="radio" name="theme" id="light" value="#ffffff"> Light
+            </label>
+        </div>
+        <button id="submitBtn" class="button-layout">Select</button>
+        
+        <!-- Footer -->
+        <!-- <div class="footer">
+            <h3>languages used for this page</h3>
+            <div class="icon-container">
+                <div class="icon-holder">
+                    <i class='bx bxl-html5 icons'></i>
+                    <small>HTML5</small>
+                </div>
+                <div class="icon-holder">
+                    <i class='bx bxl-css3 icons'></i>
+                    <small>CSS3</small>
+                </div>
+                <div class="icon-holder">
+                    <i class='bx bxl-javascript icons'></i>
+                    <small>JavaScript</small>
+                </div>
+            </div>
+            <p><span class="copyright">Copyright &#169; 2023, All rights reserved.</span></p>
+        </div> -->
+    </div>
+
+
+    <!-- External JS -->
+    <script src="./index.js" type="text/javascript"></script>
+
+</body>
+</html>

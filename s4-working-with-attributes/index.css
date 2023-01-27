@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.myContainer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #F3DFCB;
+    padding: 5rem 5rem;
+    padding-bottom: 0;
+    width: 100%;
+    height: 100vh;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.myContainer p {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 40px;
+}
+
+#submitBtn {
+    display: block;
+    margin: 5px auto;
+    width: 200px;
+    padding: 10px;
+    border: 0;
+    outline: none;
+    font-weight: 500;
+    border-radius: 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    background-color: #f8ece0;
+}
+
+label {
+    margin: 10px 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.theme-container {
+    display: flex;
+    column-gap: 20px;
+}
