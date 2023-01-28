@@ -64,29 +64,36 @@ btn.addEventListener('click', () => {
             const icons = document.getElementsByTagName('i');
             const small = document.getElementsByTagName('small');
             const copyright = document.querySelector('.copyright');
-            const hr = document.querySelector('hr');
+            const hr = document.getElementsByTagName('hr');
+            const h2 = document.querySelector('h2');
 
-            function setToWhite(header, labels, h3, icons, small, copyright, hr) {
+            function setToWhite(header, labels, h3, icons, small, copyright, hr, h2) {
                 header.style.color = "white";
                 h3.style.color = "white";
                 copyright.style.color = "white";
-                hr.className = "hr-white";
+                h2.style.color = "white";
+                for (let h of hr) {
+                    h.className = "hr-white";
+                };
                 for (let l of labels) {
                     l.style.color = "white";
-                }
+                };
                 for (let i of icons) {
                     i.style.color = "white";
-                }
+                };
                 for (let s of small) {
                     s.style.color = "white";
-                }
+                };
             }
 
-            function setToBlack(header, labels, h3, icons, small, copyright, hr) {
+            function setToBlack(header, labels, h3, icons, small, copyright, hr, h2) {
                 header.style.color = "black";
                 h3.style.color = "black";
                 copyright.style.color = "black";
-                hr.className = "hr";
+                h2.style.color = "black";
+                for (let h of hr) {
+                    h.className = "hr";
+                }; 
                 for (let l of labels) {
                     l.style.color = "black";
                 }
@@ -99,11 +106,11 @@ btn.addEventListener('click', () => {
             };
             // if the color selected is dark, set the color of heading and labels to white
             if (color.value == '#131313') {
-                setToWhite(header, labels, h3, icons, small, copyright, hr);
+                setToWhite(header, labels, h3, icons, small, copyright, hr, h2);
             
             // otherwise, set it to black
             } else {
-                setToBlack(header, labels, h3, icons, small, copyright, hr);
+                setToBlack(header, labels, h3, icons, small, copyright, hr, h2);
             }
         }
     });

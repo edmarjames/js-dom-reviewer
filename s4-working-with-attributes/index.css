@@ -105,3 +105,28 @@ hr {
 .hr-white {
     border: 1px solid white;
 }
+
+.row {
+    display: flex;
+    width: 100%;
+    column-gap: 20px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background: #f8ece0;
+    width: 100%;
+    height: auto;
+    padding: 1em;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.result em {
+    color: orangered;
+}
