@@ -25,32 +25,99 @@
         <!-- Session number and title -->
         <p id="title">Session 5 - Manipulating element's styles</p>
 
+        <!-- Buttons -->
         <div class="row">
-            <button type="submit" id="italic">Using style</button>
-            <button type="submit" id="csstext">Using cssText</button>
-            <button type="submit" id="setattribute">Using setAttribute</button>
-            <button type="submit" id="append">Using cssText to append styling</button>
+            <button type="submit" id="italic" class="hidden large-text">Using style</button>
+            <button type="submit" id="csstext" class="hidden large-text">Using cssText</button>
+            <button type="submit" id="setattribute" class="hidden large-text">Using setAttribute</button>
+            <button type="submit" id="append" class="hidden large-text">Using cssText to append styling</button>
         </div>
-        
+
+        <!-- checkboxes -->
+        <div class="row">
+            <input type="checkbox" name="show-hide" id="show-hide">
+            <label for="show-hide">Hide the buttons</label>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="toggle" id="toggle">
+            <label for="toggle">Increase the size of buttons</label>
+        </div>
+
+        <!-- Syntax cards -->
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>style</em></h3>
+                <h5>Syntax: element.style.property = "style"</h5>
+            </div>
+            <div class="result">
+                <h3>Using <em>cssText</em></h3>
+                <h5>Syntax: element.style.cssText = 'color: red; background-color: yellow';</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>setAttribute</em></h3>
+                <h5>Syntax: element.setAttribute('style', 'color: red; background-color: yellow');</h5>
+            </div>
+            <div class="result">
+                <h3>Using <em>cssText</em> to append styling</h3>
+                <h5>Syntax: element.style.cssText += 'color:red; background-color:yellow';</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>getComputedStyle</em></h3>
+                <h5>Syntax: element.getComputedStyle(element, [,pseudoElement]);</h5>
+            </div>
+            <div class="result">
+                <h3>Using <em>className</em></h3>
+                <h5>Syntax: element.className;</h5>
+                <h5>Syntax: element.className = 'className';</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>classList</em></h3>
+                <h5>Syntax: element.classList;</h5>
+                <h5>Syntax: element.classList.add("className1", "className2");</h5>
+                <h5>Syntax: element.classList.remove("className1", "className2", "className3");</h5>
+                <h5>Syntax: element.classList.replace('className', 'newClassName');</h5>
+                <h5>Syntax: element.classList.contains('className');</h5>
+                <h5>Syntax: element.classList.toggle('className');</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="result">
+                <h3>Using <em>clientWidth</em> and <em>clientHeight</em></h3>
+                <h5>Syntax: element.clientWidth;</h5>
+                <h5>Syntax: element.clientHeight;</h5>
+            </div>
+            <div class="result">
+                <h3>Using <em>offsetWidth</em> and <em>offsetHeight</em></h3>
+                <h5>Syntax: element.offsetWidth;</h5>
+                <h5>Syntax: element.offsetHeight;</h5>
+            </div>
+        </div>
+
         <!-- Footer -->
-        <!-- <div class="footer">
+        <div class="footer">
             <h3>languages used for this page</h3>
             <div class="icon-container">
                 <div class="icon-holder">
-                    <i class='bx bxl-html5 icons'></i>
+                    <i class='bx bxl-html5'></i>
                     <small>HTML5</small>
                 </div>
                 <div class="icon-holder">
-                    <i class='bx bxl-css3 icons'></i>
+                    <i class='bx bxl-css3'></i>
                     <small>CSS3</small>
                 </div>
                 <div class="icon-holder">
-                    <i class='bx bxl-javascript icons'></i>
+                    <i class='bx bxl-javascript'></i>
                     <small>JavaScript</small>
                 </div>
             </div>
             <p><span class="copyright">Copyright &#169; 2023, All rights reserved.</span></p>
-        </div> -->
+        </div>
     </div>
 
     <!-- External JS -->
