@@ -21,26 +21,33 @@
     Syntax:
         element.style.cssText += 'color:red; background-color:yellow';
 */
+// get the element with id of title
 const title = document.querySelector('#title');
+
+// change the styling of header using 'style'
 const btnStyle = document.querySelector('#italic');
 btnStyle.addEventListener('click', () => {
     title.style.fontStyle = "Italic";
 });
 
+// change the styling of header using 'cssText'
 const btnCssText = document.querySelector('#csstext');
 btnCssText.addEventListener('click', () => {
     title.style.cssText = 'font-size: 3rem; color: red';
 });
 
+// change the styling of header using 'setAttribute'
 const btnSetAttr = document.querySelector('#setattribute');
 btnSetAttr.addEventListener('click', () => {
     title.setAttribute('style', 'font-weight: 600; color: black')
 });
 
+// change the styling of header by using cssText by appending new css to the existing one
 const btnAppend = document.querySelector('#append');
 btnAppend.addEventListener('click', () => {
     title.style.cssText += 'font-size: 4rem; color: orangered; line-height: 50px';
 });
+
 
 // 2. getComputedStyle
 
@@ -87,6 +94,7 @@ console.log(titleStyle.margin);
         'element.className' - to get the list of CSS classes of an element
         'element.className = "className"' - to set a class for an element
 */
+// get the element with the id of 'container'
 const container = document.querySelector('#container');
 
 console.log('\n\t\tThis is the class of the element with id of container using className\n\n'.toUpperCase());
@@ -116,8 +124,10 @@ for (let classes of container.classList) {
         'element.classList.add("className")' - to add a new class to an element
         'element.classList.add("className1", "className2", "className3")' - to add multiple classes to an element
 */
+// get the 'i' element
 const icons = document.getElementsByTagName('i');
 
+// use .add() to add a new class
 for (let i of icons) {
     i.classList.add('icons');
 };
@@ -128,8 +138,10 @@ for (let i of icons) {
         'element.classList.remove("className")' - to remove a class of an element
         'element.classList.remove("className1", "className2", "className3")' - to remove multiple classes of an element
 */
+// get all the 'button' element
 const buttons = document.querySelectorAll('button');
 
+// use .remove() to remove a class
 for (let btn of buttons) {
     btn.classList.remove('large-text');
 };
@@ -139,18 +151,24 @@ for (let btn of buttons) {
     Syntax:
         element.classList.replace('className', 'newClassName');
 */
+// get the checkbox element
 const checkBox = document.querySelector('#show-hide');
+// get the label of the checkbox
 const label = document.querySelector('[for="show-hide"]');
 
 checkBox.addEventListener('change', () => {
     if (checkBox.checked) {
+        // change the text of the label
         label.textContent = "Hide the buttons"
         for (let btn of buttons) {
+            // use .replace() to replace 'hidden' to 'show'
             btn.classList.replace('hidden', 'show');
         }
     } else {
+        // change the text of the label
         label.textContent = "Show the buttons"
         for (let btn of buttons) {
+            // use .replace() to replace 'show' to 'hidden'
             btn.classList.replace('show', 'hidden');
         }
     }
@@ -164,6 +182,7 @@ checkBox.addEventListener('change', () => {
 */
 console.log('\n\t\tIt checks if the buttons contains a class of hidden\n\n'.toUpperCase());
 for (let btn of buttons) {
+    // use .contains() to check if the element contains a specific class
     console.log(btn.classList.contains('hidden'));
 }
 
@@ -177,6 +196,7 @@ const toggle = document.querySelector('#toggle');
 
 toggle.addEventListener('change', () => {
     for (let btn of buttons) {
+        // use .toggle() to toggle the 'large-button' class on every change event
         btn.classList.toggle('large-buttons');
     }    
 });
