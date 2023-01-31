@@ -92,10 +92,10 @@ a::after {
     content: '';
     width: 100%;
     height: 1px;
-    display: none;
-    background-color: black;
+    display: block;
+    background-color: #F3DFCB;
 }
 
 a:hover::after {
-    display: block;
+    background-color: black;
 }

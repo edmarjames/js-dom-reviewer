@@ -16,17 +16,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <title>Session 6 - Working with elements</title>
+    <title>Session 6 - Working with events</title>
 </head>
 <body>
     
     <!-- Container -->
     <div class="myContainer" id="container">
         <!-- Session number and title -->
-        <p>Session 6 - Working with elements</p>
+        <p>Session 6 - Working with events</p>
 
-        <button class="btn-layout">Click me!</button>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank">Docs about events</a>
+        <button id="click-me" class="btn-layout">Click me!</button>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank" id="docs-events">Docs about events</a>
+        <button id="show-alert" class="btn-layout" onclick="showAlert()">Show the alert</button>
+        <button id="show-confirm" class="btn-layout">Rate us</button>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank">Docs about addEventListener</a>
 
         <!-- Footer -->
         <!-- <div class="footer">

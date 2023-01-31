@@ -5,7 +5,7 @@
     - each event may have an event handler which is a block of code that will execute when the event occurs.
     - event handler is also known as an event listener. It listens to the event and executes when the event occurs.
 */
-const btnAlert = document.querySelector('.btn-layout');
+const btnAlert = document.querySelector('#click-me');
 
 btnAlert.addEventListener('click', () => {
     alert("Welcome to Session 6!");
@@ -65,12 +65,13 @@ btnAlert.addEventListener('click', (e) => {
     - to prevent the default behavior of an event, you use the 'preventDefault()' method.
     - note that the 'preventDefault()' method does not stop the event from bubbling up the DOM. And an event can be cancelled when its 'cancelable' property is 'true'.
 */
-const link = document.querySelector('a');
+const link = document.querySelector('#docs-events');
 
 link.addEventListener('click', (e) => {
     alert("You have clicked the link!");
     e.preventDefault();
 });
+
 
 // 5. stopPropagation()
 
@@ -89,3 +90,168 @@ document.body.addEventListener('click', () => {
     - without the 'stopPropagation()' method, you would see two messages on the console window.
     - however, the 'click' event never reaches the 'body' because the 'stopPropagation()' was called on the 'click' event handler of the button.
 */
+
+
+// 6. HTML event handler attributes
+
+/* 
+    - event handlers typically have names that begin with 'on', for example, the event handler for the 'click' event is 'onclick'.
+    - to assign an event handler to an event associated with an HTML element, you can use an HTML attribute with the name of the event handler.
+    - when you assign JavaScript code as the value of the onclick attribute, you need to escape the HTML characters such as ampersand(&), double quotes("), less than(<), etc., or you will get a syntax error
+
+    Syntax:
+        <input type="button" value="save" onClick="alert('clicked!')">
+        <input type="button" value="save" onClick="function()">
+
+    Important notes:
+        - the code in the event handler can access the event object without explicitly defining it.
+            <input type="button" value="save" onClick="alert(event.type)">
+        - the 'this' value inside the event handler is equivalent to the event's target element
+            <input type="button" value="save" onClick="alert(this.value)">
+        - the event handler can access the element's properties
+            <input type="button" value="save" onClick="alert(value)">
+
+    Disadvantages of using HTML event handler attributes
+        * assigning event handlers using HTML event handler attributes are considered as 'BAD PRACTICES' and 'SHOULD BE AVOIDED' as much as possible because of the following reasons
+            - the event handler code is mixed with the HTML code, which will make the code more difficult to maintain and extend
+            - it is a timing issue. If the element is loaded fully before the JavaScript code, users can start interacting with the element on the webpage which will cause an error.
+*/
+const showAlert = () => alert('Here is the alert!');
+
+
+// 7. DOM level 0 event handlers
+
+/* 
+    - each element has event handler properties such as 'onclick'
+    Syntax:
+        btn.onclick = function() {
+            alert('clicked!');
+        };
+
+    - the 'this' value is equivalent to the element. And you can access the element's properties inside the event handler
+    Syntax:
+        btn.onclick = function() {
+            alert(this.id);
+        };
+
+    - by using the 'this' value inside the event handler, you can access the element's properties and methods.
+    - to remove the event handler, you set the value of the event handler property to 'null'
+    Syntax:
+        btn.onclick = null;
+
+    - the DOM level 0 event handlers are still being used widely because of its simplicity and cross-browser support.
+*/
+const showConfirm = document.querySelector('#show-confirm');
+
+showConfirm.onclick = () => {
+    let feelings = confirm("Are you having fun?");
+    (feelings) ? 
+        console.log(`${feelings} the user is having fun`) 
+    : 
+        console.log(`${feelings} the user is not having fun`)
+};
+
+
+// 8. DOM level 2 event handlers
+
+/* 
+    * provide two main methods for dealing with the registering/deregistering event listeners
+        - addEventListener() - register an event handler
+        - removeEventListener() - remove an event handler
+*/
+
+
+// 8.1 addEventListener()
+
+/* 
+    - the addEventListener() method accepts three arguments
+        - an event name
+        - an event handler function
+        - a boolean value that instructs the method to call the event handler during the capture phase (true) or during the bubble phase (false)
+    
+    - it is possible to add multiple event handlers to handle a single event
+
+    Syntax:
+        element.addEventListener('event', function() {
+            // statement
+        })
+*/
+const generateLoremIpsum = () => {
+    console.log('Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi fuga harum nesciunt placeat, possimus accusantium reiciendis, odio laborum aspernatur beatae nisi. Delectus, sapiente expedita? Necessitatibus saepe totam nihil molestias atque!');
+};
+
+showConfirm.addEventListener('click', generateLoremIpsum);
+
+showConfirm.addEventListener('click', (e) => {
+    console.log(`This is the event type on rate us button ${e.type.toUpperCase()}`);
+});
+
+showConfirm.addEventListener('click', (e) => {
+    console.log("This is the target element of the second event listener of rate us button\n");
+    console.log(e.target);
+});
+
+
+// 8.2 removeEventListener
+
+/* 
+    - the removeEventListener() removes an event listener that was added via the 'addEventListener()'. However, you need to pass the same arguments as were passed to the addEventListener()
+
+    Syntax:
+        element.removeEventListener('event', function());
+
+    - using an anonymous event listener will not work
+    Syntax:
+        // THIS WILL NOT WORK
+        element.removeEventListener('event', function () {
+            // statement
+        });
+*/
+showConfirm.removeEventListener('click', generateLoremIpsum);
+
+
+// 9. Page load events
+
+/* 
+    * when you open a page, the following event occurs in sequence
+        - DOMContentLoaded -> the browser fully loaded HTML and completed building the DOM tree. However, it hasn't loaded external resources like stylesheets and images. In this event, you can start selecting DOM nodes or initialize the interface.
+        - load -> the browser fully loaded the HTML and also external resources like images and stylesheets.
+        
+    * when you leave the page, the following event occurs in sequence
+        - beforeunload -> fires before the page and resources are unloaded. You can use this event to show a confirmation dialog to confirm if you really want to leave the page. By doing this, you can prevent data loss in case you are filling out a form and accidentally click a link to navigate to another page
+        - unload -> fires when the page has completely unloaded. You can use this event to send the analytic data or to clean up resources
+
+    Syntax:
+        document.addEventListener('DOMContentLoaded', () => {
+            // handle event
+        });
+
+        document.addEventListener('load', () => {
+            // handle event
+        });
+
+        document.addEventListener('beforeunload', () => {
+            // handle event
+        });
+
+        document.addEventListener('unload', () => {
+            // handle event
+        });
+*/
+document.addEventListener('DOMContentLoaded', (e) => {
+    alert('The DOM has loaded!');
+});
+
+document.addEventListener('load', (e) => {
+    alert('The page has fully loaded!');
+});
+
+window.onload = () => {
+    console.log('The page has fully loaded!');
+};
+
+// Note that the prompt may not be displayed in some browsers, as they have started to remove support for this feature in recent years due to security and usability reasons.
+document.addEventListener('beforeunload', (event) => {
+    event.preventDefault();
+    event.returnValue = 'Are you sure you want to leave this page?';
+});
