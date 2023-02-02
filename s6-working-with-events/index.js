@@ -239,19 +239,109 @@ showConfirm.removeEventListener('click', generateLoremIpsum);
         });
 */
 document.addEventListener('DOMContentLoaded', (e) => {
-    alert('The DOM has loaded!');
+    console.log('The DOM has loaded!');
 });
 
-document.addEventListener('load', (e) => {
-    alert('The page has fully loaded!');
+// you need to add the 'load' event to the 'window' instead of 'document'
+window.addEventListener('load', (e) => {
+    // alert('The page has fully loaded!');
 });
-
-window.onload = () => {
-    console.log('The page has fully loaded!');
-};
 
 // Note that the prompt may not be displayed in some browsers, as they have started to remove support for this feature in recent years due to security and usability reasons.
 document.addEventListener('beforeunload', (event) => {
     event.preventDefault();
     event.returnValue = 'Are you sure you want to leave this page?';
 });
+
+
+// 9.1 load
+
+/* 
+    - the 'load' event is fired when the whole webpage has loaded fully, including all dependent resources, including JavaScript files, CSS files and images.
+    - it's a good practice to use the 'addEventListener()' method to assign the 'onload' event handler whenever possible
+    - the <img> and <script> elements also support the 'load' event
+
+    Syntax:
+        window.addEventListener('load', (e) => {
+            // statement
+        })
+
+        OR
+
+        window.onload = (e) => {
+            // statement
+        }
+*/
+window.onload = (e) => {
+    console.log('The page has fully loaded!');
+};
+
+// 9.1.1 image load event
+
+/* 
+    - the 'load' event also fires on images. To handle the 'load' event on images, you use the 'addEventListener()' method of the image elements.
+*/
+const image = document.querySelector('.img-layout');
+
+image.addEventListener('load', (e) => {
+    console.log('The image has been loaded!');
+});
+
+// 9.1.2 script's load event
+
+/* 
+    - the <script> element also supports the 'load' event slightly different from the standard ways. The script's 'load' event allows you to check if a JavaScript file has been completely loaded.
+    - unlike images, the web browser starts downloading JavaScript files only after the 'src' property has been assigned and the '<script>' element has been added to the document.
+*/
+window.addEventListener('load', checkJSLoaded);
+
+function checkJSLoaded() {
+    let script = document.createElement('script');
+
+    script.addEventListener('load', () => {
+        console.log('the script has been loaded');
+    });
+
+    script.src = "app.js";
+    document.body.appendChild(script);
+};
+
+// 9.2 DOMContentLoaded
+
+/* 
+    - the 'DOMContentLoaded' fires when the DOM content is loaded, without waiting for images and stylesheets to finish loading
+    - only handle 'DOMContentLoaded' event if you place the JavaScript code in the 'head', which references elements in the body section.
+
+    Example:
+    <head>
+        <script>
+            document.addEventListener('DOMContentLoaded', (e) => {
+                let btn = document.getElementById('btn');
+                btn.addEventListener('click', () => {
+                    console.log('Button clicked');
+                });
+            });
+        <script/>
+    </head>
+    <body>
+        <button id="btn">Click me!</button>
+    </body>
+
+    - when you place JavaScript in the HEADER, it will cause BOTTLENECKS and RENDERING DELAYS, so it's better to move the script inside the </body> tag.
+    
+    Example:
+    <head>
+        <title>JS DOMContentLoaded event</title>
+    </head>
+    <body>
+        <button id="btn">Click me!</button>
+        <script>
+            document.addEventListener('DOMContentLoaded', (e) => {
+                let btn = document.getElementById('btn');
+                btn.addEventListener('click', () => {
+                    console.log('Button clicked');
+                });
+            });
+        <script/>
+    </body>
+*/
