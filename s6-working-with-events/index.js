@@ -248,9 +248,9 @@ window.addEventListener('load', (e) => {
 });
 
 // Note that the prompt may not be displayed in some browsers, as they have started to remove support for this feature in recent years due to security and usability reasons.
-document.addEventListener('beforeunload', (event) => {
-    event.preventDefault();
-    event.returnValue = 'Are you sure you want to leave this page?';
+window.addEventListener('beforeunload', (event) => {
+    // event.preventDefault();
+    // event.returnValue = 'Are you sure you want to leave this page?';
 });
 
 
@@ -328,7 +328,7 @@ function checkJSLoaded() {
     </body>
 
     - when you place JavaScript in the HEADER, it will cause BOTTLENECKS and RENDERING DELAYS, so it's better to move the script inside the </body> tag.
-    
+
     Example:
     <head>
         <title>JS DOMContentLoaded event</title>
@@ -345,3 +345,60 @@ function checkJSLoaded() {
         <script/>
     </body>
 */
+
+
+// 9.3 beforeunload
+
+/* 
+    - before the webpage and its resources are unloaded, the 'beforeunload' event is fired. At this time, the webpage is still visible and you have an opportunity to cancel the event.
+    - if a webpage has a 'beforeunload' event listener and you are about to leave the page, the 'beforeunload' event will trigger a confirmation dialog if you really want to leave the page
+    - according to the specification, you need to call the 'preventDefault()' method inside the 'beforeunload' event handler in order to show the confirmation dialog. However, not all browsers implement this.
+    - some browsers allow you to display a custom message on the confirmation dialog. This was intended to inform the users that they will lose data if they navigate away. Unfortunately, this feature is often used to scam users. As a result, a custom message is no longer supported.
+    - the calls to 'alert()', 'prompt()', and 'confirm()' are ignored in the 'beforeunload' event handler
+
+    Syntax:
+        window.addEventListener('beforeunload', (e) => {
+            // statement
+        })
+
+        OR 
+
+        addEventListener('beforeunload', (e) => {
+            // statement
+        })
+*/
+window.addEventListener('beforeunload', (event) => {
+    event.preventDefault();
+    event.returnValue = '';
+});
+
+
+// 9.4 unload
+
+/* 
+    - the 'unload' event fires when a document has completely unloaded. Typically, the 'unload' event fires when you navigate from one page to another.
+    - in practice, you should NEVER USE the 'unload' event because it is not reliable on mobile devices and causes an issue with 'bfcache'
+
+    - the 'unload' event is fired after
+        - 'beforeunload' event
+        - 'pagehide' event
+
+    - at this moment, the HTML document is in the following state
+        - UI is not visible to the users and is not effective
+        - All the resources like img, iframe, etc., still exist.
+        - An error won't stop the unloading flow.
+
+    Syntax:
+        window.addEventListener('unload', (event) => {
+            // statement
+        });
+
+        OR
+
+        window.onunload = (event) => {
+            // statement
+        };
+*/
+window.addEventListener('unload', (event) => {
+    alert("The page is unloaded");
+});
