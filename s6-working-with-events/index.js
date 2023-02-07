@@ -568,19 +568,23 @@ buttonDetect.addEventListener('mouseup', (e) => {
         - e.altKey -> to detect if 'alt' key is pressed
         - e.metaKey -> to detect if 'meta' key is pressed
 */
-buttonDetect.addEventListener('click', (e) => {
-    if (e.shiftKey) {
-        console.log('You pressed the button with shift key');
-    } else if (e.ctrlKey) {
-        console.log('You pressed the button with ctrl key');
-    } else if (e.altKey) {
-        console.log('You pressed the button with alt key');
-    } else if (e.metaKey) {
-        console.log('You pressed the button with meta key');
-    } else {
-        console.log('You pressed the button with unknown modifier key');
-    }
-});
+function detectButton () {
+    buttonDetect.addEventListener('click', (e) => {
+        if (e.shiftKey) {
+            console.log('You pressed the button with shift key');
+        } else if (e.ctrlKey) {
+            console.log('You pressed the button with ctrl key');
+        } else if (e.altKey) {
+            console.log('You pressed the button with alt key');
+        } else if (e.metaKey) {
+            console.log('You pressed the button with meta key');
+        } else {
+            console.log('You pressed the button with unknown modifier key');
+        }
+    });
+}
+detectButton();
+
 
 // 10.8 getting screen coordinates
 
@@ -588,12 +592,62 @@ buttonDetect.addEventListener('click', (e) => {
     - the 'screenX' and 'screenY' properties of the event passed to the mouse event handler return the screen coordinates of the location of the mouse in relation to the entire screen.
     - the 'clientX' and 'clientY' properties provide the horizontal and vertical coordinates within the applications client area at which the mouse event occured.
 */
-const coordinateContainer = document.querySelector('.coordinates');
+function getCoordinates() {
+    const coordinateContainer = document.querySelector('.coordinates');
 
-coordinateContainer.addEventListener('mousemove', (e) => {
-    const screen = document.querySelector('#screenXY');
-    const client = document.querySelector('#clientXY');
+    coordinateContainer.addEventListener('mousemove', (e) => {
+        const screen = document.querySelector('#screenXY');
+        const client = document.querySelector('#clientXY');
 
-    screen.textContent = `Screen X/Y: ${e.screenX}, ${e.screenY}`;
-    client.textContent = `Client X/Y: ${e.clientX}, ${e.clientY}`;
+        screen.textContent = `Screen X/Y: ${e.screenX}, ${e.screenY}`;
+        client.textContent = `Client X/Y: ${e.clientX}, ${e.clientY}`;
+    });
+}
+getCoordinates();
+
+
+// 11. keyboard events
+
+/* 
+    - when you interact with the keyboard, the keyboard events are fired.
+        - 'keydown' -> fires when you press a key on the keyboard and fires repeatedly while you're holding down the key
+        - 'keyup' -> fires when you release a key on the keyboard
+        - 'keypress' -> fires when you press character keyboard like 'a, b or c' not the left arrow key, home or end keyboard keys. The 'keypress' also fires repeatedly while you hold down the key on the keyboard
+
+    - when you press a character key once on the keyboard, three keyboard events are fired in the following order
+        - keydown
+        - keypress
+        - keyup
+
+    - both 'keydown' and 'keypress' events are fired before any changes is made to the text box, whereas the keyup event fires after the changes have been made to the text box. If you hold down a character key, the 'keydown' and 'keypress' are fired repeteadly until you release the key.
+
+    - when you press a non-character key, the 'keydown' event is fired first followed by the 'keyup' event.
+    if you hold down the non-character key, the 'keydown' is fired repeatedly until you release the key.
+*/
+const message = document.querySelector('#message');
+
+message.addEventListener('keydown', () => {
+    console.log('You are typing something');
+});
+
+message.addEventListener('keypress', () => {
+    console.log('You type a character');
+});
+
+message.addEventListener('keyup', () => {
+    console.log('Your message is being logged');
+});
+
+// 11.1 keyboard event properties
+
+/* 
+    - the keyboard event has two important properties
+        - 'key' -> property returns the character that has been pressed
+        - 'code' -> property return the physical key code
+
+    Example:
+        if you press the 'z' character key, the 'event.key' returns 'z' and 'event.code' returns 'KeyZ'
+*/
+message.addEventListener('keydown', (e) => {
+    console.log(`Key = ${e.key} Code = ${e.code}`);
 });
