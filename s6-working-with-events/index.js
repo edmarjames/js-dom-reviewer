@@ -402,3 +402,198 @@ window.addEventListener('beforeunload', (event) => {
 window.addEventListener('unload', (event) => {
     alert("The page is unloaded");
 });
+
+
+// 10. Mouse events
+
+/* 
+    - mouse events fire when you use the mouse to interact with the elements on the page. DOM level 3 events define nine mouse events.
+*/
+
+// 10.1 mousedown, mouseup and click
+
+/* 
+    - when you 'click' an element, there are no less than three mouse events fire in the following sequence.
+        - the 'mousedown' fires when you depress the mouse button on the element
+        - the 'mouseup' fires when you release the mouse button on the element
+        - the 'click' fires when one 'mousedown' and one 'mouseup' detected on the element
+
+    - if you depress the mouse button on an element and move your mouse off the element, and then release the mouse button. Only the 'mousedown' event fires on the element.
+    - likewise, if you depress the mouse button, move the mouse over the element and release the mouse button, the only 'mouseup' event fires on the element.
+    - In both cases, the 'click' event never fires.
+*/
+const mouseEvents = document.querySelector('#mouse-events');
+
+mouseEvents.addEventListener('mousedown', () => {
+    console.log('Mousedown event is triggered!');
+});
+
+mouseEvents.addEventListener('mouseup', () => {
+    console.log('Mouseup event is triggered!');
+});
+
+mouseEvents.addEventListener('click', () => {
+    console.log('Click event is triggered!');
+});
+
+// 10.2 dblclick
+
+/* 
+    - The 'dblclick' event fires when you double click over an element
+    - The 'dblclick' event has four events fired in the following order
+        - mousedown
+        - mouseup
+        - click
+
+        - mousedown
+        - mouseup
+        - click
+
+        - dblclick
+
+    - as you can see, the 'click' events always take place before the 'dblclick' event. If you register both 'click' and 'dblclick' event handlers on the same element, you will now know exactly if the user has clicked or double-clicked the element.
+*/
+
+mouseEvents.addEventListener('dblclick', () => {
+    alert('You double clicked the button');
+});
+
+// 10.3 mousemove
+
+/* 
+    - the 'mousemove' event fires repeatedly when you move the mouse cursor around an element. Even when you move the mouse one pixel, the 'mousemove' event still fires. It will cause the page to be slow, therefore you only register 'mousemove' event handler only when you need it and immediately remove the event handler as soon as it is no longer needed.
+*/
+const mouseMoveEvent = () => {
+    console.log('You are moving the mouse cursor');
+};
+
+document.body.addEventListener('mousemove', mouseMoveEvent);
+
+setTimeout(() => {
+    document.body.removeEventListener('mousemove', mouseMoveEvent);
+}, 5000);
+
+// 10.4 mouseover/mouseout
+
+/* 
+    - 'mouseover' fires when the mouse cursor is outside of the element and then move to inside the boundaries of the element
+    - 'mouseout' fires when the mouse cursor is over an element and then moves to another element
+*/
+
+mouseEvents.addEventListener('mouseover', () => {
+    mouseEvents.title = "You hover over me!";
+});
+
+mouseEvents.addEventListener('mouseout', () => {
+    alert('You hover out of the button!');
+});
+
+// 10.5 mouseenter/mouseleave
+
+/* 
+    - 'mouseenter' fires when the mouse cursor is outside of an element and then moves to inside the boundaries of the element
+    - 'mouseleave' fires when the mouse cursor is over an element and then moves to the outside of the element's boundaries
+    - both 'mouseenter' and 'mouseleave' does not bubble and does not fire when the mouse cursor moves over descendant elements
+*/
+
+mouseEvents.addEventListener('mouseenter', () => {
+    console.log('You hover over the button!');
+});
+
+mouseEvents.addEventListener('mouseleave', () => {
+    console.log('You hover out of the button!');
+});
+
+// DIFFERENCE BETWEEN 'mouseover' and 'mouseenter' as per ChatGPT
+
+/* 
+    - 'mouseover' triggers when the mouse enters the element or one of its descendants
+    - 'mouseenter' triggers only when the mouse enters the element, not it's descendants
+*/
+
+// DIFFERENCE BETWEEN 'mouseout' and 'mouseleave' as per ChatGPT
+
+/* 
+    - 'mouseout' triggers when the mouse leaves the element or moves to one of its descendants
+    - 'mouseleave' triggers only when the mouse leaves the element, not when it moves to one of its descendants
+*/
+
+// 10.6 detecting mouse buttons
+
+/* 
+    - the 'event' object passed to the mouse event handler has a property called 'button' that indicates which mouse button was pressed on the mouse to trigger the event.
+    - the mouse button is represented by a number
+        - 0 -> the main mouse button is pressed, usually the left button
+        - 1 -> the auxiliary button is pressed, usually the middle button or the wheel button
+        - 2 -> the secondary button is pressed, usually the right button
+        - 3 -> the fourth button is pressed, usually the browser back button
+        - 4 -> the fifth button is pressed, usually the browser forward button
+*/
+
+const buttonDetect = document.querySelector('#mouse-button-detect');
+
+buttonDetect.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+});
+
+buttonDetect.addEventListener('mouseup', (e) => {
+    switch(e.button) {
+        case 0: 
+            console.log('Left mouse button is clicked');
+            break;
+        case 1:
+            console.log('Middle mouse button is clicked');
+            break;
+        case 2:
+            console.log('Right mouse button is clicked');
+            break;
+        default:
+            console.log('Unknown mouse button is clicked');
+    }
+});
+
+// 10.7 modifier keys
+
+/* 
+    - when you click an element, you may press one or more modifier keys
+        - shift
+        - ctrl
+        - alt
+        - meta
+
+    - note the meta key is the 'Windows' key on windows keyboard and the 'Command' key on the apple keyboard
+    - to detect if these modifier keys have been pressed, you can use the 'event' object passed to the mouse event handler
+        - e.shiftKey -> to detect if 'shift' key is pressed
+        - e.ctrlKey -> to detect if 'ctrl' key is pressed
+        - e.altKey -> to detect if 'alt' key is pressed
+        - e.metaKey -> to detect if 'meta' key is pressed
+*/
+buttonDetect.addEventListener('click', (e) => {
+    if (e.shiftKey) {
+        console.log('You pressed the button with shift key');
+    } else if (e.ctrlKey) {
+        console.log('You pressed the button with ctrl key');
+    } else if (e.altKey) {
+        console.log('You pressed the button with alt key');
+    } else if (e.metaKey) {
+        console.log('You pressed the button with meta key');
+    } else {
+        console.log('You pressed the button with unknown modifier key');
+    }
+});
+
+// 10.8 getting screen coordinates
+
+/* 
+    - the 'screenX' and 'screenY' properties of the event passed to the mouse event handler return the screen coordinates of the location of the mouse in relation to the entire screen.
+    - the 'clientX' and 'clientY' properties provide the horizontal and vertical coordinates within the applications client area at which the mouse event occured.
+*/
+const coordinateContainer = document.querySelector('.coordinates');
+
+coordinateContainer.addEventListener('mousemove', (e) => {
+    const screen = document.querySelector('#screenXY');
+    const client = document.querySelector('#clientXY');
+
+    screen.textContent = `Screen X/Y: ${e.screenX}, ${e.screenY}`;
+    client.textContent = `Client X/Y: ${e.clientX}, ${e.clientY}`;
+});
