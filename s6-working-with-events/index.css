@@ -105,6 +105,7 @@ a:hover::after {
 
 .coordinates {
     background-color: bisque;
+    position: relative;
     width: 500px;
     height: 300px;
     display: flex;
@@ -116,8 +117,23 @@ a:hover::after {
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.container {
+    height: 300px;
+    width: 300px;
+    overflow: auto;
+    background-color: bisque;
+    box-shadow: 
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
 .coordinates p {
     font-size: 1rem;
     font-weight: 600;
     line-height: 50px;
+}
+
+.container p {
+    height: 400px;
+    width: 400px;
 }

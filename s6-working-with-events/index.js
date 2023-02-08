@@ -619,7 +619,7 @@ getCoordinates();
         - keypress
         - keyup
 
-    - both 'keydown' and 'keypress' events are fired before any changes is made to the text box, whereas the keyup event fires after the changes have been made to the text box. If you hold down a character key, the 'keydown' and 'keypress' are fired repeteadly until you release the key.
+    - both 'keydown' and 'keypress' events are fired before any changes is made to the text box, whereas the keyup event fires after the changes have been made to the text box. If you hold down a character key, the 'keydown' and 'keypress' are fired repeatedly until you release the key.
 
     - when you press a non-character key, the 'keydown' event is fired first followed by the 'keyup' event.
     if you hold down the non-character key, the 'keydown' is fired repeatedly until you release the key.
@@ -651,3 +651,91 @@ message.addEventListener('keyup', () => {
 message.addEventListener('keydown', (e) => {
     console.log(`Key = ${e.key} Code = ${e.code}`);
 });
+
+
+// 12. scroll events
+
+/* 
+    - when you scroll a document or an element, the scroll event fires. You can trigger the scroll events in the following ways.
+        - using the scrollbar manually
+        - using the mouse wheel
+        - clicking an ID link
+        - calling functions in JavaScript
+*/
+    // const scrollEvent = () => console.log('You are scrolling');
+    // window.addEventListener('scroll', scrollEvent);
+
+// 12.1 scroll offsets
+
+/* 
+    - the window object has two properties related to the scroll events: 'scrollX' and 'scrollY'
+    - the 'scrollX' and 'scrollY' properties return the number of pixels that the document is currently scrolled horizontally and vertically.
+    - the 'scrollX' and 'scrollY' are double-precision floating-point values so if you need integer values, you can use the Math.round() to round them off.
+    - the initial value are 0 (zero) if the document hasn't been scrolled at all.
+    - the 'pageXOffset' and 'pageYOffset' are aliases of the 'scrollX' and 'scrollY' properties
+*/
+    // window.addEventListener('scroll', () => {
+    //     console.log(`This is the Y axis of scroll ${window.scrollY}`);
+    //     console.log(`This is the X axis of scroll ${window.scrollX}`);
+    // });
+
+// 12.2 scrolling an element
+
+/* 
+    - like the window object, you can attach a scroll event handler to any HTML element. However, to track the scroll offset, you use the 'scrollTop' and 'scrollLeft' instead of 'scrollX' and 'scrollY'
+    - the 'scrollTop' property sets or gets the number of pixels that the element's content is vertically scrolled.
+    - the 'scrollLeft' property gets and sets the number of pixels that an element's content is scrolled from its left edge.
+*/
+const control = document.querySelector('#controls');
+
+control.addEventListener('click', (event) => {
+    let container = document.querySelector('.container');
+
+    let targetId = event.target;
+
+    switch(targetId.id) {
+        case 'scroll-top':
+            container.scrollTop += 15;
+            break;
+        case 'scroll-left':
+            container.scrollLeft += 15;
+            break;
+    }
+});
+
+// 12.3 better ways to handle the scroll events
+
+/* 
+    - many 'scroll' events fire while you are scrolling a page or an element. If you attach an event listener to the 'scroll' event, the code in the event handler needs time to execute.
+    - this will cause an issue which is known as the 'scroll jank'. The scroll jank effect causes a delay so that the page doesn't feel anchored to your finger.
+*/
+
+// 12.3.1 event throttling
+
+/* 
+    - it is much better to keep the 'scroll' event handler lightweight and execute it every N miliseconds by using a timer.
+    - the throttling slows down the rate of execution of the scroll event handler.
+*/
+let scrolling = false;
+
+window.onscroll = () => {
+    scrolling = true;
+    console.log('You are scrolling');
+}
+
+setInterval(() => {
+    if (scrolling) {
+        scrolling = false;
+        console.log('Scrolling paused');
+    }
+}, 300);
+
+// 12.3.2 passive events
+
+/* 
+    - recently, modern web browsers support passive events for the input events like 'scroll', 'touchstart', 'wheel', etc. It allows the UI thread to handle the event immediately before passing over control to your custom event handler.
+    - in the web browsers which support the passive events, you need to add the 'passive' flag to any event listener that does not call 'preventDefault()'
+*/
+    // window.addEventListener('scroll', () => {
+    //     console.log('You are scrolling!');
+    // }, {passive:true});
