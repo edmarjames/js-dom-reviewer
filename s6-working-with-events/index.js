@@ -739,3 +739,37 @@ setInterval(() => {
     // window.addEventListener('scroll', () => {
     //     console.log('You are scrolling!');
     // }, {passive:true});
+
+
+// 13. scrollIntoView
+
+/* 
+    - method to scroll an element into the view
+    - suppose you have a list of elements and you want a specific element to be highlighted and scrolled into view
+
+    Syntax:
+        element.scrollIntoView(alignToTop);
+        element.scrollIntoView(options);
+
+    Parameters:
+        1. 'alignToTop' -> is a boolean value 
+            - if it is set to TRUE, the method will align the top of the element to the top of the viewport or top of the visible area of the scrollable ancestor.
+            - if it is set to FALSE, the method will align the bottom of the element to the bottom of the viewport or the bottom of the visible area of scrollable ancestor.
+        - by default, alignToTop is TRUE
+
+        2. 'options' -> argument is an object that gives more control over of alignment of the element in the view. However, the web browser support may be slightly different. The 'options' object has the following properties
+            - 'behavior' -> property defines the transition animation. The 'behavior' property accepts two values: 'auto' or 'smooth'. It defaults to 'auto'
+            - 'block' -> property defines the vertical alignment. It accepts one of four values: 'start', 'center', 'end', or 'nearest'. By default, it is 'start'
+            - 'inline' -> property defines horizontal alignment. It also accepts one of four values: 'start', 'center', 'end' or 'nearest'. It defaults to 'nearest'
+*/
+const btn = document.querySelector('#scroll-into-view');
+
+btn.addEventListener('click', () => {
+    const fav = document.querySelector('#favorite');
+    // fav.scrollIntoView(true);
+    fav.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+    });
+});
