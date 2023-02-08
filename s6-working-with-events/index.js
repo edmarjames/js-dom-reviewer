@@ -820,3 +820,25 @@ submitBtn.addEventListener('click', () => {
     fullName.value = '';
     password.value = '';
 });
+
+
+// 15. hashchange
+
+/* 
+    - The URL has is everything that follows the pound sign ( # ) in the URL.
+    Example:
+        https://www.javascripttutorial.net/javascript-dom/javascript-hashchange/#header
+
+    - The URL has is 'header'. If the URL hash changes to 'footer', like this.
+    Example:
+        https://www.javascripttutorial.net/javascript-dom/javascript-hashchange/#footer
+
+    - the 'hashchange' event fires when the URL hash changes from one to another.
+    - to get the current URL hash, you access the hash property of the 'location' object
+    Example:
+        console.log(`${location.hash}`);
+*/
+window.addEventListener('hashchange', () => {
+    alert('The URL hash has changed');
+    console.log(`${location.hash}`);
+});
