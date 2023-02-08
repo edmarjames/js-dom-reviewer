@@ -14,7 +14,7 @@ btnAlert.addEventListener('click', () => {
 // 2. event flow
 
 /* 
-    - event flow explains the order in which events are received on the page from the element where the event occurs and propagated throught the DOM tree.
+    - event flow explains the order in which events are received on the page from the element where the event occurs and propagated through the DOM tree.
     - There are two main event models: event bubbling and event capturing.
 */
 
@@ -772,4 +772,51 @@ btn.addEventListener('click', () => {
         block: 'start',
         inline: 'start'
     });
+});
+
+
+// 14. focus events
+
+/* 
+    - the 'focus' events fire when an element receives or loses focus.
+        - 'focus' -> fires when an element has received focus
+        - 'blur' -> fires when an element has lost focus
+    - the 'focusin' and 'focusout' fire at the same time as 'focus' and 'blur', they bubble, while the 'focus' and 'blur' do not.
+
+    - the following elements are focusable
+        - the 'window' gains focus when you bring it forward by using 'alt + tab' or clicking on it and loses focus when you send it back.
+        - 'links' when you use a mouse or a keyboard.
+        - 'form fields' like input text when you use a keyboard or a mouse.
+        - elements with 'tabindex', also when you use a keyboard or mouse.
+*/
+const fullName = document.querySelector('input[type="text"]');
+const password = document.querySelector('input[type="password"]');
+const submitBtn = document.querySelector('#submitBtn');
+
+function changeStyleOnFocus(e) {
+    e.target.style.backgroundColor = 'orangered';
+    e.target.classList.add('large-input');
+}
+
+function changeStyleOnBlur(e) {
+    e.target.style.backgroundColor = '';
+    e.target.classList.remove('large-input');
+}
+
+fullName.addEventListener('focus', changeStyleOnFocus);
+
+fullName.addEventListener('blur', changeStyleOnBlur);
+
+password.addEventListener('focus', changeStyleOnFocus);
+
+password.addEventListener('blur', changeStyleOnBlur);
+
+submitBtn.addEventListener('click', () => {
+    if (fullName.value.length > 0) {
+        alert(`Hello ${fullName.value}!`);
+    } else {
+        alert('Hello user!');
+    }
+    fullName.value = '';
+    password.value = '';
 });

@@ -168,3 +168,19 @@ a:hover::after {
 #favorite {
     background-color: blanchedalmond;
 }
+
+input {
+    display: block;
+    margin: 10px auto;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px;
+    border-radius: 5px;
+    border: 0;
+    transition: 0.5s transform ease-in-out;
+}
+
+.large-input {
+    border: 1px solid black;
+    transform: scale(1.1);
+}
