@@ -5,11 +5,17 @@
     - each event may have an event handler which is a block of code that will execute when the event occurs.
     - event handler is also known as an event listener. It listens to the event and executes when the event occurs.
 */
+// select the button with id of 'click-me'
 const btnAlert = document.querySelector('#click-me');
 
-btnAlert.addEventListener('click', () => {
-    alert("Welcome to Session 6!");
-});
+function firstClickEvent(btnAlert) {
+    // add a 'click' event listener to the button
+    btnAlert.addEventListener('click', () => {
+        alert("Welcome to Session 6!");
+    });
+}
+firstClickEvent(btnAlert);
+
 
 // 2. event flow
 
@@ -52,11 +58,16 @@ btnAlert.addEventListener('click', () => {
     - when the event occurs, the web browser passed an 'event' object to the event handler
     - note that the event object is only accessible inside the event handler. Once all the event handlers have been executed, the event object is automatically destroyed.
 */
-console.log('\n\t\tThis is the type of event on the button and the target of the event\n\n'.toUpperCase());
-btnAlert.addEventListener('click', (e) => {
-    console.log(e.type);
-    console.log(e.target);
-});
+function eventTypeAndTarget(btnAlert) {
+    console.log('\n\t\tThis is the type of event on the button and the target of the event\n\n'.toUpperCase());
+    btnAlert.addEventListener('click', (e) => {
+        // get the type of event
+        console.log(`Type of event is ${e.type}`);
+        // get the target element
+        console.log(e.target);
+    });
+}
+eventTypeAndTarget(btnAlert);
 
 
 // 4. preventDefault()
@@ -65,12 +76,17 @@ btnAlert.addEventListener('click', (e) => {
     - to prevent the default behavior of an event, you use the 'preventDefault()' method.
     - note that the 'preventDefault()' method does not stop the event from bubbling up the DOM. And an event can be cancelled when its 'cancelable' property is 'true'.
 */
-const link = document.querySelector('#docs-events');
+// get the element with the id of 'docs-events'
+function usePreventDefault() {
+    const link = document.querySelector('#docs-events');
 
-link.addEventListener('click', (e) => {
-    alert("You have clicked the link!");
-    e.preventDefault();
-});
+    link.addEventListener('click', (e) => {
+        alert("You have clicked the link!");
+        // use preventDefault to prevent the default behavior of the anchor tag/link
+        e.preventDefault();
+    });
+}
+usePreventDefault();
 
 
 // 5. stopPropagation()
@@ -78,14 +94,18 @@ link.addEventListener('click', (e) => {
 /* 
     - this method immediately stops the flow of an event through the DOM tree. However, it does not stop the browsers default behavior
 */
-btnAlert.addEventListener('click', (e) => {
-    console.log('You have clicked the button!');
-    e.stopPropagation();
-});
+function useStopPropagation(btnAlert) {
+    btnAlert.addEventListener('click', (e) => {
+        console.log('You have clicked the button!');
+        e.stopPropagation();
+    });
+    
+    document.body.addEventListener('click', () => {
+        console.log('The body was clicked!');
+    });
+}
+useStopPropagation(btnAlert);
 
-document.body.addEventListener('click', () => {
-    console.log('The body was clicked!');
-});
 /* 
     - without the 'stopPropagation()' method, you would see two messages on the console window.
     - however, the 'click' event never reaches the 'body' because the 'stopPropagation()' was called on the 'click' event handler of the button.
@@ -116,6 +136,7 @@ document.body.addEventListener('click', () => {
             - the event handler code is mixed with the HTML code, which will make the code more difficult to maintain and extend
             - it is a timing issue. If the element is loaded fully before the JavaScript code, users can start interacting with the element on the webpage which will cause an error.
 */
+// a function to show an alert
 const showAlert = () => alert('Here is the alert!');
 
 
@@ -141,21 +162,26 @@ const showAlert = () => alert('Here is the alert!');
 
     - the DOM level 0 event handlers are still being used widely because of its simplicity and cross-browser support.
 */
+// get the element with the id of 'show-confirm'
 const showConfirm = document.querySelector('#show-confirm');
 
-showConfirm.onclick = () => {
-    let feelings = confirm("Are you having fun?");
-    (feelings) ? 
-        console.log(`${feelings} the user is having fun`) 
-    : 
-        console.log(`${feelings} the user is not having fun`)
-};
+function domLevelZero(showConfirm) {
+    // add a 'onclick' event listener
+    showConfirm.onclick = () => {
+        let feelings = confirm("Are you having fun?");
+        (feelings) ? 
+            console.log(`${feelings} the user is having fun`) 
+        : 
+            console.log(`${feelings} the user is not having fun`)
+    };
+}
+domLevelZero(showConfirm);
 
 
 // 8. DOM level 2 event handlers
 
 /* 
-    * provide two main methods for dealing with the registering/deregistering event listeners
+    * provide two main methods for dealing with the registering/de-registering event listeners
         - addEventListener() - register an event handler
         - removeEventListener() - remove an event handler
 */
@@ -176,20 +202,25 @@ showConfirm.onclick = () => {
             // statement
         })
 */
+// function to generate loremIpsum placeholder text
 const generateLoremIpsum = () => {
     console.log('Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi fuga harum nesciunt placeat, possimus accusantium reiciendis, odio laborum aspernatur beatae nisi. Delectus, sapiente expedita? Necessitatibus saepe totam nihil molestias atque!');
 };
 
-showConfirm.addEventListener('click', generateLoremIpsum);
+function useAddEventListener(showConfirm) {
+    // add an event listener to the showConfirm button and attach the generateLoremIpsum function
+    showConfirm.addEventListener('click', generateLoremIpsum);
 
-showConfirm.addEventListener('click', (e) => {
-    console.log(`This is the event type on rate us button ${e.type.toUpperCase()}`);
-});
+    showConfirm.addEventListener('click', (e) => {
+        console.log(`This is the event type on rate us button ${e.type.toUpperCase()}`);
+    });
 
-showConfirm.addEventListener('click', (e) => {
-    console.log("This is the target element of the second event listener of rate us button\n");
-    console.log(e.target);
-});
+    showConfirm.addEventListener('click', (e) => {
+        console.log("This is the target element of the second event listener of rate us button\n");
+        console.log(e.target);
+    });
+}
+useAddEventListener(showConfirm);
 
 
 // 8.2 removeEventListener
@@ -207,7 +238,11 @@ showConfirm.addEventListener('click', (e) => {
             // statement
         });
 */
-showConfirm.removeEventListener('click', generateLoremIpsum);
+// remove the event listener of showConfirm button where it invokes the generateLoremIpsum function
+function useRemoveEventListener(showConfirm) {
+    showConfirm.removeEventListener('click', generateLoremIpsum);
+}
+useRemoveEventListener(showConfirm);
 
 
 // 9. Page load events
@@ -238,20 +273,24 @@ showConfirm.removeEventListener('click', generateLoremIpsum);
             // handle event
         });
 */
-document.addEventListener('DOMContentLoaded', (e) => {
-    console.log('The DOM has loaded!');
-});
+function loadEvents() {
+    // add 'DOMContentLoaded' event on the document
+    document.addEventListener('DOMContentLoaded', (e) => {
+        console.log('The DOM has loaded!');
+    });
 
-// you need to add the 'load' event to the 'window' instead of 'document'
-window.addEventListener('load', (e) => {
-    // alert('The page has fully loaded!');
-});
+    // you need to add the 'load' event to the 'window' instead of 'document'
+    window.addEventListener('load', (e) => {
+        // alert('The page has fully loaded!');
+    });
 
-// Note that the prompt may not be displayed in some browsers, as they have started to remove support for this feature in recent years due to security and usability reasons.
-window.addEventListener('beforeunload', (event) => {
-    // event.preventDefault();
-    // event.returnValue = 'Are you sure you want to leave this page?';
-});
+    // Note that the prompt may not be displayed in some browsers, as they have started to remove support for this feature in recent years due to security and usability reasons.
+    window.addEventListener('beforeunload', (event) => {
+        // event.preventDefault();
+        // event.returnValue = 'Are you sure you want to leave this page?';
+    });
+}
+loadEvents();
 
 
 // 9.1 load
@@ -272,20 +311,30 @@ window.addEventListener('beforeunload', (event) => {
             // statement
         }
 */
-window.onload = (e) => {
-    console.log('The page has fully loaded!');
-};
+function useLoad() {
+    window.onload = (e) => {
+        console.log('The page has fully loaded!');
+    };
+}
+useLoad();
+
 
 // 9.1.1 image load event
 
 /* 
     - the 'load' event also fires on images. To handle the 'load' event on images, you use the 'addEventListener()' method of the image elements.
 */
-const image = document.querySelector('.img-layout');
+function imageLoad() {
+    // select the element with the class of 'img-layout'
+    const image = document.querySelector('.img-layout');
 
-image.addEventListener('load', (e) => {
-    console.log('The image has been loaded!');
-});
+    // add a 'load' event to the image
+    image.addEventListener('load', (e) => {
+        console.log('The image has been loaded!');
+    });
+}
+imageLoad();
+
 
 // 9.1.2 script's load event
 
@@ -293,8 +342,10 @@ image.addEventListener('load', (e) => {
     - the <script> element also supports the 'load' event slightly different from the standard ways. The script's 'load' event allows you to check if a JavaScript file has been completely loaded.
     - unlike images, the web browser starts downloading JavaScript files only after the 'src' property has been assigned and the '<script>' element has been added to the document.
 */
+// add a load event to the window and attach the checkJSLoaded function
 window.addEventListener('load', checkJSLoaded);
 
+// create a script element, assign it's source and append to the document body
 function checkJSLoaded() {
     let script = document.createElement('script');
 
@@ -367,10 +418,14 @@ function checkJSLoaded() {
             // statement
         })
 */
-window.addEventListener('beforeunload', (event) => {
-    event.preventDefault();
-    event.returnValue = '';
-});
+function useBeforeUnload() {
+    // show an alert if you are leaving or refreshing the page
+    window.addEventListener('beforeunload', (event) => {
+        event.preventDefault();
+        event.returnValue = '';
+    });
+}
+useBeforeUnload();
 
 
 // 9.4 unload
@@ -399,9 +454,12 @@ window.addEventListener('beforeunload', (event) => {
             // statement
         };
 */
-window.addEventListener('unload', (event) => {
-    alert("The page is unloaded");
-});
+function useUnload() {
+    window.addEventListener('unload', (event) => {
+        alert("The page is unloaded");
+    });
+}
+useUnload();
 
 
 // 10. Mouse events
@@ -422,19 +480,23 @@ window.addEventListener('unload', (event) => {
     - likewise, if you depress the mouse button, move the mouse over the element and release the mouse button, the only 'mouseup' event fires on the element.
     - In both cases, the 'click' event never fires.
 */
+// get the element with the id of 'mouse-events'
 const mouseEvents = document.querySelector('#mouse-events');
 
-mouseEvents.addEventListener('mousedown', () => {
-    console.log('Mousedown event is triggered!');
-});
+function mouseEvent(mouseEvents) {
+    mouseEvents.addEventListener('mousedown', () => {
+        console.log('Mousedown event is triggered!');
+    });
 
-mouseEvents.addEventListener('mouseup', () => {
-    console.log('Mouseup event is triggered!');
-});
+    mouseEvents.addEventListener('mouseup', () => {
+        console.log('Mouseup event is triggered!');
+    });
 
-mouseEvents.addEventListener('click', () => {
-    console.log('Click event is triggered!');
-});
+    mouseEvents.addEventListener('click', () => {
+        console.log('Click event is triggered!');
+    });
+}
+mouseEvent(mouseEvents);
 
 // 10.2 dblclick
 
@@ -453,25 +515,36 @@ mouseEvents.addEventListener('click', () => {
 
     - as you can see, the 'click' events always take place before the 'dblclick' event. If you register both 'click' and 'dblclick' event handlers on the same element, you will now know exactly if the user has clicked or double-clicked the element.
 */
+function useDblclick(mouseEvents) {
+    // add a 'doubleclick' event on the 'mouseEvents'
+    mouseEvents.addEventListener('dblclick', () => {
+        alert('You double clicked the button');
+    });
+}
+useDblclick(mouseEvents);
 
-mouseEvents.addEventListener('dblclick', () => {
-    alert('You double clicked the button');
-});
 
 // 10.3 mousemove
 
 /* 
     - the 'mousemove' event fires repeatedly when you move the mouse cursor around an element. Even when you move the mouse one pixel, the 'mousemove' event still fires. It will cause the page to be slow, therefore you only register 'mousemove' event handler only when you need it and immediately remove the event handler as soon as it is no longer needed.
 */
-const mouseMoveEvent = () => {
-    console.log('You are moving the mouse cursor');
-};
+function useMousemove() {
+    // function to show a message on the console if a user is moving the mouse cursor
+    const mouseMoveEvent = () => {
+        console.log('You are moving the mouse cursor');
+    };
 
-document.body.addEventListener('mousemove', mouseMoveEvent);
+    // add a 'mousemove' event listener to the document body and attach the 'mouseMoveEvent' function
+    document.body.addEventListener('mousemove', mouseMoveEvent);
 
-setTimeout(() => {
-    document.body.removeEventListener('mousemove', mouseMoveEvent);
-}, 5000);
+    // remove the 'mousemove' event listener to the document body after 5 seconds
+    setTimeout(() => {
+        document.body.removeEventListener('mousemove', mouseMoveEvent);
+    }, 5000);
+}
+useMousemove();
+
 
 // 10.4 mouseover/mouseout
 
@@ -479,14 +552,17 @@ setTimeout(() => {
     - 'mouseover' fires when the mouse cursor is outside of the element and then move to inside the boundaries of the element
     - 'mouseout' fires when the mouse cursor is over an element and then moves to another element
 */
+function useMouseOverAndMouseOut(mouseEvents) {
+    mouseEvents.addEventListener('mouseover', () => {
+        mouseEvents.title = "You hover over me!";
+    });
+    
+    mouseEvents.addEventListener('mouseout', () => {
+        alert('You hover out of the button!');
+    });
+}
+useMouseOverAndMouseOut(mouseEvents);
 
-mouseEvents.addEventListener('mouseover', () => {
-    mouseEvents.title = "You hover over me!";
-});
-
-mouseEvents.addEventListener('mouseout', () => {
-    alert('You hover out of the button!');
-});
 
 // 10.5 mouseenter/mouseleave
 
@@ -495,14 +571,16 @@ mouseEvents.addEventListener('mouseout', () => {
     - 'mouseleave' fires when the mouse cursor is over an element and then moves to the outside of the element's boundaries
     - both 'mouseenter' and 'mouseleave' does not bubble and does not fire when the mouse cursor moves over descendant elements
 */
-
-mouseEvents.addEventListener('mouseenter', () => {
-    console.log('You hover over the button!');
-});
-
-mouseEvents.addEventListener('mouseleave', () => {
-    console.log('You hover out of the button!');
-});
+function useMouseEnterAndMouseLeave(mouseEvents) {
+    mouseEvents.addEventListener('mouseenter', () => {
+        console.log('You hover over the button!');
+    });
+    
+    mouseEvents.addEventListener('mouseleave', () => {
+        console.log('You hover out of the button!');
+    });
+}
+useMouseEnterAndMouseLeave(mouseEvents);
 
 // DIFFERENCE BETWEEN 'mouseover' and 'mouseenter' as per ChatGPT
 
@@ -529,28 +607,34 @@ mouseEvents.addEventListener('mouseleave', () => {
         - 3 -> the fourth button is pressed, usually the browser back button
         - 4 -> the fifth button is pressed, usually the browser forward button
 */
-
+// get the element with the id of 'mouse-button-detect'
 const buttonDetect = document.querySelector('#mouse-button-detect');
 
-buttonDetect.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-});
+function mouseButtonDetect(buttonDetect) {
+    // add preventDefault to prevent the default behavior of 'right click'
+    buttonDetect.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
 
-buttonDetect.addEventListener('mouseup', (e) => {
-    switch(e.button) {
-        case 0: 
-            console.log('Left mouse button is clicked');
-            break;
-        case 1:
-            console.log('Middle mouse button is clicked');
-            break;
-        case 2:
-            console.log('Right mouse button is clicked');
-            break;
-        default:
-            console.log('Unknown mouse button is clicked');
-    }
-});
+    // switch case to determine which button is used on 'mouseup' event
+    buttonDetect.addEventListener('mouseup', (e) => {
+        switch(e.button) {
+            case 0: 
+                console.log('Left mouse button is clicked');
+                break;
+            case 1:
+                console.log('Middle mouse button is clicked');
+                break;
+            case 2:
+                console.log('Right mouse button is clicked');
+                break;
+            default:
+                console.log('Unknown mouse button is clicked');
+        }
+    });
+}
+mouseButtonDetect(buttonDetect);
+
 
 // 10.7 modifier keys
 
@@ -568,7 +652,8 @@ buttonDetect.addEventListener('mouseup', (e) => {
         - e.altKey -> to detect if 'alt' key is pressed
         - e.metaKey -> to detect if 'meta' key is pressed
 */
-function detectButton () {
+function mouseModifierKey(buttonDetect) {
+    // if else statement to determine which modifier key is used on the 'click' event
     buttonDetect.addEventListener('click', (e) => {
         if (e.shiftKey) {
             console.log('You pressed the button with shift key');
@@ -583,7 +668,7 @@ function detectButton () {
         }
     });
 }
-detectButton();
+mouseModifierKey(buttonDetect);
 
 
 // 10.8 getting screen coordinates
@@ -593,8 +678,10 @@ detectButton();
     - the 'clientX' and 'clientY' properties provide the horizontal and vertical coordinates within the applications client area at which the mouse event occured.
 */
 function getCoordinates() {
+    // get the element with the class of 'coordinates'
     const coordinateContainer = document.querySelector('.coordinates');
 
+    // add a 'mousemove' event to the 'coordinateContainer'
     coordinateContainer.addEventListener('mousemove', (e) => {
         const screen = document.querySelector('#screenXY');
         const client = document.querySelector('#clientXY');
@@ -624,19 +711,27 @@ getCoordinates();
     - when you press a non-character key, the 'keydown' event is fired first followed by the 'keyup' event.
     if you hold down the non-character key, the 'keydown' is fired repeatedly until you release the key.
 */
+// get the element with the id of 'message'
 const message = document.querySelector('#message');
 
-message.addEventListener('keydown', () => {
-    console.log('You are typing something');
-});
+function keyboardEvents(message) {
+    // event listener when you press a button
+    message.addEventListener('keydown', () => {
+        console.log('You are typing something');
+    });
 
-message.addEventListener('keypress', () => {
-    console.log('You type a character');
-});
+    // event listener when you press a character key
+    message.addEventListener('keypress', () => {
+        console.log('You type a character');
+    });
 
-message.addEventListener('keyup', () => {
-    console.log('Your message is being logged');
-});
+    // event listener when you release a button from pressing
+    message.addEventListener('keyup', () => {
+        console.log('Your message is being logged');
+    });
+}
+keyboardEvents(message);
+
 
 // 11.1 keyboard event properties
 
@@ -648,9 +743,12 @@ message.addEventListener('keyup', () => {
     Example:
         if you press the 'z' character key, the 'event.key' returns 'z' and 'event.code' returns 'KeyZ'
 */
-message.addEventListener('keydown', (e) => {
-    console.log(`Key = ${e.key} Code = ${e.code}`);
-});
+function keyboardEventProperties(message) {
+    message.addEventListener('keydown', (e) => {
+        console.log(`Key = ${e.key} Code = ${e.code}`);
+    });
+}
+keyboardEventProperties(message);
 
 
 // 12. scroll events
@@ -686,22 +784,31 @@ message.addEventListener('keydown', (e) => {
     - the 'scrollTop' property sets or gets the number of pixels that the element's content is vertically scrolled.
     - the 'scrollLeft' property gets and sets the number of pixels that an element's content is scrolled from its left edge.
 */
-const control = document.querySelector('#controls');
+function useScrollLeftAndScrollTop() {
+    // get the element with the id of 'controls'
+    const control = document.querySelector('#controls');
 
-control.addEventListener('click', (event) => {
-    let container = document.querySelector('.container');
+    // add a 'click' event listener to 'control'
+    control.addEventListener('click', (event) => {
+        // get the element with the class of 'container'
+        let container = document.querySelector('.container');
 
-    let targetId = event.target;
+        // store the target element to 'target'
+        let target = event.target;
 
-    switch(targetId.id) {
-        case 'scroll-top':
-            container.scrollTop += 15;
-            break;
-        case 'scroll-left':
-            container.scrollLeft += 15;
-            break;
-    }
-});
+        // switch case to determine which button is pressed
+        switch(target.id) {
+            case 'scroll-top':
+                container.scrollTop += 15;
+                break;
+            case 'scroll-left':
+                container.scrollLeft += 15;
+                break;
+        }
+    });
+}
+useScrollLeftAndScrollTop();
+
 
 // 12.3 better ways to handle the scroll events
 
@@ -713,22 +820,29 @@ control.addEventListener('click', (event) => {
 // 12.3.1 event throttling
 
 /* 
-    - it is much better to keep the 'scroll' event handler lightweight and execute it every N miliseconds by using a timer.
+    - it is much better to keep the 'scroll' event handler lightweight and execute it every N milliseconds by using a timer.
     - the throttling slows down the rate of execution of the scroll event handler.
 */
-let scrolling = false;
+function eventThrottling() {
+    // set scrolling to false
+    let scrolling = false;
 
-window.onscroll = () => {
-    scrolling = true;
-    console.log('You are scrolling');
-}
-
-setInterval(() => {
-    if (scrolling) {
-        scrolling = false;
-        console.log('Scrolling paused');
+    // add a 'onscroll' event listener on the window and set the scrolling to true
+    window.onscroll = () => {
+        scrolling = true;
+        console.log('You are scrolling');
     }
-}, 300);
+
+    // use setInterval to pause the scrolling event listener every 300 milliseconds
+    setInterval(() => {
+        if (scrolling) {
+            scrolling = false;
+            console.log('Scrolling paused');
+        }
+    }, 300);
+}
+eventThrottling();
+
 
 // 12.3.2 passive events
 
@@ -762,17 +876,22 @@ setInterval(() => {
             - 'block' -> property defines the vertical alignment. It accepts one of four values: 'start', 'center', 'end', or 'nearest'. By default, it is 'start'
             - 'inline' -> property defines horizontal alignment. It also accepts one of four values: 'start', 'center', 'end' or 'nearest'. It defaults to 'nearest'
 */
-const btn = document.querySelector('#scroll-into-view');
+function useScrollIntoView() {
+    // get the element with the id of 'scroll-into-view'
+    const btn = document.querySelector('#scroll-into-view');
 
-btn.addEventListener('click', () => {
-    const fav = document.querySelector('#favorite');
-    // fav.scrollIntoView(true);
-    fav.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
+    // add a 'click' event listener to 'btn'
+    btn.addEventListener('click', () => {
+        const fav = document.querySelector('#favorite');
+        // fav.scrollIntoView(true);
+        fav.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'start'
+        });
     });
-});
+}
+useScrollIntoView();
 
 
 // 14. focus events
@@ -789,37 +908,50 @@ btn.addEventListener('click', () => {
         - 'form fields' like input text when you use a keyboard or a mouse.
         - elements with 'tabindex', also when you use a keyboard or mouse.
 */
-const fullName = document.querySelector('input[type="text"]');
-const password = document.querySelector('input[type="password"]');
-const submitBtn = document.querySelector('#submitBtn');
+function focusEvents() {
+    // get the element with attribute of 'type="text"'
+    const fullName = document.querySelector('input[type="text"]');
+    // get the element with attribute of 'type="password"'
+    const password = document.querySelector('input[type="password"]');
+    // get the element with id of 'submitBtn'
+    const submitBtn = document.querySelector('#submitBtn');
 
-function changeStyleOnFocus(e) {
-    e.target.style.backgroundColor = 'orangered';
-    e.target.classList.add('large-input');
-}
-
-function changeStyleOnBlur(e) {
-    e.target.style.backgroundColor = '';
-    e.target.classList.remove('large-input');
-}
-
-fullName.addEventListener('focus', changeStyleOnFocus);
-
-fullName.addEventListener('blur', changeStyleOnBlur);
-
-password.addEventListener('focus', changeStyleOnFocus);
-
-password.addEventListener('blur', changeStyleOnBlur);
-
-submitBtn.addEventListener('click', () => {
-    if (fullName.value.length > 0) {
-        alert(`Hello ${fullName.value}!`);
-    } else {
-        alert('Hello user!');
+    // function to change element styling on 'focus' event
+    function changeStyleOnFocus(e) {
+        e.target.style.backgroundColor = 'orangered';
+        e.target.classList.add('large-input');
     }
-    fullName.value = '';
-    password.value = '';
-});
+
+    // function to change element styling on 'blur' event
+    function changeStyleOnBlur(e) {
+        e.target.style.backgroundColor = '';
+        e.target.classList.remove('large-input');
+    }
+
+    // add 'focus' event listener to 'fullname' and attach 'changeStyleOnFocus' function
+    fullName.addEventListener('focus', changeStyleOnFocus);
+
+    // add 'blur' event listener to 'fullname' and attach 'changeStyleOnBlur' function
+    fullName.addEventListener('blur', changeStyleOnBlur);
+
+    // add 'focus' event listener to 'password' and attach 'changeStyleOnFocus' function
+    password.addEventListener('focus', changeStyleOnFocus);
+
+    // add 'blur' event listener to 'password' and attach 'changeStyleOnBlur' function
+    password.addEventListener('blur', changeStyleOnBlur);
+
+    // add 'click' event listener to 'submitBtn' to show an alert either if the 'fullname' has value or not and clears the 'fullname' and 'password' fields
+    submitBtn.addEventListener('click', () => {
+        if (fullName.value.length > 0) {
+            alert(`Hello ${fullName.value}!`);
+        } else {
+            alert('Hello user!');
+        }
+        fullName.value = '';
+        password.value = '';
+    });
+}
+focusEvents();
 
 
 // 15. hashchange
@@ -838,10 +970,14 @@ submitBtn.addEventListener('click', () => {
     Example:
         console.log(`${location.hash}`);
 */
-window.addEventListener('hashchange', () => {
-    alert('The URL hash has changed');
-    console.log(`${location.hash}`);
-});
+function useHashchange() {
+    // add 'hashchange' event listener to the window
+    window.addEventListener('hashchange', () => {
+        alert('The URL hash has changed');
+        console.log(`${location.hash}`);
+    });
+}
+useHashchange();
 
 
 // 16. event delegation
@@ -854,26 +990,35 @@ window.addEventListener('hashchange', () => {
     - instead of having multiple event handlers, you can assign a single event handler to handle all the click events
     - event delegation refers to the technique of levering event bubbling to handle events at a higher level in the DOM than the element on which the event originated.
 */
-const btnGroup = document.querySelector('#button-group');
+function useEventDelegation() {
+    // get the element with the id of 'button-group'
+    const btnGroup = document.querySelector('#button-group');
 
-btnGroup.addEventListener('click', (e) => {
-    let target = e.target;
+    // add 'click' event listener to the 'btnGroup'
+    btnGroup.addEventListener('click', (e) => {
 
-    switch(target.id) {
-        case 'btn-1':
-            alert('You pressed button 1!');
-            break;
-        case 'btn-2':
-            alert('You pressed button 2!');
-            break;
-        case 'btn-3':
-            alert('You pressed button 3!');
-            break;
-        default:
-            alert('Unknown button');
-            break;
-    }
-});
+        // store the target element to 'target' variable
+        let target = e.target;
+
+        // switch case to determine which button is pressed based on it's id
+        switch(target.id) {
+            case 'btn-1':
+                alert('You pressed button 1!');
+                break;
+            case 'btn-2':
+                alert('You pressed button 2!');
+                break;
+            case 'btn-3':
+                alert('You pressed button 3!');
+                break;
+            default:
+                alert('Unknown button');
+                break;
+        }
+    });
+}
+useEventDelegation();
+
 
 // 16.1 event delegation benefits
 
@@ -908,17 +1053,24 @@ btnGroup.addEventListener('click', (e) => {
     Syntax for dispatching an event:
         element.dispatchEvent(event);
 
-    - use 'event.isTrusted' to examine whether the event is generated from code or user actions.
+    - use 'event.isTrusted' to examine whether the event is generated from code or user actions. It returns a boolean value
 */
-const dispatchEventBtn = document.querySelector('#dispatch-event');
+function useDispatchEvent() {
+    // get the element with the id of 'dispatch-event'
+    const dispatchEventBtn = document.querySelector('#dispatch-event');
 
-dispatchEventBtn.addEventListener('click', (e) => {
-    console.log('Dispatch button click');
-    console.log(`The event is authentic ${e.isTrusted}`);
-});
+    // add 'click' event listener to 'dispatchEventBtn'
+    dispatchEventBtn.addEventListener('click', (e) => {
+        console.log('Dispatch button click');
+        console.log(`The event is authentic ${e.isTrusted}`);
+    });
 
-let clickEvent = new Event('click');
-dispatchEventBtn.dispatchEvent(clickEvent);
+    // create a new event
+    let clickEvent = new Event('click');
+    // dispatch the event to 'dispatchEventBtn' element
+    dispatchEventBtn.dispatchEvent(clickEvent);
+}
+useDispatchEvent();
 
 
 // 18. custom events
@@ -934,40 +1086,43 @@ dispatchEventBtn.dispatchEvent(clickEvent);
         - 'eventType' -> is a string that represents the name of the event
         - 'options' -> is an object has the 'detail' property that contains any custom information about the event.
 */
-function changeColor(elem) {
-    const bgColor = 'blanchedalmond';
-    elem.style.backgroundColor = bgColor;
-
-    // create the event
-    let event = new CustomEvent('changeColor', {
-        detail: {
-            backgroundColor: bgColor
-        }
+function useCustomEvent() {
+    function changeColor(elem) {
+        const bgColor = 'blanchedalmond';
+        elem.style.backgroundColor = bgColor;
+    
+        // create the event
+        let event = new CustomEvent('changeColor', {
+            detail: {
+                backgroundColor: bgColor
+            }
+        });
+    
+        // dispatch the event
+        elem.dispatchEvent(event);
+    };
+    
+    // select the div
+    const customEvent = document.querySelector('#custom-event');
+    
+    // add styling
+    function addStyle(elem) {
+        elem.style.borderRadius = "25px";
+        elem.style.boxShadow = "2px 2px 30px black";
+    }
+    
+    // listen to the changeColor event
+    customEvent.addEventListener('changeColor', (event) => {
+        addStyle(event.currentTarget);
+    
+        // examine the detail of the changeColor event
+        console.log(event.detail);
     });
-
-    // dispatch the event
-    elem.dispatchEvent(event);
-};
-
-// select the div
-const customEvent = document.querySelector('#custom-event');
-
-// add styling
-function addStyle(elem) {
-    elem.style.borderRadius = "25px";
-    elem.style.boxShadow = "2px 2px 30px black";
+    
+    // change the color of the div
+    changeColor(customEvent);
 }
-
-// listen to the changeColor event
-customEvent.addEventListener('changeColor', (event) => {
-    addStyle(event.currentTarget);
-
-    // examine the detail of the changeColor event
-    console.log(event.detail);
-});
-
-// change the color of the div
-changeColor(customEvent);
+useCustomEvent();
 
 
 // 19. MutationObserver
@@ -1010,56 +1165,76 @@ changeColor(customEvent);
 
     - You don't need to use all the options. However, to make the 'MutationObserver' work, at least one of 'childList', 'attributes' or 'characterData' needs to be set to 'true', otherwise the 'observer()' method will throw an error.
 */
-const frameworks = document.querySelector('#frameworks');
-const controlButtons = document.querySelector('#control-buttons');
+function useMutationObserver() {
+    // get the element with the id of 'frameworks'
+    const frameworks = document.querySelector('#frameworks');
+    // get the element with the id of 'control-buttons'
+    const controlButtons = document.querySelector('#control-buttons');
 
-const btnStart = document.querySelector('#btn-start');
-const btnAdd = document.querySelector('#btn-add');
-const btnRemove = document.querySelector('#btn-remove');
+    // get the element with the id of 'btn-start'
+    const btnStart = document.querySelector('#btn-start');
+    // get the element with the id of 'btn-add'
+    const btnAdd = document.querySelector('#btn-add');
+    // get the element with the id of 'btn-remove'
+    const btnRemove = document.querySelector('#btn-remove');
 
-const btnStop = document.querySelector('#btn-stop');
-btnStop.disabled = true;
+    // get the element with the id of 'btn-stop'
+    const btnStop = document.querySelector('#btn-stop');
+    // set the 'disabled' attribute to true
+    btnStop.disabled = true;
 
-function logs(mutations) {
-    for (let mutation of mutations) {
-        if (mutation.type === 'childList') {
-            console.log(mutation);
+    // callback function to log the changes on the DOM tree
+    function logs(mutations) {
+        for (let mutation of mutations) {
+            if (mutation.type === 'childList') {
+                console.log(mutation);
+            }
         }
     }
+
+    // create a 'MutationObserver' object and pass the callback function
+    let observer = new MutationObserver(logs);
+    let ctr = 1;
+
+    controlButtons.addEventListener('click', (e) => {
+
+        // store the target element to 'target' variable
+        let target = e.target;
+        
+        // switch case to determine which button is pressed based on its id
+        switch(target.id) {
+            case 'btn-start':
+                // observer changes on 'frameworks' element and set the 'childList' option to true
+                observer.observe(frameworks, {
+                    childList: true
+                });
+                btnStart.disabled = true;
+                btnStop.disabled = false;
+                break;
+            case 'btn-add':
+                // create a new 'li' element and append it to 'frameworks' element
+                let listItem = document.createElement('li');
+                listItem.textContent = `Item ${ctr++}`;
+                frameworks.appendChild(listItem);
+                break;
+            case 'btn-remove':
+                // remove the 'lastElementChild' of 'frameworks'
+                frameworks.lastElementChild ?
+                    frameworks.removeChild(frameworks.lastElementChild)
+                    :
+                    console.log('No more child node left');
+                break;
+            case 'btn-stop':
+                // stop observing DOM changes
+                observer.disconnect();
+                btnStart.disabled = false;
+                btnStop.disabled = true;
+                break;
+        }
+    });
 }
+useMutationObserver();
 
-let observer = new MutationObserver(logs);
-let ctr = 1;
-
-controlButtons.addEventListener('click', (e) => {
-    let target = e.target;
-    
-    switch(target.id) {
-        case 'btn-start':
-            observer.observe(frameworks, {
-                childList: true
-            });
-            btnStart.disabled = true;
-            btnStop.disabled = false;
-            break;
-        case 'btn-add':
-            let listItem = document.createElement('li');
-            listItem.textContent = `Item ${ctr++}`;
-            frameworks.appendChild(listItem);
-            break;
-        case 'btn-remove':
-            frameworks.lastElementChild ?
-                frameworks.removeChild(frameworks.lastElementChild)
-                :
-                console.log('No more child node left');
-            break;
-        case 'btn-stop':
-            observer.disconnect();
-            btnStart.disabled = false;
-            btnStop.disabled = true;
-            break;
-    }
-});
 
 // 19.1 observing for changes to attributes
 
