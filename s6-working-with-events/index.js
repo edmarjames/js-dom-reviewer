@@ -968,3 +968,145 @@ customEvent.addEventListener('changeColor', (event) => {
 
 // change the color of the div
 changeColor(customEvent);
+
+
+// 19. MutationObserver
+
+/* 
+    - the 'MutationObserver' API allows you to monitor for changes being made to the DOM tree. When the DOM nodes change, you can invoke a callback function to react to the changes.
+    - the basic steps for using the 'MutationObserver' API are
+        - first, define the callback function that will execute when the DOM changes.
+            Example:
+                function callback(mutations) {
+                    //
+                }
+
+        - second, create a 'MutationObserver' object and pass the callback into the 'MutationObserver()' constructor
+            Example:
+                let observer = new MutationObserver(callback);
+
+        - third, call the 'observe()' method to start observing the DOM changes.
+            Example:
+                observer.observe(targetNode, observerOptions);
+
+        - finally, stop observing the DOM changes by calling the 'disconnect()' method
+            Example:
+                observer.disconnect();
+
+    - the 'observer' method has two parameters.
+        - 'target' -> is the root of the subtree of nodes to monitor for changes.
+        - 'observerOptions' -> parameter contains properties that specify what DOM changes should be reported to the observer's callback.
+
+    - observerOptions samples
+        let options = {
+            childList: true,
+            attributes: true,
+            characterData: false,
+            subtree: false,
+            attributeFilter: ['attr1', 'attr2'],
+            attributeOldValue: false,
+            characterDataOldValue: false
+        }
+
+    - You don't need to use all the options. However, to make the 'MutationObserver' work, at least one of 'childList', 'attributes' or 'characterData' needs to be set to 'true', otherwise the 'observer()' method will throw an error.
+*/
+const frameworks = document.querySelector('#frameworks');
+const controlButtons = document.querySelector('#control-buttons');
+
+const btnStart = document.querySelector('#btn-start');
+const btnAdd = document.querySelector('#btn-add');
+const btnRemove = document.querySelector('#btn-remove');
+
+const btnStop = document.querySelector('#btn-stop');
+btnStop.disabled = true;
+
+function logs(mutations) {
+    for (let mutation of mutations) {
+        if (mutation.type === 'childList') {
+            console.log(mutation);
+        }
+    }
+}
+
+let observer = new MutationObserver(logs);
+let ctr = 1;
+
+controlButtons.addEventListener('click', (e) => {
+    let target = e.target;
+    
+    switch(target.id) {
+        case 'btn-start':
+            observer.observe(frameworks, {
+                childList: true
+            });
+            btnStart.disabled = true;
+            btnStop.disabled = false;
+            break;
+        case 'btn-add':
+            let listItem = document.createElement('li');
+            listItem.textContent = `Item ${ctr++}`;
+            frameworks.appendChild(listItem);
+            break;
+        case 'btn-remove':
+            frameworks.lastElementChild ?
+                frameworks.removeChild(frameworks.lastElementChild)
+                :
+                console.log('No more child node left');
+            break;
+        case 'btn-stop':
+            observer.disconnect();
+            btnStart.disabled = false;
+            btnStop.disabled = true;
+            break;
+    }
+});
+
+// 19.1 observing for changes to attributes
+
+/* 
+    - to observe for changes to attributes, you use the following attributes property.
+    let options = {
+        attributes: true
+    }
+
+    - if you want to observe the changes to one or more specific 'attributes' while ignoring the others, you can use the 'attributeFilter' property
+    let options = {
+        attributes: true,
+        attributeFilter: ['class', 'style']
+    }
+*/
+
+// 19.2 observing for changes to a subtree
+
+/* 
+    - to monitor the target node and its subtree of nodes, you set the 'subtree' property to 'true'
+    let options = {
+        subtree: true
+    }
+*/
+
+// 19.3 observing for changes to character data
+
+/* 
+    - to monitor the node for changes to its textual contents, you set the 'characterData' to 'true'
+    let options = {
+        characterData: true
+    }
+*/
+
+// 19.4 accessing old values
+
+/* 
+    - to access the old values of attributes, you set the 'attributeOldValue' property to 'true'
+    let options = {
+        attributes: true,
+        attributeOldValue: true
+    }
+
+    - similarly, you can access the old value of character data by setting the 'characterDataOldValue' property to 'true'
+    let options = {
+        characterData: true,
+        subtree: true,
+        characterDataOldValue: true
+    }
+*/
