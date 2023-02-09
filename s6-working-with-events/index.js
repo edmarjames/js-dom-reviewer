@@ -842,3 +842,44 @@ window.addEventListener('hashchange', () => {
     alert('The URL hash has changed');
     console.log(`${location.hash}`);
 });
+
+
+// 16. event delegation
+
+/* 
+    - adds a single event handler to the parent element instead of having to register multiple event handlers to the child elements.
+    - in JavaScript, if you have large number of event handlers on a page, these event handlers will directly impact the performance because of the following reasons.
+        - each event handler is a function which is also an object that takes up memory. The more objects in the memory, the slower the performance.
+        - it takes time to assign all the event handlers, which causes a delay in the interactivity of the page.
+    - instead of having multiple event handlers, you can assign a single event handler to handle all the click events
+    - event delegation refers to the technique of levering event bubbling to handle events at a higher level in the DOM than the element on which the event originated.
+*/
+const btnGroup = document.querySelector('#button-group');
+
+btnGroup.addEventListener('click', (e) => {
+    let target = e.target;
+
+    switch(target.id) {
+        case 'btn-1':
+            alert('You pressed button 1!');
+            break;
+        case 'btn-2':
+            alert('You pressed button 2!');
+            break;
+        case 'btn-3':
+            alert('You pressed button 3!');
+            break;
+        default:
+            alert('Unknown button');
+            break;
+    }
+});
+
+// 16.1 event delegation benefits
+
+/* 
+    * you can have a single event handler on the 'document' that will handle all the events of a particular type. by doing this, you gain the following benefits
+        - less memory usage, better performance
+        - less time required to set up event handlers on the page
+        - the 'document' object is available immediately. As long as the element is rendered, it can start functioning correctly without delay. You don't need to wait for the 'DOMContentLoaded' or 'load' events.
+*/
