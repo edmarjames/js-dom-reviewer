@@ -25,113 +25,141 @@
         <!-- Session number and title -->
         <p>Session 6 - Working with events</p>
 
-        <button id="click-me" class="btn-layout">Click me!</button>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank" id="docs-events">Docs about events</a>
-        <button id="show-alert" class="btn-layout" onclick="showAlert()">Show the alert</button>
-        <button id="show-confirm" class="btn-layout">Rate us</button>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank">Docs about addEventListener</a>
+        <!-- Buttons and links -->
+        <div class="row">
+            <button id="click-me" class="btn-layout">Click me!</button>
+            <button id="show-alert" class="btn-layout" onclick="showAlert()">Show the alert</button>
+            <button id="show-confirm" class="btn-layout">Rate us</button>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank" id="docs-events">Docs about events</a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank">Docs about addEventListener</a>
+        </div>
 
+        <!-- Event flow png image -->
         <h2>Event flow</h2>
         <img src="./assets/event-flow.png" alt="event_flow" class="img-layout">
 
-        <button id="mouse-events" class="btn-layout">
-            Apply the mousedown and mouseup event here
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event" target="_blank">See documentation here</a>
-        </button>
-
-        <button id="mouse-button-detect" class="btn-layout">Detects which mouse button is clicked here</button>
-
-        <h4>Move your mouse cursor inside this box to show it's coordinates</h4>
-        <div class="coordinates">
-            <p id="screenXY"></p>
-            <p id="clientXY"></p>
+        <!-- Buttons for mouse events -->
+        <div class="row">
+            <button id="mouse-events" class="btn-layout">
+                Apply the mousedown and mouseup event here
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/mousedown_event" target="_blank">See documentation here</a>
+            </button>
+            <button id="mouse-button-detect" class="btn-layout">Detects which mouse button is clicked here</button>
         </div>
 
-        <h4>Enter a message here</h4>
-        <textarea name="message" id="message" cols="70" rows="10"></textarea>
-
-        <h4>This content inside can be scroll down and sideways using the buttons below</h4>
-        <div class="container">
-            <p>Scroll event</p>
-        </div>
-
-        <div id="controls">
-            <button id="scroll-top" class="btn-layout">Scroll up</button>
-            <button id="scroll-left" class="btn-layout">Scroll left</button>
-        </div>
-
-        <div class="list-container">
-            <ul>
-                <li>Python</li>
-                <li>Java</li>
-                <li>C</li>
-                <li>C++</li>
-                <li>C#</li>
-                <li id="favorite">JavaScript</li>
-                <li>PHP</li>
-                <li>Ruby</li>
-                <li>Swift</li>
-                <li>R</li>
-                <li>Objective-c</li>
-                <li>Pascal</li>
-                <li>Cobol</li>
-            </ul>
-        </div>
-        <button id="scroll-into-view" class="btn-layout">Show favorite</button>
-
-        <form onsubmit="return false">
-            <h4>Sample form to show focus event</h4>
-            <input type="text" name="fullname" placeholder="Enter your name">
-            <input type="password" name="password" placeholder="Enter password">
-            <input id="submitBtn"type="submit" value="submit" class="btn-layout">
-        </form>
-
-        <h4>These buttons are used to show event delegation</h4>
-        <div id="button-group">
-            <button id="btn-1" class="btn-layout">Button 1</button>
-            <button id="btn-2" class="btn-layout">Button 2</button>
-            <button id="btn-3" class="btn-layout">Button 3</button>
-        </div>
-
-        <button id="dispatch-event" class="btn-layout">Dispatch click event</button>
-
-        <h4>Custom event</h4>
-        <div id="custom-event"></div>
-
-        <ul id="frameworks">
-            <li>React.js</li>
-            <li>Angular.js</li>
-            <li>Vue.js</li>
-            <li>Svelte</li>
-        </ul>
-
-        <div id="control-buttons">
-            <button id="btn-start" class="btn-layout">Start observing</button>
-            <button id="btn-stop" class="btn-layout">Stop observing</button>
-            <button id="btn-add" class="btn-layout">Add item</button>
-            <button id="btn-remove" class="btn-layout">Remove item</button>
+        <!-- Container for mousemove event and textarea for keyboard events -->
+        <div class="row">
+            <div class="flex-column">
+                <h4>Move your mouse cursor inside this box to show it's coordinates</h4>
+                <div class="coordinates">
+                    <p id="screenXY"></p>
+                    <p id="clientXY"></p>
+                </div>
+            </div>
+            <div class="flex-column">
+                <h4>Enter a message here</h4>
+                <textarea name="message" id="message" cols="70" rows="10"></textarea>
+            </div>
         </div>
         
-
+        <!-- Container for scrollTop and scrollLeft attribute and list of programming languages for scrollIntoView event -->
+        <div class="row">
+            <div class="flex-column">
+                <h4>This content inside can be scroll down and sideways using the buttons below</h4>
+                <div class="container">
+                    <p>Scroll event</p>
+                </div>
+                <div id="controls">
+                    <button id="scroll-top" class="btn-layout">Scroll up</button>
+                    <button id="scroll-left" class="btn-layout">Scroll left</button>
+                </div>
+            </div>
+            <div class="flex-column">
+                <div class="list-container">
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li id="favorite">JavaScript</li>
+                        <li>PHP</li>
+                        <li>Ruby</li>
+                        <li>Swift</li>
+                        <li>R</li>
+                        <li>Objective-c</li>
+                        <li>Pascal</li>
+                        <li>Cobol</li>
+                    </ul>
+                </div>
+                <button id="scroll-into-view" class="btn-layout">Show favorite</button>
+            </div>
+        </div>
+        
+        <!-- Form for focus and blur events, buttons for event delegation and dispatch event -->
+        <div class="row">
+            <div class="flex-column">
+                <form onsubmit="return false">
+                    <h4>Sample form to show focus event</h4>
+                    <input type="text" name="fullname" placeholder="Enter your name">
+                    <input type="password" name="password" placeholder="Enter password">
+                    <input id="submitBtn"type="submit" value="submit" class="btn-layout">
+                </form>
+            </div>
+            <div class="flex-column">
+                <h4>These buttons are used to show event delegation</h4>
+                <div id="button-group">
+                    <button id="btn-1" class="btn-layout">Button 1</button>
+                    <button id="btn-2" class="btn-layout">Button 2</button>
+                    <button id="btn-3" class="btn-layout">Button 3</button>
+                </div>
+                <button id="dispatch-event" class="btn-layout">Dispatch click event</button>
+            </div>
+        </div>
+        
+        <!-- Container for custom events and add to list section for MutationObserver -->
+        <div class="row">
+            <div class="flex-column">
+                <h4>Custom event</h4>
+                <div id="custom-event">
+                    <h5>This container is used to show custom events</h5>
+                </div>
+            </div>
+            <div class="flex-column">
+                <ul id="frameworks">
+                    <li>React.js</li>
+                    <li>Angular.js</li>
+                    <li>Vue.js</li>
+                    <li>Svelte</li>
+                </ul>
+                <div id="control-buttons">
+                    <button id="btn-start" class="btn-layout">Start observing</button>
+                    <button id="btn-stop" class="btn-layout">Stop observing</button>
+                    <button id="btn-add" class="btn-layout">Add item</button>
+                    <button id="btn-remove" class="btn-layout">Remove item</button>
+                </div>
+            </div>
+        </div>
+        
         <!-- Footer -->
-        <!-- <div class="footer">
+        <div class="footer">
             <h3>languages used for this page</h3>
             <div class="icon-container">
                 <div class="icon-holder">
-                    <i class='bx bxl-html5'></i>
+                    <i class='bx bxl-html5 icons'></i>
                     <small>HTML5</small>
                 </div>
                 <div class="icon-holder">
-                    <i class='bx bxl-css3'></i>
+                    <i class='bx bxl-css3 icons'></i>
                     <small>CSS3</small>
                 </div>
                 <div class="icon-holder">
-                    <i class='bx bxl-javascript'></i>
+                    <i class='bx bxl-javascript icons'></i>
                     <small>JavaScript</small>
                 </div>
             </div>
             <p><span class="copyright">Copyright &#169; 2023, All rights reserved.</span></p>
-        </div> -->
+        </div>
     </div>
 
     <!-- External JS -->
