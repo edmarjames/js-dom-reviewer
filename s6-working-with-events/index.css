@@ -1,13 +1,20 @@
+/* ---------- CSS Reset ---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* ------------------------------- */
 
+
+/* --------- Body section --------- */
 body {
     font-family: 'Montserrat', sans-serif;
 }
+/* -------------------------------- */
 
+
+/* ----- Main Container section ---- */
 .myContainer {
     display: flex;
     flex-direction: column;
@@ -27,48 +34,10 @@ body {
     letter-spacing: 0.5px;
     line-height: 40px;
 }
+/* -------------------------------- */
 
-.footer {
-    display: flex;
-    row-gap: 5px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 20px 0;
-}
 
-.icon-container {
-    display: flex;
-    column-gap: 20px;
-    width: 50%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.icons {
-    font-size: 2.5rem;
-}
-
-.icon-holder {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.copyright {
-    font-size: 13px;
-    font-weight: 500;
-    margin: 0 auto;
-    position: static;
-    bottom: 0;
-    letter-spacing: 1px;
-}
-
+/* ----- Global class section ----- */
 .btn-layout {
     padding: 10px;
     font-size: 13px;
@@ -103,6 +72,26 @@ a:hover::after {
     height: auto;
 }
 
+.row {
+    display: flex;
+    width: 100%;
+    column-gap: 50px;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px auto;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+/* -------------------------------- */
+
+
+/* ------ Containers section ------ */
 .coordinates {
     background-color: bisque;
     position: relative;
@@ -169,6 +158,18 @@ a:hover::after {
     background-color: blanchedalmond;
 }
 
+#custom-event {
+    width: 500px;
+    height: 300px;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* -------------------------------- */
+
+
+/* ----- Focus event section ------ */
 input {
     display: block;
     margin: 10px auto;
@@ -184,33 +185,10 @@ input {
     border: 1px solid black;
     transform: scale(1.1);
 }
+/* -------------------------------- */
 
-#custom-event {
-    width: 500px;
-    height: 300px;
-    background-color: bisque;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.row {
-    display: flex;
-    width: 100%;
-    column-gap: 50px;
-    align-items: center;
-    justify-content: space-around;
-    margin: 20px auto;
-}
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    align-items: center;
-    justify-content: center;
-}
-
+/* --- MutationObserver section --- */
 #frameworks {
     list-style-type: none;
 }
@@ -224,7 +202,10 @@ input {
     display: flex;
     column-gap: 10px;
 }
+/* -------------------------------- */
 
+
+/* -------- Footer section -------- */
 .footer {
     display: flex;
     row-gap: 5px;
@@ -256,3 +237,13 @@ input {
     justify-content: center;
     align-items: center;
 }
+
+.copyright {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 auto;
+    position: static;
+    bottom: 0;
+    letter-spacing: 1px;
+}
+/* -------------------------------- */
