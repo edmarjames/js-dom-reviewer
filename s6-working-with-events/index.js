@@ -919,3 +919,52 @@ dispatchEventBtn.addEventListener('click', (e) => {
 
 let clickEvent = new Event('click');
 dispatchEventBtn.dispatchEvent(clickEvent);
+
+
+// 18. custom events
+
+/* 
+    - to create a custom event, you use the 'CustomEvent()' constructor and 'dispatchEvent()' to trigger the event
+    - the custom event allow you to decouple the code that you want to execute after another piece of code completes. For example you can separate the event listeners in a separate script. In addition, you can have multiple event listeners to the same custom event.
+
+    Syntax:
+        let event = new CustomEvent(eventType, options);
+
+    Parameters:
+        - 'eventType' -> is a string that represents the name of the event
+        - 'options' -> is an object has the 'detail' property that contains any custom information about the event.
+*/
+function changeColor(elem) {
+    const bgColor = 'blanchedalmond';
+    elem.style.backgroundColor = bgColor;
+
+    // create the event
+    let event = new CustomEvent('changeColor', {
+        detail: {
+            backgroundColor: bgColor
+        }
+    });
+
+    // dispatch the event
+    elem.dispatchEvent(event);
+};
+
+// select the div
+const customEvent = document.querySelector('#custom-event');
+
+// add styling
+function addStyle(elem) {
+    elem.style.borderRadius = "25px";
+    elem.style.boxShadow = "2px 2px 30px black";
+}
+
+// listen to the changeColor event
+customEvent.addEventListener('changeColor', (event) => {
+    addStyle(event.currentTarget);
+
+    // examine the detail of the changeColor event
+    console.log(event.detail);
+});
+
+// change the color of the div
+changeColor(customEvent);
