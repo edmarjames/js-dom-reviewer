@@ -35,3 +35,36 @@ body {
     line-height: 40px;
 }
 /* -------------------------------- */
+
+
+/* ----- Global class section ----- */
+.btn-layout {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 10px;
+    outline: none;
+    border: 0;
+    background-color: #f8ece0;
+    box-shadow: 
+        rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, 
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: 0;
+    padding: 10px;
+    font-size: 1rem;
+}
+/* -------------------------------- */

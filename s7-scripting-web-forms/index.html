@@ -16,6 +16,19 @@
     <div class="myContainer" id="container">
         <!-- Session number and title -->
         <p>Session 7 - Scripting Web Forms</p>
+
+        <div class="flex-column">
+            <form onsubmit="return false" class="flex-column" id="login-form">
+                <h2>Login here</h2>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username">
+    
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter password">
+
+                <button type="submit" class="btn-layout">Login</button>
+            </form>
+        </div>
         
         <!-- Footer -->
         <!-- <div class="footer">
