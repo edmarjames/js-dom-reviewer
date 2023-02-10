@@ -155,9 +155,12 @@ function showSelected() {
     - a checkbox has two states: checked and unchecked.
     - if its 'checked' property is 'true', then the checkbox is checked otherwise, it is not.
 */
+// get the element with the id of 'agree'
 const agree = document.querySelector('#agree');
 
+// add a 'change' event listener to the 'agree' element
 agree.addEventListener('change', () => {
+    // checks if the checkbox is checked
     if (agree.checked) {
         console.log('The user agree to the terms and agreement');
     } else {
@@ -179,61 +182,84 @@ console.log(agreed);
     - when you get the 'value' attribute of a checkbox, you always get the 'on' string whether the checkbox is checked or not. if the 'value' attribute is not included on the element.
     - on this case the value of checkbox is 'agree' since we included it as an attribute of the element.
 */
+// get the element with the id of 'sendBtn'
 const sendBtn = document.querySelector('#sendBtn');
 
+// add a 'click' event listener to the 'sendBtn' element
 sendBtn.addEventListener('click', () => {
+    // logs the 'value' of agree checkbox -> prints 'agree'
     console.log(agree.value);
 });
 
 
 // 3.3 getting values of multiple selected checkboxes
+// get the element with the id of 'strengthZoneBtn'
 const strengthZoneBtn = document.querySelector('#strengthZoneBtn');
 
+// add a 'click' event listener to the 'strengthZoneBtn' element
 strengthZoneBtn.addEventListener('click', () => {
+    // get all elements with the name attribute of 'strength'
     let strengthZones = document.getElementsByName('strength');
     let strengths = [];
 
+    // loop through the strengthZones
     for (let strength of strengthZones) {
+        // checks if the checkbox is checked
         if (strength.checked) {
+            // if check, the value of the checkbox will be pushed to the strengths array
             strengths.push(strength.value);
         }
     }
 
+    // if the strengths array has only one element, show this alert
     if (strengths.length == 1) {
         alert(`Your specialization is \n ${strengths.join(", ")}`);
+
+    // if it has more than one element, show this alert
     } else if (strengths.length > 1) {
         alert(`Your specializations are \n ${strengths.join(", ")}`);
+    
+    // if the array is empty, show this alert
     } else {
         alert('You don\'t have specializations');
     }
-    
 });
 
 
 // 3.4 check/uncheck all checkboxes
+// get the element with the id of 'select-all'
 const selectAll = document.querySelector('#select-all');
 
 function check(checked) {
+    // get all the elements with the name attribute of 'strength'
     let strengthZones = document.getElementsByName('strength');
+    // loop through each element of 'strengthZones'
     strengthZones.forEach(checkbox => {
+        // assign the value of 'checked' parameter. it is either TRUE or FALSE
         checkbox.checked = checked;
     });
 }
 
 function checkAll() {
+    // calls the 'check' function and pass a 'true' argument
     check(true);
+    // once the element receives a 'click' event it will call the 'uncheckAll' function
     this.onclick = uncheckAll;
 }
 
 function uncheckAll() {
+    // calls the 'check' function and pass a 'false' argument
     check(false);
+    // once the element receives a 'click' event it will call the 'checkAll' function
     this.onclick = checkAll;
 }
 
+// add a 'onclick' event handler to the 'selectAll' button and invoke the 'checkAll' function initially
 selectAll.onclick = checkAll;
 
-// 3.5 creating checkboxes dynamically
 
+// 3.5 creating checkboxes dynamically
+// create an array of objects that contains the theme details
 const colors = [
     {
         name: 'default',
@@ -249,38 +275,58 @@ const colors = [
     }
 ];
 
+// map through the colors array and return a checkbox element with label with it's corresponding attributes
 const radioBtnColor = colors.map(color => 
     `<label for="${color.name}">
         <input type="checkbox" name="themes" id="color-${color.name}" value="${color.hex}"> ${color.name}
     </label>`).join(" ");
+    // use 'join(" ")' function to convert the array into a single string separated by a 'space'
 
+// select the target container with the id of 'theme'
 const themeContainer = document.querySelector('#theme');
+// assign it's innerHTMl to 'radioBtnColor'
 themeContainer.innerHTML = radioBtnColor;
 
 
+// selects the main container
 const mainContainer = document.querySelector('#container');
+// select the 'paragraph' element
 const paragraphs = document.querySelector('p');
+// select all 'h2' elements
 const h2 = document.querySelectorAll('h2');
+// select all 'h3' elements
 const h3 = document.querySelectorAll('h3');
+// select all 'label' elements
 const labels = document.querySelectorAll('label');
 
+// get all elements with the name attribute of 'themes'
 const themes = document.getElementsByName('themes');
+
+// loop through the themes
 for (let theme of themes) {
+    // add a 'change' event listener to every checkbox and invoke the 'getSelected' function
     theme.addEventListener('change', getSelected);
 }
 
 function getSelected() {
+    // checks if the checkbox is checked
     if (this.checked) {
+        // if the value of the checked checkbox is "#131313"
         if (this.value == "#131313") {
+            // change the background color of the main container to dark
             mainContainer.style.backgroundColor = this.value;
+            // change the colors of p, h2, h3 and label elements to white
             toWhite(paragraphs, h2, h3, labels);
         } else {
+            // change the background color of the main container to either default or light
             mainContainer.style.backgroundColor = this.value;
+            // change the colors of p, h2, h3 and label elements to black
             toBlack(paragraphs, h2, h3, labels);
         }
     }
 }
 
+// changes the color of p, h2, h3 and label elements to white
 function toWhite(p, h2, h3, l) {
     const color = "white";
     p.style.color = color;
@@ -298,6 +344,7 @@ function toWhite(p, h2, h3, l) {
     }
 };
 
+// changes the color of p, h2, h3 and label elements to black
 function toBlack(p, h2, h3, l) {
     const color = "black";
     p.style.color = color;
