@@ -57,6 +57,7 @@ body {
     row-gap: 15px;
     align-items: center;
     justify-content: center;
+    margin: 20px auto;
 }
 
 input {
@@ -66,5 +67,14 @@ input {
     border: 0;
     padding: 10px;
     font-size: 1rem;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    column-gap: 50px;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px auto;
 }
 /* -------------------------------- */

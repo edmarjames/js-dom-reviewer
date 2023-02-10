@@ -79,3 +79,50 @@ form.addEventListener('submit', () => {
         alert('Welcome user!');
     }
 });
+
+
+// 2. Radio buttons
+
+/* 
+    - radio buttons allow you to select only one of a predefined set of mutually exclusive options.
+    - to find the selected radio button, you follow these steps:
+        - select all radio buttons by using DOM method such as 'querySelector()' or 'getElementsByName' method.
+        - get the 'checked' property of the radio button, if the 'checked' property is 'true', the radio button is checked; otherwise, it is unchecked.
+    - to know which radio button is checked, you use the 'value' attribute
+*/
+const submit = document.querySelector('#submitBtn');
+
+submit.addEventListener('click', () => {
+    let radioBtn = document.getElementsByName('level');
+
+    for (let level of radioBtn) {
+        if (level.checked) {
+            alert(`You are a ${level.value} developer!`);
+        }
+    }
+});
+
+// 2.1 radio button's change event
+
+/* 
+    - when you check or uncheck a radio button, it fires the 'change' event.
+    - inside the change event handler, you can access the 'this' keyword to access the radio button. To check if the radio button is checked, you can use the 'checked' property.
+    - to get the value of the checked button, you use the 'value' property.
+*/
+let workArrangement = document.getElementsByName('arrangement');
+
+for (let arrangement of workArrangement) {
+    arrangement.addEventListener('change', showSelected);
+}
+
+function showSelected() {
+    if (this.checked) {
+        if (this.value == 'Work from home') {
+            alert(`So you want to ${this.value}`);
+        } else if (this.value == 'Onsite') {
+            alert(`So you want to suffer with the daily heavy traffic by working ${this.value}`);
+        } else {
+            alert(`So you want to work on a ${this.value} setup`);
+        }
+    }
+}
