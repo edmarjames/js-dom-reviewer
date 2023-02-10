@@ -67,14 +67,18 @@ const form = document.querySelector('#login-form');
 
 form.addEventListener('submit', () => {
     // use either index, id or name to access the element.
+
     let username = form.elements[0];
     // let username = form.elements['username'];
     let password = form.elements[1];
     // let password = form.elements['password'];
 
+    // if the username field is not empty, show an alert with the value of the username
     if (username.value.length > 0) {
         alert(`Welcome ${username.value}!`);
         console.log(`Password - ${password.value}`);
+    
+    // if the username field is empty, show a 'Welcome user!' alert
     } else if (username.value.length <= 0) {
         alert('Welcome user!');
     }
@@ -90,12 +94,17 @@ form.addEventListener('submit', () => {
         - get the 'checked' property of the radio button, if the 'checked' property is 'true', the radio button is checked; otherwise, it is unchecked.
     - to know which radio button is checked, you use the 'value' attribute
 */
+// get the element with the id of 'submitBtn'
 const submit = document.querySelector('#submitBtn');
 
+// add a 'click' event listener to the 'submit' element
 submit.addEventListener('click', () => {
+    // get all elements with the name of 'level'
     let radioBtn = document.getElementsByName('level');
 
+    // loop through the 'radioBtn'
     for (let level of radioBtn) {
+        // checks if the radio button is checked
         if (level.checked) {
             alert(`You are a ${level.value} developer!`);
         }
@@ -109,13 +118,17 @@ submit.addEventListener('click', () => {
     - inside the change event handler, you can access the 'this' keyword to access the radio button. To check if the radio button is checked, you can use the 'checked' property.
     - to get the value of the checked button, you use the 'value' property.
 */
+// get all elements with the name of 'arrangement'
 let workArrangement = document.getElementsByName('arrangement');
 
+// loop through the 'workArrangement'
 for (let arrangement of workArrangement) {
+    // add a 'change' event listener to every radio button and attach the 'showSelected' function
     arrangement.addEventListener('change', showSelected);
 }
 
 function showSelected() {
+    // checks if the radio button is checked
     if (this.checked) {
         if (this.value == 'Work from home') {
             alert(`So you want to ${this.value}`);
