@@ -58,6 +58,39 @@
                 <label for="hybrid">Hybrid</label>
             </div>
         </div>
+
+        <div class="flex-column">
+            <h2>Select your strength zones</h2>
+
+            <div class="row">
+                <input type="checkbox" name="strength" id="frontEnd" value="Front End">
+                <label for="frontEnd">Front End</label>
+
+                <input type="checkbox" name="strength" id="backEnd" value="Back End">
+                <label for="backEnd">Back End</label>
+
+                <input type="checkbox" name="strength" id="fullstack" value="Full-stack">
+                <label for="fullstack">Full-stack</label>
+            </div>
+            <div class="row">
+                <button type="submit" id="strengthZoneBtn" class="btn-layout">Send</button>
+                <button type="submit" id="select-all" class="btn-layout">Check/uncheck all</button>
+            </div>
+        </div>
+
+        <div class="flex-column">
+            <h3>Agree to terms and agreement</h3>
+            <div class="row">
+                <input type="checkbox" id="agree" name="agree" value="agree">
+                <label for="terms">I agree</label>
+            </div>
+            <button type="submit" id="sendBtn" class="btn-layout">Submit</button>
+        </div>
+
+        <div class="flex-column">
+            <h3>Select a theme</h3>
+            <div class="row" id="theme"></div>
+        </div>
         
         <!-- Footer -->
         <!-- <div class="footer">

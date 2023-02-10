@@ -139,3 +139,178 @@ function showSelected() {
         }
     }
 }
+
+
+// 3. Checkbox
+
+/* 
+    - it's a good practice to always associate a checkbox with a label to improve usability and accessibility. By doing this, clicking the label also checks/unchecks the checkbox.
+    - note that the 'for' attribute's value of the label must match the 'id' of the checkbox.
+*/
+
+
+// 3.1 checking if a checkbox is checked
+
+/* 
+    - a checkbox has two states: checked and unchecked.
+    - if its 'checked' property is 'true', then the checkbox is checked otherwise, it is not.
+*/
+const agree = document.querySelector('#agree');
+
+agree.addEventListener('change', () => {
+    if (agree.checked) {
+        console.log('The user agree to the terms and agreement');
+    } else {
+        console.log('The user doesn\'t agree to the terms and agreement');
+    }
+});
+
+// alternative way to check if the checkbox is checked
+const agreed = document.querySelector('#agree:checked') !== null;
+console.log(agreed);
+
+// the selector '#agree:checked' selects the element with the id '#agree' and has the attribute 'checked'
+// Therefore, if the checkbox element with the id '#agree' is checked, the 'document.querySelector()' will return it. On the console, you'll see the value 'false' because the checkbox is unchecked.
+
+
+// 3.2 getting checkbox value
+
+/* 
+    - when you get the 'value' attribute of a checkbox, you always get the 'on' string whether the checkbox is checked or not. if the 'value' attribute is not included on the element.
+    - on this case the value of checkbox is 'agree' since we included it as an attribute of the element.
+*/
+const sendBtn = document.querySelector('#sendBtn');
+
+sendBtn.addEventListener('click', () => {
+    console.log(agree.value);
+});
+
+
+// 3.3 getting values of multiple selected checkboxes
+const strengthZoneBtn = document.querySelector('#strengthZoneBtn');
+
+strengthZoneBtn.addEventListener('click', () => {
+    let strengthZones = document.getElementsByName('strength');
+    let strengths = [];
+
+    for (let strength of strengthZones) {
+        if (strength.checked) {
+            strengths.push(strength.value);
+        }
+    }
+
+    if (strengths.length == 1) {
+        alert(`Your specialization is \n ${strengths.join(", ")}`);
+    } else if (strengths.length > 1) {
+        alert(`Your specializations are \n ${strengths.join(", ")}`);
+    } else {
+        alert('You don\'t have specializations');
+    }
+    
+});
+
+
+// 3.4 check/uncheck all checkboxes
+const selectAll = document.querySelector('#select-all');
+
+function check(checked) {
+    let strengthZones = document.getElementsByName('strength');
+    strengthZones.forEach(checkbox => {
+        checkbox.checked = checked;
+    });
+}
+
+function checkAll() {
+    check(true);
+    this.onclick = uncheckAll;
+}
+
+function uncheckAll() {
+    check(false);
+    this.onclick = checkAll;
+}
+
+selectAll.onclick = checkAll;
+
+// 3.5 creating checkboxes dynamically
+
+const colors = [
+    {
+        name: 'default',
+        hex: '#F3DFCB'
+    },
+    {
+        name: 'dark',
+        hex: '#131313'
+    },
+    {
+        name: 'light',
+        hex: '#ffffff'
+    }
+];
+
+const radioBtnColor = colors.map(color => 
+    `<label for="${color.name}">
+        <input type="checkbox" name="themes" id="color-${color.name}" value="${color.hex}"> ${color.name}
+    </label>`).join(" ");
+
+const themeContainer = document.querySelector('#theme');
+themeContainer.innerHTML = radioBtnColor;
+
+
+const mainContainer = document.querySelector('#container');
+const paragraphs = document.querySelector('p');
+const h2 = document.querySelectorAll('h2');
+const h3 = document.querySelectorAll('h3');
+const labels = document.querySelectorAll('label');
+
+const themes = document.getElementsByName('themes');
+for (let theme of themes) {
+    theme.addEventListener('change', getSelected);
+}
+
+function getSelected() {
+    if (this.checked) {
+        if (this.value == "#131313") {
+            mainContainer.style.backgroundColor = this.value;
+            toWhite(paragraphs, h2, h3, labels);
+        } else {
+            mainContainer.style.backgroundColor = this.value;
+            toBlack(paragraphs, h2, h3, labels);
+        }
+    }
+}
+
+function toWhite(p, h2, h3, l) {
+    const color = "white";
+    p.style.color = color;
+
+    for (let heading2 of h2) {
+        heading2.style.color = color;
+    }
+
+    for (let heading3 of h3) {
+        heading3.style.color = color;
+    }
+
+    for (let label of l) {
+        label.style.color = color;
+    }
+};
+
+function toBlack(p, h2, h3, l) {
+    const color = "black";
+    p.style.color = color;
+
+    for (let heading2 of h2) {
+        heading2.style.color = color;
+    }
+
+    for (let heading3 of h3) {
+        heading3.style.color = color;
+    }
+
+    for (let label of l) {
+        label.style.color = color;
+    }
+};
