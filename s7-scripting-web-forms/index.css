@@ -95,3 +95,16 @@ option {
     font-weight: 500;
 }
 /* -------------------------------- */
+
+#message {
+    display: none;
+}
+
+.message-show {
+    display: inline-block;
+    color: red;
+}
+
+.message-hide {
+    display: none;
+}

@@ -426,7 +426,7 @@ frameworkBtn.addEventListener('click', () => {
             selectBox.options[1].text;
             selectBox.options[1].value;
     
-    - to get the selected option of a '<select>' element with a single selection.
+    - to get the selected option of a '<select>' element with a SINGLE selection.
         Syntax:
             let selectedOption = selectBox.options[selectBox.selectedIndex];
   
@@ -445,4 +445,140 @@ frameworkBtn.addEventListener('click', () => {
     };
 
     alert(`You selected ${selectedOptions.join(", ")}`);
+});
+
+
+// 5. dynamically add & remove options from select box
+
+/* 
+    - 'add(option, existingOption)' -> adds a new '<option>' element to the '<select>' before an existing option.'
+    - 'remove(index)' -> removes an option specified by the index from a '<select>'
+
+    - ADDING OPTIONS
+        - first, create a new option element
+        - second, add the option to the select element.
+*/
+
+// 5.1 using the 'Option' constructor and add() method
+
+/* 
+    - use the 'Option' constructor to create a new option with the specified option text and value
+    Syntax:
+        let newOption = new Option('Option text', 'Option value');
+
+    - then, call the 'add()' method
+        selectBox.add(newOption, undefined);
+
+    - the 'add()' method accepts two arguments. The first argument is the new option and the seconde is an existing option. If 'undefined' is passed as the second argument, the method will add the new option to the END of the options list.
+*/
+
+// 5.2 Using the DOM methods
+
+/* 
+    - first construct a new option using DOM methods
+        const newOption = document.createElement('option');
+        const optionText = document.createTextNode('Option text');
+
+        newOption.appendChild(optionText);
+        newOption.setAttribute('value', 'Option value');
+
+    - second, add the new option to the select element
+        selectBox.appendChild(newOption);
+*/
+const addFrameworkBtn = document.querySelector('#addFrameworkBtn');
+const frameworkName = document.querySelector('#framework-name');
+const message = document.querySelector('#error-message');
+
+frameworkName.addEventListener('keydown', (e) => {
+    if (frameworkName.value.length > 0 && e.keyCode === 13) {
+        message.classList.remove("message-show");
+        message.classList.add("message-hide");
+
+        const newOption = document.createElement('option');
+
+        newOption.setAttribute('value', frameworkName.value);
+        newOption.textContent = frameworkName.value;
+
+        frameworks.appendChild(newOption);
+        frameworkName.value = '';
+    } 
+});
+
+addFrameworkBtn.addEventListener('click', () => {
+    if (frameworkName.value.length <= 0) {
+        message.textContent = "Enter a framework name!";
+        message.classList.add("message-show");
+    } else {
+        message.classList.remove("message-show");
+        message.classList.add("message-hide");
+
+        const newOption = document.createElement('option');
+
+        newOption.setAttribute('value', frameworkName.value);
+        newOption.textContent = frameworkName.value;
+
+        frameworks.appendChild(newOption);
+        frameworkName.value = '';
+        frameworkName.focus();
+    }
+});
+
+// 5.3 removing options
+
+/* 
+    - there are multiple ways to dynamically remove options from a select element
+    - first way is to use the 'remove()' method.
+    Syntax:
+        selectBox.remove(index);
+
+    - second way is to reference the option by its index using the 'options' collection and set its value to 'null'
+    Syntax:
+        selectBox.options[index] = null;
+
+    - third way is to use the 'removeChild()' method and remove a specified option.
+    Syntax:
+        selectBox.removeChild(selectBox.options[0]);
+
+    - to remove all options of a select element
+    Syntax:
+        while (selectBox.options.length > 0) {
+            selectBox.remove(0);
+        }
+*/
+const removeOptionBtn = document.querySelector('#removeOptionBtn');
+
+removeOptionBtn.addEventListener('click', () => {
+    const selected = [];
+
+    for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
+        if (frameworks.options[ctr].selected) {
+            selected.push(ctr);
+        }
+    }
+
+    // when removing options from a select element, it is important to loop through the selected options in reverse order because, as the options are removed, the indices of the remaining options changes. If the options were removed in the forward direction, then after removing the first option, the index of the next option would be different.
+    let reversed = selected.reverse();
+    reversed.forEach(option => frameworks.remove(option));
+
+    // for (let ctr1 = selected.length - 1; ctr1 >= 0; ctr1--) {
+    //     frameworks.remove(selected[ctr1]);
+    // }
+});
+
+const removeFromTop = document.querySelector('#removeFromTop');
+
+removeFromTop.addEventListener('click', () => {
+    (frameworks.options.length > 0) ?
+        frameworks.options[0] = null
+    :
+        alert('No options left!');
+});
+
+const removeFromBottom = document.querySelector('#removeFromBottom');
+
+removeFromBottom.addEventListener('click', () => {
+    (frameworks.options.length > 0) ?
+        frameworks.removeChild(frameworks.options[frameworks.options.length - 1])
+    :
+        alert('No options left!');
 });

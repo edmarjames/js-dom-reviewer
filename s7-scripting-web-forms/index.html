@@ -100,7 +100,18 @@
                 <option value="angular">Angular</option>
                 <option value="svelte">Svelte</option>
             </select>
-            <button type="submit" class="btn-layout" id="frameworkBtn">Select</button>
+            <div class="row">
+                <button type="submit" class="btn-layout" id="frameworkBtn">Select</button>
+                <button type="submit" class="btn-layout" id="removeOptionBtn">Remove</button>
+                <button type="submit" class="btn-layout" id="removeFromTop">Remove from top</button>
+                <button type="submit" class="btn-layout" id="removeFromBottom">Remove from Bottom</button>
+            </div>
+        
+            <h3>Add new frameworks</h3>
+            <label for="framework-name"></label>
+            <span id="error-message"></span>
+            <input type="text" id="framework-name">
+            <button type="submit" class="btn-layout" id="addFrameworkBtn">Add</button>
         </div>
         
         <!-- Footer -->
