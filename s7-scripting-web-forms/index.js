@@ -582,3 +582,19 @@ removeFromBottom.addEventListener('click', () => {
     :
         alert('No options left!');
 });
+
+// 5.4 removing items from a select element conditionally
+
+/* 
+    - a common mistake is to iterate over the options of a '<select>' element and remove the element inside the loop without being aware that the indices have been adjusted.
+*/
+const removeNew = document.querySelector('#removeNew');
+
+removeNew.addEventListener('click', () => {
+    for (let ctr = frameworks.options.length - 1; ctr >= 0 ; ctr--) {
+        let text = frameworks.options[ctr].text;
+        if (text.endsWith('js')) {
+            frameworks.remove(ctr);
+        }
+    }
+});
