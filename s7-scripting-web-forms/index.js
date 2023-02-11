@@ -387,9 +387,12 @@ function toBlack(p, h2, h3, l) {
 */
 
 // 4.1.1 selectedIndex property
+// get the element with the id of 'frameworkBtn'
 const frameworkBtn = document.querySelector('#frameworkBtn');
+// get the element with the id of 'framework'
 const frameworks = document.querySelector('#framework');
 
+// add a 'click' event listener to 'frameworkBtn'
 frameworkBtn.addEventListener('click', () => {
     console.log(frameworks.selectedIndex);
 });
@@ -403,6 +406,7 @@ frameworkBtn.addEventListener('click', () => {
     - if an option is selected and has NO 'value' attribute, the 'value' property of the select box is the TEXT of the selected option.
     - if MULTIPLE options are selected, the 'value' property of the select box is derived from the first selected option based on the previous two rules.
 */
+// add a 'click' event listener to 'frameworkBtn'
 frameworkBtn.addEventListener('click', () => {
     console.log(`You selected ${frameworks.value}`);
 });
@@ -433,17 +437,23 @@ frameworkBtn.addEventListener('click', () => {
     - when a '<select>' element allows multiple selections, you can use the 'selected' property to determine which options are selected
 */
 
+// add a 'click' event listener to 'frameworkBtn'
 frameworkBtn.addEventListener('click', () => {
     let selectedOptions = []
 
+    // loop through the options element of the 'frameworks' select box
     for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
+        // if the option is selected
         if (frameworks.options[ctr].selected) {
+            // push its value to the 'selectedOptions' array
             selectedOptions.push(frameworks.options[ctr].value);
         } else {
+            // if not selected, skip it and continue with the loop
             continue;
         }
     };
 
+    // used 'join(", ")' method to convert the array into a single string separated with a 'comma'
     alert(`You selected ${selectedOptions.join(", ")}`);
 });
 
@@ -485,40 +495,63 @@ frameworkBtn.addEventListener('click', () => {
     - second, add the new option to the select element
         selectBox.appendChild(newOption);
 */
+// get the element with the id of 'addFrameworkBtn'
 const addFrameworkBtn = document.querySelector('#addFrameworkBtn');
+// get the element with the id of 'framework-name'
 const frameworkName = document.querySelector('#framework-name');
+// get the element with the id of 'error-message'
 const message = document.querySelector('#error-message');
 
+// add a 'keydown' event listener to 'frameworkName' input field
 frameworkName.addEventListener('keydown', (e) => {
+    // checks if the value of the field is greater than 0 and the 'enter' key is hit on the keyboard
     if (frameworkName.value.length > 0 && e.keyCode === 13) {
+        // toggle classes on 'message' element
         message.classList.remove("message-show");
         message.classList.add("message-hide");
 
+        // create a new 'option' element
         const newOption = document.createElement('option');
 
+        // set its 'value' attribute with the value of the input field
         newOption.setAttribute('value', frameworkName.value);
+        // set its 'textContent' with the value of the input field
         newOption.textContent = frameworkName.value;
-
+        // add the new 'option' element to 'frameworks' select box
         frameworks.appendChild(newOption);
+
+        // reset the input fields value
         frameworkName.value = '';
+        // add focus on 'frameworkName'
+        frameworkName.focus();
     } 
 });
 
+// add a 'click' event listener to 'addFrameworkBtn' input field
 addFrameworkBtn.addEventListener('click', () => {
+    // if the input field is empty, it will show an error message
     if (frameworkName.value.length <= 0) {
         message.textContent = "Enter a framework name!";
         message.classList.add("message-show");
+
+    // if it's not empty
     } else {
+        // toggle classes on 'message' element
         message.classList.remove("message-show");
         message.classList.add("message-hide");
 
+        // create a new 'option' element
         const newOption = document.createElement('option');
 
+        // set its 'value' attribute with the value of the input field
         newOption.setAttribute('value', frameworkName.value);
         newOption.textContent = frameworkName.value;
-
+        // add the new 'option' element to 'frameworks' select box
         frameworks.appendChild(newOption);
+
+        // reset the input fields value
         frameworkName.value = '';
+        // add focus on 'frameworkName'
         frameworkName.focus();
     }
 });
@@ -545,19 +578,26 @@ addFrameworkBtn.addEventListener('click', () => {
             selectBox.remove(0);
         }
 */
+// get the element with the id of 'removeOptionBtn'
 const removeOptionBtn = document.querySelector('#removeOptionBtn');
 
+// add a 'click' event listener to 'removeOptionBtn' element
 removeOptionBtn.addEventListener('click', () => {
     const selected = [];
 
+    // loop through the 'options' element of 'frameworks' select box
     for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
+        // if the option is selected
         if (frameworks.options[ctr].selected) {
+            // push it's index to the 'selected' array
             selected.push(ctr);
         }
     }
 
     // when removing options from a select element, it is important to loop through the selected options in reverse order because, as the options are removed, the indices of the remaining options changes. If the options were removed in the forward direction, then after removing the first option, the index of the next option would be different.
     let reversed = selected.reverse();
+
+    // remove the selected options using 'remove()' method
     reversed.forEach(option => frameworks.remove(option));
 
     // for (let ctr1 = selected.length - 1; ctr1 >= 0; ctr1--) {
@@ -565,21 +605,31 @@ removeOptionBtn.addEventListener('click', () => {
     // }
 });
 
+// get the element with the id of 'removeFromTop'
 const removeFromTop = document.querySelector('#removeFromTop');
 
+// add a 'click' event listener to 'removeFromTop' element
 removeFromTop.addEventListener('click', () => {
+    // if there are still option elements of 'frameworks' select box
     (frameworks.options.length > 0) ?
+        // remove the first element
         frameworks.options[0] = null
     :
+        // if there is no remaining, show an alert
         alert('No options left!');
 });
 
+// get the element with the id of 'removeOptionBtn'
 const removeFromBottom = document.querySelector('#removeFromBottom');
 
+// add a 'click' event listener to 'removeFromBottom' element
 removeFromBottom.addEventListener('click', () => {
+    // if there are still option elements of 'frameworks' select box
     (frameworks.options.length > 0) ?
+        // remove the last element
         frameworks.removeChild(frameworks.options[frameworks.options.length - 1])
     :
+        // if there is no remaining, show an alert
         alert('No options left!');
 });
 
@@ -588,12 +638,18 @@ removeFromBottom.addEventListener('click', () => {
 /* 
     - a common mistake is to iterate over the options of a '<select>' element and remove the element inside the loop without being aware that the indices have been adjusted.
 */
+// get the element with the id of 'removeNew'
 const removeNew = document.querySelector('#removeNew');
 
+// add a 'click' event listener to 'removeNew' element
 removeNew.addEventListener('click', () => {
+    // loop through the options element in reverse
     for (let ctr = frameworks.options.length - 1; ctr >= 0 ; ctr--) {
+        // store the 'text' value of each option to 'text' variable
         let text = frameworks.options[ctr].text;
+        // if the 'text' ends with 'js'
         if (text.endsWith('js')) {
+            // remove it from the 'frameworks' select box
             frameworks.remove(ctr);
         }
     }
