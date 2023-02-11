@@ -82,6 +82,11 @@ form.addEventListener('submit', () => {
     } else if (username.value.length <= 0) {
         alert('Welcome user!');
     }
+
+    // to reset the value of the input elements, either set their value to empty string or use '.reset()' method
+    // username.value = '';
+    // password.value = '';
+    form.reset();
 });
 
 
@@ -361,3 +366,83 @@ function toBlack(p, h2, h3, l) {
         label.style.color = color;
     }
 };
+
+
+// 4. select box
+
+/* 
+    - a '<select>' element allows you to select one or multiple options.
+    - to enable multiple selections, you add 'multiple' attribute to '<select>' element
+*/
+
+// 4.1 HTMLSelectElement type
+
+/* 
+    - the 'HTMLSelectElement' represents the '<select>' element.
+    - to interact with '<select>' element in JavaScript, you use the 'HTMLSelectElement'
+    - the 'HTMLSelectElement' type has the following useful properties.
+        - 'selectedIndex' -> returns the zero-based index of the selected option. The 'selectedIndex' is '-1' if no option is selected. If the '<select>' element allows multiple selections, the 'selectedIndex' returns the 'value' of the first option selected.
+        - 'value' -> returns the 'value' property of the first selected option element if there is one. Otherwise, it returns an empty string.
+        - 'multiple' -> returns 'true' if the '<select>' element allows multiple selections. It is equivalent to the 'multiple' attribute.
+*/
+
+// 4.1.1 selectedIndex property
+const frameworkBtn = document.querySelector('#frameworkBtn');
+const frameworks = document.querySelector('#framework');
+
+frameworkBtn.addEventListener('click', () => {
+    console.log(frameworks.selectedIndex);
+});
+
+// 4.1.2 value property
+
+/* 
+    - the 'value' property of the '<select>' element depends on the '<option>' element and its HTML 'multiple' attribute
+    - if no option is selected, the 'value' property of the select box is an EMPTY STRING
+    - if an option is selected and HAS a 'value' attribute, the 'value' property of the select box is the VALUE of the selected option.
+    - if an option is selected and has NO 'value' attribute, the 'value' property of the select box is the TEXT of the selected option.
+    - if MULTIPLE options are selected, the 'value' property of the select box is derived from the first selected option based on the previous two rules.
+*/
+frameworkBtn.addEventListener('click', () => {
+    console.log(`You selected ${frameworks.value}`);
+});
+
+
+// 4.2 HTMLOptionElement type
+
+/* 
+    - the 'HTMLOptionElement' represents the '<option>' element
+    - the 'HTMLOptionElement' type has the following handy properties
+        - 'index' -> the index of the option inside the collection of options.
+        - 'selected' -> returns 'true' when the option is selected. You set this property to 'true' to select an option.
+        - 'text' -> returns the options text
+        - 'value' -> returns the HTML value attribute
+
+    - the '<select>' element has the 'options' property that allows you to access the collection options.
+        Syntax:
+            selectBox.options
+
+        Example:
+            selectBox.options[1].text;
+            selectBox.options[1].value;
+    
+    - to get the selected option of a '<select>' element with a single selection.
+        Syntax:
+            let selectedOption = selectBox.options[selectBox.selectedIndex];
+  
+    - when a '<select>' element allows multiple selections, you can use the 'selected' property to determine which options are selected
+*/
+
+frameworkBtn.addEventListener('click', () => {
+    let selectedOptions = []
+
+    for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
+        if (frameworks.options[ctr].selected) {
+            selectedOptions.push(frameworks.options[ctr].value);
+        } else {
+            continue;
+        }
+    };
+
+    alert(`You selected ${selectedOptions.join(", ")}`);
+});

@@ -78,3 +78,20 @@ input {
     margin: 20px auto;
 }
 /* -------------------------------- */
+
+
+/* ----- select box section ----- */
+select {
+    width: 200px;
+    height: auto;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: blanchedalmond;
+}
+
+option {
+    font-size: 1rem;
+    font-weight: 500;
+}
+/* -------------------------------- */
