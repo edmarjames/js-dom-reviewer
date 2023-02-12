@@ -114,6 +114,58 @@
             <input type="text" id="framework-name">
             <button type="submit" class="btn-layout" id="addFrameworkBtn">Add</button>
         </div>
+
+        <div class="flex-column">
+            <h3>Enter message here</h3>
+            <p id="your-message"></p>
+            <input type="text" id="input-message">
+            <button type="submit" class="btn-layout" id="sendMessageBtn">Send</button>
+        </div>
+
+        <div class="flex-column">
+            <h3>Educational attainment</h3>
+            <small id="edu"></small>
+            <div class="row" id="education">
+                <input type="radio" name="education" id="undergraduate">
+                <label for="undergraduate">Undergraduate</label>
+                
+                <input type="radio" name="education" id="college">
+                <label for="college">College</label>
+                
+                <input type="radio" name="education" id="masters">
+                <label for="masters">Masters</label>
+            </div>            
+        </div>
+
+        <div class="flex-column">
+            <h3>Which devices do you have?</h3>
+            <small id="gadgets"></small>
+            <div class="row" id="devices">
+                <input type="checkbox" id="pc" value="Personal Computer" name="device">
+                <label for="pc">Desktop</label>
+
+                <input type="checkbox" id="laptop" value="Laptop" name="device">
+                <label for="laptop">Laptop</label>
+
+                <input type="checkbox" id="tablet" value="Tablet" name="device">
+                <label for="tablet">Tablet</label>
+            </div>
+        </div>
+
+        <div class="flex-column">
+            <h3>Select your favorite programming language</h3>
+            <small id="fav"></small>
+            <select id="languages">
+                <option value="PHP">PHP</option>
+                <option value="C">C</option>
+                <option value="C++">C++</option>
+                <option value="C#">C#</option>
+                <option value="Java">Java</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Python">Python</option>
+                <option value="Ruby">Ruby</option>
+            </select>
+        </div>
         
         <!-- Footer -->
         <!-- <div class="footer">

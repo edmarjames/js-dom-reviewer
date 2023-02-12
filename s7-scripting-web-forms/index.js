@@ -654,3 +654,89 @@ removeNew.addEventListener('click', () => {
         }
     }
 });
+
+
+// 6. change event
+
+/* 
+    - the 'change' event occurs when the element has completed changing
+*/
+
+// 6.1 change event for input elements
+
+/* 
+    - the change event of an '<input>' element fires when the '<input>' element LOSES FOCUS.
+    - the change event DOES NOT fire when you're TYPING.
+    - note that if you want to handle every change of the value, you use the 'input' event instead.
+*/
+const sendMessageBtn = document.querySelector('#sendMessageBtn');
+const inputMessage = document.querySelector('#input-message');
+
+inputMessage.addEventListener('change', (e) => {
+    const yourMessage = document.querySelector('#your-message');
+    yourMessage.textContent = e.target.value;
+});
+
+// 6.2 change event for radio buttons
+
+/* 
+    - a radio button fires the 'change' event after you select it
+*/
+const education = document.querySelector('#education');
+
+education.addEventListener('change', (e) => {
+    const edu = document.querySelector('#edu');
+    let eduString;
+
+    let target = e.target;
+
+    switch(target.id) {
+        case 'undergraduate':
+            eduString = 'You are an undergraduate';
+            break;
+        case 'college':
+            eduString = 'College graduate';
+            break;
+        case 'masters':
+            eduString = 'Have a masters degree';
+            break;
+    }
+
+    edu.textContent = eduString;
+});
+
+// 6.3 change event for checkboxes
+
+/* 
+    - checkboxes fire the 'change' event after selection, whether checked or unchecked.
+*/
+const devices = document.querySelector('#devices');
+const gadgets = document.querySelector('#gadgets');
+
+devices.addEventListener('change', (e) => {
+    let gadgetString;
+
+    let target = e.target;
+
+    switch(target.id) {
+        case 'pc':
+        case 'laptop':
+        case 'tablet':
+            gadgetString = target.value;
+            break;
+    }
+
+    gadgets.textContent = `You have a ${gadgetString}`;
+});
+
+// 6.4 change event for select element
+
+/* 
+    - the '<select>' element fires the 'change' event once the selection has completed
+*/
+const languages = document.querySelector('#languages');
+const favorite = document.querySelector('#fav');
+
+languages.addEventListener('change', (e) => {
+    favorite.textContent = `Your favorite is ${e.target.value}`;
+});
