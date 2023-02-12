@@ -8,6 +8,14 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="./index.css" type="text/css">
 
+    <!-- Box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
     <title>Session 7 - Scripting Web Forms</title>
 </head>
 <body>
@@ -17,156 +25,180 @@
         <!-- Session number and title -->
         <p>Session 7 - Scripting Web Forms</p>
 
-        <div class="flex-column">
-            <form onsubmit="return false" class="flex-column" id="login-form">
-                <h2>Login here</h2>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Enter username">
-    
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter password">
-
-                <button type="submit" class="btn-layout">Login</button>
-            </form>
-        </div>
-
-        <div class="flex-column">
-            <h2>Select what level of experience you have</h2>
-            <div class="row">
-                <input type="radio" name="level" id="junior" value="Junior">
-                <label for="junior">Junior</label>
-                
-                <input type="radio" name="level" id="mid" value="Mid">
-                <label for="mid">Mid</label>
-                
-                <input type="radio" name="level" id="senior" value="Senior">
-                <label for="senior">Senior</label>
-            </div>
-            <button type="submit" id="submitBtn" class="btn-layout">Send</button>
-        </div>
-
-        <div class="flex-column">
-            <h2>Select what is your preferred work arrangement</h2>
-            <div class="row">
-                <input type="radio" name="arrangement" id="wfh" value="Work from home">
-                <label for="wfh">Work from home</label>
-
-                <input type="radio" name="arrangement" id="onsite" value="Onsite">
-                <label for="onsite">Onsite</label>
-
-                <input type="radio" name="arrangement" id="hybrid" value="Hybrid">
-                <label for="hybrid">Hybrid</label>
-            </div>
-        </div>
-
-        <div class="flex-column">
-            <h2>Select your strength zones</h2>
-            <div class="row">
-                <input type="checkbox" name="strength" id="frontEnd" value="Front End">
-                <label for="frontEnd">Front End</label>
-
-                <input type="checkbox" name="strength" id="backEnd" value="Back End">
-                <label for="backEnd">Back End</label>
-
-                <input type="checkbox" name="strength" id="fullstack" value="Full-stack">
-                <label for="fullstack">Full-stack</label>
-            </div>
-            <div class="row">
-                <button type="submit" id="strengthZoneBtn" class="btn-layout">Send</button>
-                <button type="submit" id="select-all" class="btn-layout">Check/uncheck all</button>
-            </div>
-        </div>
-
-        <div class="flex-column">
-            <h3>Agree to terms and agreement</h3>
-            <div class="row">
-                <input type="checkbox" id="agree" name="agree" value="agree">
-                <label for="terms">I agree</label>
-            </div>
-            <button type="submit" id="sendBtn" class="btn-layout">Submit</button>
-        </div>
-
-        <div class="flex-column">
-            <h3>Select a theme</h3>
-            <div class="row" id="theme"></div>
-        </div>
-
-        <div class="flex-column">
-            <h3>Select a JS framework</h3>
-            <label for="framework">Frameworks</label>
-            <select id="framework" multiple>
-                <option value="react">React</option>
-                <option value="vue">Vue.js</option>
-                <option value="angular">Angular.js</option>
-                <option value="svelte">Svelte</option>
-            </select>
-            <div class="row">
-                <button type="submit" class="btn-layout" id="frameworkBtn">Select</button>
-                <button type="submit" class="btn-layout" id="removeOptionBtn">Remove</button>
-                <button type="submit" class="btn-layout" id="removeFromTop">Remove from top</button>
-                <button type="submit" class="btn-layout" id="removeFromBottom">Remove from Bottom</button>
-                <button type="submit" class="btn-layout" id="removeNew">Remove frameworks ending in 'js'</button>
-            </div>
+        <div class="row">
+            <!-- Login form -->
+            <div class="flex-column">
+                <form onsubmit="return false" class="flex-column" id="login-form">
+                    <h2>Login here</h2>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username">
         
-            <h3>Add new frameworks</h3>
-            <label for="framework-name"></label>
-            <span id="error-message"></span>
-            <input type="text" id="framework-name">
-            <button type="submit" class="btn-layout" id="addFrameworkBtn">Add</button>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password">
+
+                    <button type="submit" class="btn-layout">Login</button>
+                </form>
+            </div>
+            <!-- level of experience radio buttons -->
+            <div class="flex-column">
+                <h2>Select what level of experience you have</h2>
+                <div class="row">
+                    <input type="radio" name="level" id="junior" value="Junior">
+                    <label for="junior">Junior</label>
+                    
+                    <input type="radio" name="level" id="mid" value="Mid">
+                    <label for="mid">Mid</label>
+                    
+                    <input type="radio" name="level" id="senior" value="Senior">
+                    <label for="senior">Senior</label>
+                </div>
+                <button type="submit" id="submitBtn" class="btn-layout">Send</button>
+            </div>
+        </div>  
+        
+        <div class="row">
+            <!-- work arrangement radio buttons -->
+            <div class="flex-column">
+                <h2>Select what is your preferred work arrangement</h2>
+                <div class="row">
+                    <input type="radio" name="arrangement" id="wfh" value="Work from home">
+                    <label for="wfh">Work from home</label>
+
+                    <input type="radio" name="arrangement" id="onsite" value="Onsite">
+                    <label for="onsite">Onsite</label>
+
+                    <input type="radio" name="arrangement" id="hybrid" value="Hybrid">
+                    <label for="hybrid">Hybrid</label>
+                </div>
+            </div>
+            <!-- strength zones checkboxes -->
+            <div class="flex-column">
+                <h2>Select your strength zones</h2>
+                <div class="row">
+                    <input type="checkbox" name="strength" id="frontEnd" value="Front End">
+                    <label for="frontEnd">Front End</label>
+
+                    <input type="checkbox" name="strength" id="backEnd" value="Back End">
+                    <label for="backEnd">Back End</label>
+
+                    <input type="checkbox" name="strength" id="fullstack" value="Full-stack">
+                    <label for="fullstack">Full-stack</label>
+                </div>
+                <div class="row">
+                    <button type="submit" id="strengthZoneBtn" class="btn-layout">Send</button>
+                    <button type="submit" id="select-all" class="btn-layout">Check/uncheck all</button>
+                </div>
+            </div>
         </div>
-
-        <div class="flex-column">
-            <h3>Enter message here</h3>
-            <p id="your-message"></p>
-            <input type="text" id="input-message">
-            <button type="submit" class="btn-layout" id="sendMessageBtn">Send</button>
-        </div>
-
-        <div class="flex-column">
-            <h3>Educational attainment</h3>
-            <small id="edu"></small>
-            <div class="row" id="education">
-                <input type="radio" name="education" id="undergraduate">
-                <label for="undergraduate">Undergraduate</label>
-                
-                <input type="radio" name="education" id="college">
-                <label for="college">College</label>
-                
-                <input type="radio" name="education" id="masters">
-                <label for="masters">Masters</label>
-            </div>            
-        </div>
-
-        <div class="flex-column">
-            <h3>Which devices do you have?</h3>
-            <small id="gadgets"></small>
-            <div class="row" id="devices">
-                <input type="checkbox" id="pc" value="Personal Computer" name="device">
-                <label for="pc">Desktop</label>
-
-                <input type="checkbox" id="laptop" value="Laptop" name="device">
-                <label for="laptop">Laptop</label>
-
-                <input type="checkbox" id="tablet" value="Tablet" name="device">
-                <label for="tablet">Tablet</label>
+        
+        <div class="row">
+            <!-- agree to terms and agreement checkbox -->
+            <div class="flex-column">
+                <h3>Agree to terms and agreement</h3>
+                <div class="row">
+                    <input type="checkbox" id="agree" name="agree" value="agree">
+                    <label for="terms">I agree</label>
+                </div>
+                <button type="submit" id="sendBtn" class="btn-layout">Submit</button>
+            </div>
+            <!-- theme checkboxes => dynamically created on JS -->
+            <div class="flex-column">
+                <h3>Select a theme</h3>
+                <div class="row" id="theme"></div>
             </div>
         </div>
 
-        <div class="flex-column">
-            <h3>Select your favorite programming language</h3>
-            <small id="fav"></small>
-            <select id="languages">
-                <option value="PHP">PHP</option>
-                <option value="C">C</option>
-                <option value="C++">C++</option>
-                <option value="C#">C#</option>
-                <option value="Java">Java</option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="Python">Python</option>
-                <option value="Ruby">Ruby</option>
-            </select>
+        <div class="row">
+            <!-- framework multiple select box -->
+            <div class="flex-column">
+                <h3>Select a JS framework</h3>
+                <label for="framework">Frameworks</label>
+                <select id="framework" multiple>
+                    <option value="react">React</option>
+                    <option value="vue">Vue.js</option>
+                    <option value="angular">Angular.js</option>
+                    <option value="svelte">Svelte</option>
+                </select>
+                <!-- control buttons -->
+                <div class="row">
+                    <button type="submit" class="btn-layout" id="frameworkBtn">Select</button>
+                    <button type="submit" class="btn-layout" id="removeOptionBtn">Remove</button>
+                    <button type="submit" class="btn-layout" id="removeFromTop">Remove from top</button>
+                    <button type="submit" class="btn-layout" id="removeFromBottom">Remove from Bottom</button>
+                    <button type="submit" class="btn-layout" id="removeNew">Remove frameworks ending in 'js'</button>
+                </div>
+            </div>
+            <!-- add framework section -->
+            <div class="flex-column">
+                <h3>Add new frameworks</h3>
+                <label for="framework-name"></label>
+                <span id="error-message"></span>
+                <input type="text" id="framework-name">
+                <button type="submit" class="btn-layout" id="addFrameworkBtn">Add</button>
+            </div>
         </div>
+        
+        <div class="row">
+            <!-- input message for 'change' event -->
+            <div class="flex-column">
+                <h3>Enter message here</h3>
+                <p id="your-message"></p>
+                <input type="text" id="input-message">
+                <button type="submit" class="btn-layout" id="sendMessageBtn">Send</button>
+            </div>
 
+            <!-- radio buttons for 'change' event -->
+            <div class="flex-column">
+                <h3>Educational attainment</h3>
+                <small id="edu"></small>
+                <div class="row" id="education">
+                    <input type="radio" name="education" id="undergraduate">
+                    <label for="undergraduate">Undergraduate</label>
+                    
+                    <input type="radio" name="education" id="college">
+                    <label for="college">College</label>
+                    
+                    <input type="radio" name="education" id="masters">
+                    <label for="masters">Masters</label>
+                </div>            
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- checkboxes for 'change' event -->
+            <div class="flex-column">
+                <h3>Which devices do you have?</h3>
+                <small id="gadgets"></small>
+                <div class="row" id="devices">
+                    <input type="checkbox" id="pc" value="Personal Computer" name="device">
+                    <label for="pc">Desktop</label>
+
+                    <input type="checkbox" id="laptop" value="Laptop" name="device">
+                    <label for="laptop">Laptop</label>
+
+                    <input type="checkbox" id="tablet" value="Tablet" name="device">
+                    <label for="tablet">Tablet</label>
+                </div>
+            </div>
+
+            <!-- select element for 'change' event -->
+            <div class="flex-column">
+                <h3>Select your favorite programming language</h3>
+                <small id="fav"></small>
+                <select id="languages">
+                    <option value="PHP">PHP</option>
+                    <option value="C">C</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- textarea for 'input' event -->
         <div class="flex-column">
             <h3>Send me an email here</h3>
             <textarea name="email" id="email" cols="60" rows="20"></textarea>
@@ -174,7 +206,7 @@
         </div>
         
         <!-- Footer -->
-        <!-- <div class="footer">
+        <div class="footer">
             <h3>languages used for this page</h3>
             <div class="icon-container">
                 <div class="icon-holder">
@@ -191,7 +223,7 @@
                 </div>
             </div>
             <p><span class="copyright">Copyright &#169; 2023, All rights reserved.</span></p>
-        </div> -->
+        </div>
     </div>
     
     <!-- External JS -->

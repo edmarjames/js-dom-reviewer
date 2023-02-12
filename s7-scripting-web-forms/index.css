@@ -80,7 +80,7 @@ input {
 /* -------------------------------- */
 
 
-/* ----- select box section ----- */
+/* ------ select box section ------ */
 select {
     width: 200px;
     height: auto;
@@ -96,6 +96,8 @@ option {
 }
 /* -------------------------------- */
 
+
+/* -- add new framework section -- */
 #message {
     display: none;
 }
@@ -108,3 +110,48 @@ option {
 .message-hide {
     display: none;
 }
+/* -------------------------------- */
+
+
+/* -------- Footer section -------- */
+.footer {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.icon-container {
+    display: flex;
+    column-gap: 20px;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.icons {
+    font-size: 2.5rem;
+}
+
+.icon-holder {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 auto;
+    position: static;
+    bottom: 0;
+    letter-spacing: 1px;
+}
+/* -------------------------------- */
