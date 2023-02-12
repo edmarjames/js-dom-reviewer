@@ -63,31 +63,34 @@
 */
 
 // to access the elements of the form, you get the form element first
-const form = document.querySelector('#login-form');
+function formEvents() {
+    const form = document.querySelector('#login-form');
 
-form.addEventListener('submit', () => {
-    // use either index, id or name to access the element.
+    form.addEventListener('submit', () => {
+        // use either index, id or name to access the element.
 
-    let username = form.elements[0];
-    // let username = form.elements['username'];
-    let password = form.elements[1];
-    // let password = form.elements['password'];
+        let username = form.elements[0];
+        // let username = form.elements['username'];
+        let password = form.elements[1];
+        // let password = form.elements['password'];
 
-    // if the username field is not empty, show an alert with the value of the username
-    if (username.value.length > 0) {
-        alert(`Welcome ${username.value}!`);
-        console.log(`Password - ${password.value}`);
-    
-    // if the username field is empty, show a 'Welcome user!' alert
-    } else if (username.value.length <= 0) {
-        alert('Welcome user!');
-    }
+        // if the username field is not empty, show an alert with the value of the username
+        if (username.value.length > 0) {
+            alert(`Welcome ${username.value}!`);
+            console.log(`Password - ${password.value}`);
+        
+        // if the username field is empty, show a 'Welcome user!' alert
+        } else if (username.value.length <= 0) {
+            alert('Welcome user!');
+        }
 
-    // to reset the value of the input elements, either set their value to empty string or use '.reset()' method
-    // username.value = '';
-    // password.value = '';
-    form.reset();
-});
+        // to reset the value of the input elements, either set their value to empty string or use '.reset()' method
+        // username.value = '';
+        // password.value = '';
+        form.reset();
+    });
+}
+formEvents();
 
 
 // 2. Radio buttons
@@ -100,21 +103,25 @@ form.addEventListener('submit', () => {
     - to know which radio button is checked, you use the 'value' attribute
 */
 // get the element with the id of 'submitBtn'
-const submit = document.querySelector('#submitBtn');
+function radioButtonEvents() {
+    const submit = document.querySelector('#submitBtn');
 
-// add a 'click' event listener to the 'submit' element
-submit.addEventListener('click', () => {
-    // get all elements with the name of 'level'
-    let radioBtn = document.getElementsByName('level');
+    // add a 'click' event listener to the 'submit' element
+    submit.addEventListener('click', () => {
+        // get all elements with the name of 'level'
+        let radioBtn = document.getElementsByName('level');
 
-    // loop through the 'radioBtn'
-    for (let level of radioBtn) {
-        // checks if the radio button is checked
-        if (level.checked) {
-            alert(`You are a ${level.value} developer!`);
+        // loop through the 'radioBtn'
+        for (let level of radioBtn) {
+            // checks if the radio button is checked
+            if (level.checked) {
+                alert(`You are a ${level.value} developer!`);
+            }
         }
-    }
-});
+    });
+}
+radioButtonEvents();
+
 
 // 2.1 radio button's change event
 
@@ -123,27 +130,30 @@ submit.addEventListener('click', () => {
     - inside the change event handler, you can access the 'this' keyword to access the radio button. To check if the radio button is checked, you can use the 'checked' property.
     - to get the value of the checked button, you use the 'value' property.
 */
-// get all elements with the name of 'arrangement'
-let workArrangement = document.getElementsByName('arrangement');
+function radioButtonChangeEvent() {
+    // get all elements with the name of 'arrangement'
+    let workArrangement = document.getElementsByName('arrangement');
 
-// loop through the 'workArrangement'
-for (let arrangement of workArrangement) {
-    // add a 'change' event listener to every radio button and attach the 'showSelected' function
-    arrangement.addEventListener('change', showSelected);
-}
+    // loop through the 'workArrangement'
+    for (let arrangement of workArrangement) {
+        // add a 'change' event listener to every radio button and attach the 'showSelected' function
+        arrangement.addEventListener('change', showSelected);
+    }
 
-function showSelected() {
-    // checks if the radio button is checked
-    if (this.checked) {
-        if (this.value == 'Work from home') {
-            alert(`So you want to ${this.value}`);
-        } else if (this.value == 'Onsite') {
-            alert(`So you want to suffer with the daily heavy traffic by working ${this.value}`);
-        } else {
-            alert(`So you want to work on a ${this.value} setup`);
+    function showSelected() {
+        // checks if the radio button is checked
+        if (this.checked) {
+            if (this.value == 'Work from home') {
+                alert(`So you want to ${this.value}`);
+            } else if (this.value == 'Onsite') {
+                alert(`So you want to suffer with the daily heavy traffic by working ${this.value}`);
+            } else {
+                alert(`So you want to work on a ${this.value} setup`);
+            }
         }
     }
 }
+radioButtonChangeEvent();
 
 
 // 3. Checkbox
@@ -160,25 +170,28 @@ function showSelected() {
     - a checkbox has two states: checked and unchecked.
     - if its 'checked' property is 'true', then the checkbox is checked otherwise, it is not.
 */
-// get the element with the id of 'agree'
-const agree = document.querySelector('#agree');
+function checkboxEvents() {
+    // get the element with the id of 'agree'
+    const agree = document.querySelector('#agree');
 
-// add a 'change' event listener to the 'agree' element
-agree.addEventListener('change', () => {
-    // checks if the checkbox is checked
-    if (agree.checked) {
-        console.log('The user agree to the terms and agreement');
-    } else {
-        console.log('The user doesn\'t agree to the terms and agreement');
-    }
-});
+    // add a 'change' event listener to the 'agree' element
+    agree.addEventListener('change', () => {
+        // checks if the checkbox is checked
+        if (agree.checked) {
+            console.log('The user agree to the terms and agreement');
+        } else {
+            console.log('The user doesn\'t agree to the terms and agreement');
+        }
+    });
 
-// alternative way to check if the checkbox is checked
-const agreed = document.querySelector('#agree:checked') !== null;
-console.log(agreed);
+    // alternative way to check if the checkbox is checked
+    const agreed = document.querySelector('#agree:checked') !== null;
+    console.log(agreed);
 
-// the selector '#agree:checked' selects the element with the id '#agree' and has the attribute 'checked'
-// Therefore, if the checkbox element with the id '#agree' is checked, the 'document.querySelector()' will return it. On the console, you'll see the value 'false' because the checkbox is unchecked.
+    // the selector '#agree:checked' selects the element with the id '#agree' and has the attribute 'checked'
+    // Therefore, if the checkbox element with the id '#agree' is checked, the 'document.querySelector()' will return it. On the console, you'll see the value 'false' because the checkbox is unchecked.
+};
+checkboxEvents();
 
 
 // 3.2 getting checkbox value
@@ -187,48 +200,54 @@ console.log(agreed);
     - when you get the 'value' attribute of a checkbox, you always get the 'on' string whether the checkbox is checked or not. if the 'value' attribute is not included on the element.
     - on this case the value of checkbox is 'agree' since we included it as an attribute of the element.
 */
-// get the element with the id of 'sendBtn'
-const sendBtn = document.querySelector('#sendBtn');
+function checkboxValue() {
+    // get the element with the id of 'sendBtn'
+    const sendBtn = document.querySelector('#sendBtn');
 
-// add a 'click' event listener to the 'sendBtn' element
-sendBtn.addEventListener('click', () => {
-    // logs the 'value' of agree checkbox -> prints 'agree'
-    console.log(agree.value);
-});
+    // add a 'click' event listener to the 'sendBtn' element
+    sendBtn.addEventListener('click', () => {
+        // logs the 'value' of agree checkbox -> prints 'agree'
+        console.log(agree.value);
+    });
+};
+checkboxValue();
 
 
 // 3.3 getting values of multiple selected checkboxes
 // get the element with the id of 'strengthZoneBtn'
 const strengthZoneBtn = document.querySelector('#strengthZoneBtn');
 
-// add a 'click' event listener to the 'strengthZoneBtn' element
-strengthZoneBtn.addEventListener('click', () => {
-    // get all elements with the name attribute of 'strength'
-    let strengthZones = document.getElementsByName('strength');
-    let strengths = [];
+function multipleCheckbox(strengthZoneBtn) {
+    // add a 'click' event listener to the 'strengthZoneBtn' element
+    strengthZoneBtn.addEventListener('click', () => {
+        // get all elements with the name attribute of 'strength'
+        let strengthZones = document.getElementsByName('strength');
+        let strengths = [];
 
-    // loop through the strengthZones
-    for (let strength of strengthZones) {
-        // checks if the checkbox is checked
-        if (strength.checked) {
-            // if check, the value of the checkbox will be pushed to the strengths array
-            strengths.push(strength.value);
+        // loop through the strengthZones
+        for (let strength of strengthZones) {
+            // checks if the checkbox is checked
+            if (strength.checked) {
+                // if check, the value of the checkbox will be pushed to the strengths array
+                strengths.push(strength.value);
+            }
         }
-    }
 
-    // if the strengths array has only one element, show this alert
-    if (strengths.length == 1) {
-        alert(`Your specialization is \n ${strengths.join(", ")}`);
+        // if the strengths array has only one element, show this alert
+        if (strengths.length == 1) {
+            alert(`Your specialization is \n ${strengths.join(", ")}`);
 
-    // if it has more than one element, show this alert
-    } else if (strengths.length > 1) {
-        alert(`Your specializations are \n ${strengths.join(", ")}`);
-    
-    // if the array is empty, show this alert
-    } else {
-        alert('You don\'t have specializations');
-    }
-});
+        // if it has more than one element, show this alert
+        } else if (strengths.length > 1) {
+            alert(`Your specializations are \n ${strengths.join(", ")}`);
+        
+        // if the array is empty, show this alert
+        } else {
+            alert('You don\'t have specializations');
+        }
+    });
+}
+multipleCheckbox(strengthZoneBtn);
 
 
 // 3.4 check/uncheck all checkboxes
@@ -264,108 +283,139 @@ selectAll.onclick = checkAll;
 
 
 // 3.5 creating checkboxes dynamically
-// create an array of objects that contains the theme details
-const colors = [
-    {
-        name: 'default',
-        hex: '#F3DFCB'
-    },
-    {
-        name: 'dark',
-        hex: '#131313'
-    },
-    {
-        name: 'light',
-        hex: '#ffffff'
+function checkboxDynamic() {
+    // create an array of objects that contains the theme details
+    const colors = [
+        {
+            name: 'default',
+            hex: '#F3DFCB'
+        },
+        {
+            name: 'dark',
+            hex: '#131313'
+        },
+        {
+            name: 'light',
+            hex: '#ffffff'
+        }
+    ];
+
+    // map through the colors array and return a checkbox element with label with it's corresponding attributes
+    const radioBtnColor = colors.map(color => 
+        `<label for="${color.name}">
+            <input type="checkbox" name="themes" id="color-${color.name}" value="${color.hex}"> ${color.name}
+        </label>`).join(" ");
+        // use 'join(" ")' function to convert the array into a single string separated by a 'space'
+
+    // select the target container with the id of 'theme'
+    const themeContainer = document.querySelector('#theme');
+    // assign it's innerHTMl to 'radioBtnColor'
+    themeContainer.innerHTML = radioBtnColor;
+};
+checkboxDynamic();
+
+function changeBackgroundColor() {
+    // selects the main container
+    const mainContainer = document.querySelector('#container');
+    // select the 'paragraph' element
+    const paragraphs = document.querySelectorAll('p');
+    // select all 'h2' elements
+    const h2 = document.querySelectorAll('h2');
+    // select all 'h3' elements
+    const h3 = document.querySelectorAll('h3');
+    // select all 'label' elements
+    const labels = document.querySelectorAll('label');
+    // select all 'small' element
+    const sm = document.querySelectorAll('small');
+    // select all 'i' element
+    const icons = document.querySelectorAll('i');
+
+    // get all elements with the name attribute of 'themes'
+    const themes = document.getElementsByName('themes');
+
+    // loop through the themes
+    for (let theme of themes) {
+        // add a 'change' event listener to every checkbox and invoke the 'getSelected' function
+        theme.addEventListener('change', getSelected);
     }
-];
 
-// map through the colors array and return a checkbox element with label with it's corresponding attributes
-const radioBtnColor = colors.map(color => 
-    `<label for="${color.name}">
-        <input type="checkbox" name="themes" id="color-${color.name}" value="${color.hex}"> ${color.name}
-    </label>`).join(" ");
-    // use 'join(" ")' function to convert the array into a single string separated by a 'space'
-
-// select the target container with the id of 'theme'
-const themeContainer = document.querySelector('#theme');
-// assign it's innerHTMl to 'radioBtnColor'
-themeContainer.innerHTML = radioBtnColor;
-
-
-// selects the main container
-const mainContainer = document.querySelector('#container');
-// select the 'paragraph' element
-const paragraphs = document.querySelector('p');
-// select all 'h2' elements
-const h2 = document.querySelectorAll('h2');
-// select all 'h3' elements
-const h3 = document.querySelectorAll('h3');
-// select all 'label' elements
-const labels = document.querySelectorAll('label');
-
-// get all elements with the name attribute of 'themes'
-const themes = document.getElementsByName('themes');
-
-// loop through the themes
-for (let theme of themes) {
-    // add a 'change' event listener to every checkbox and invoke the 'getSelected' function
-    theme.addEventListener('change', getSelected);
-}
-
-function getSelected() {
-    // checks if the checkbox is checked
-    if (this.checked) {
-        // if the value of the checked checkbox is "#131313"
-        if (this.value == "#131313") {
-            // change the background color of the main container to dark
-            mainContainer.style.backgroundColor = this.value;
-            // change the colors of p, h2, h3 and label elements to white
-            toWhite(paragraphs, h2, h3, labels);
-        } else {
-            // change the background color of the main container to either default or light
-            mainContainer.style.backgroundColor = this.value;
-            // change the colors of p, h2, h3 and label elements to black
-            toBlack(paragraphs, h2, h3, labels);
+    function getSelected() {
+        // checks if the checkbox is checked
+        if (this.checked) {
+            // if the value of the checked checkbox is "#131313"
+            if (this.value == "#131313") {
+                // change the background color of the main container to dark
+                mainContainer.style.backgroundColor = this.value;
+                // change the colors of p, h2, h3 and label elements to white
+                toWhite(paragraphs, h2, h3, labels, sm, icons);
+            } else {
+                // change the background color of the main container to either default or light
+                mainContainer.style.backgroundColor = this.value;
+                // change the colors of p, h2, h3 and label elements to black
+                toBlack(paragraphs, h2, h3, labels, sm, icons);
+            }
         }
     }
+
+    // changes the color of p, h2, h3 and label elements to white
+    function toWhite(p, h2, h3, l, sm, icons) {
+        const color = "white";
+
+        for (let paragraph of p) {
+            paragraph.style.color = color;
+        }
+
+        for (let heading2 of h2) {
+            heading2.style.color = color;
+        }
+
+        for (let heading3 of h3) {
+            heading3.style.color = color;
+        }
+
+        for (let label of l) {
+            label.style.color = color;
+        }
+
+        for (let s of sm) {
+            s.style.color = color;
+        }
+
+        for (let i of icons) {
+            i.style.color = color;
+        }
+    };
+
+    // changes the color of p, h2, h3 and label elements to black
+    function toBlack(p, h2, h3, l, sm, icons) {
+        const color = "black";
+        
+        for (let paragraph of p) {
+            paragraph.style.color = color;
+        }
+
+        for (let heading2 of h2) {
+            heading2.style.color = color;
+        }
+
+        for (let heading3 of h3) {
+            heading3.style.color = color;
+        }
+
+        for (let label of l) {
+            label.style.color = color;
+        }
+
+        for (let s of sm) {
+            s.style.color = color;
+        }
+
+        for (let i of icons) {
+            i.style.color = color;
+        }
+    };
 }
-
-// changes the color of p, h2, h3 and label elements to white
-function toWhite(p, h2, h3, l) {
-    const color = "white";
-    p.style.color = color;
-
-    for (let heading2 of h2) {
-        heading2.style.color = color;
-    }
-
-    for (let heading3 of h3) {
-        heading3.style.color = color;
-    }
-
-    for (let label of l) {
-        label.style.color = color;
-    }
-};
-
-// changes the color of p, h2, h3 and label elements to black
-function toBlack(p, h2, h3, l) {
-    const color = "black";
-    p.style.color = color;
-
-    for (let heading2 of h2) {
-        heading2.style.color = color;
-    }
-
-    for (let heading3 of h3) {
-        heading3.style.color = color;
-    }
-
-    for (let label of l) {
-        label.style.color = color;
-    }
-};
+changeBackgroundColor();
 
 
 // 4. select box
@@ -392,10 +442,13 @@ const frameworkBtn = document.querySelector('#frameworkBtn');
 // get the element with the id of 'framework'
 const frameworks = document.querySelector('#framework');
 
-// add a 'click' event listener to 'frameworkBtn'
-frameworkBtn.addEventListener('click', () => {
-    console.log(frameworks.selectedIndex);
-});
+function selectBoxEvents() {
+    // add a 'click' event listener to 'frameworkBtn'
+    frameworkBtn.addEventListener('click', () => {
+        console.log(frameworks.selectedIndex);
+    });
+};
+selectBoxEvents();
 
 // 4.1.2 value property
 
@@ -406,11 +459,13 @@ frameworkBtn.addEventListener('click', () => {
     - if an option is selected and has NO 'value' attribute, the 'value' property of the select box is the TEXT of the selected option.
     - if MULTIPLE options are selected, the 'value' property of the select box is derived from the first selected option based on the previous two rules.
 */
-// add a 'click' event listener to 'frameworkBtn'
-frameworkBtn.addEventListener('click', () => {
-    console.log(`You selected ${frameworks.value}`);
-});
-
+function selectBoxValue() {
+    // add a 'click' event listener to 'frameworkBtn'
+    frameworkBtn.addEventListener('click', () => {
+        console.log(`You selected ${frameworks.value}`);
+    });
+};
+selectBoxValue();
 
 // 4.2 HTMLOptionElement type
 
@@ -436,26 +491,28 @@ frameworkBtn.addEventListener('click', () => {
   
     - when a '<select>' element allows multiple selections, you can use the 'selected' property to determine which options are selected
 */
+function optionEvent() {
+    // add a 'click' event listener to 'frameworkBtn'
+    frameworkBtn.addEventListener('click', () => {
+        let selectedOptions = []
 
-// add a 'click' event listener to 'frameworkBtn'
-frameworkBtn.addEventListener('click', () => {
-    let selectedOptions = []
+        // loop through the options element of the 'frameworks' select box
+        for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
+            // if the option is selected
+            if (frameworks.options[ctr].selected) {
+                // push its value to the 'selectedOptions' array
+                selectedOptions.push(frameworks.options[ctr].value);
+            } else {
+                // if not selected, skip it and continue with the loop
+                continue;
+            }
+        };
 
-    // loop through the options element of the 'frameworks' select box
-    for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
-        // if the option is selected
-        if (frameworks.options[ctr].selected) {
-            // push its value to the 'selectedOptions' array
-            selectedOptions.push(frameworks.options[ctr].value);
-        } else {
-            // if not selected, skip it and continue with the loop
-            continue;
-        }
-    };
-
-    // used 'join(", ")' method to convert the array into a single string separated with a 'comma'
-    alert(`You selected ${selectedOptions.join(", ")}`);
-});
+        // used 'join(", ")' method to convert the array into a single string separated with a 'comma'
+        alert(`You selected ${selectedOptions.join(", ")}`);
+    });
+};
+optionEvent();
 
 
 // 5. dynamically add & remove options from select box
@@ -502,14 +559,8 @@ const frameworkName = document.querySelector('#framework-name');
 // get the element with the id of 'error-message'
 const message = document.querySelector('#error-message');
 
-// add a 'keydown' event listener to 'frameworkName' input field
-frameworkName.addEventListener('keydown', (e) => {
-    // checks if the value of the field is greater than 0 and the 'enter' key is hit on the keyboard
-    if (frameworkName.value.length > 0 && e.keyCode === 13) {
-        // toggle classes on 'message' element
-        message.classList.remove("message-show");
-        message.classList.add("message-hide");
-
+function addOptions() {
+    function createOption() {
         // create a new 'option' element
         const newOption = document.createElement('option');
 
@@ -524,37 +575,39 @@ frameworkName.addEventListener('keydown', (e) => {
         frameworkName.value = '';
         // add focus on 'frameworkName'
         frameworkName.focus();
-    } 
-});
+    }
 
-// add a 'click' event listener to 'addFrameworkBtn' input field
-addFrameworkBtn.addEventListener('click', () => {
-    // if the input field is empty, it will show an error message
-    if (frameworkName.value.length <= 0) {
-        message.textContent = "Enter a framework name!";
-        message.classList.add("message-show");
-
-    // if it's not empty
-    } else {
+    function toggleMessageClass() {
         // toggle classes on 'message' element
         message.classList.remove("message-show");
         message.classList.add("message-hide");
-
-        // create a new 'option' element
-        const newOption = document.createElement('option');
-
-        // set its 'value' attribute with the value of the input field
-        newOption.setAttribute('value', frameworkName.value);
-        newOption.textContent = frameworkName.value;
-        // add the new 'option' element to 'frameworks' select box
-        frameworks.appendChild(newOption);
-
-        // reset the input fields value
-        frameworkName.value = '';
-        // add focus on 'frameworkName'
-        frameworkName.focus();
     }
-});
+
+    // add a 'keydown' event listener to 'frameworkName' input field
+    frameworkName.addEventListener('keydown', (e) => {
+        // checks if the value of the field is greater than 0 and the 'enter' key is hit on the keyboard
+        if (frameworkName.value.length > 0 && e.keyCode === 13) {
+            toggleMessageClass();
+            createOption();
+        } 
+    });
+
+    // add a 'click' event listener to 'addFrameworkBtn' input field
+    addFrameworkBtn.addEventListener('click', () => {
+        // if the input field is empty, it will show an error message
+        if (frameworkName.value.length <= 0) {
+            message.textContent = "Enter a framework name!";
+            message.classList.add("message-show");
+
+        // if it's not empty
+        } else {
+            toggleMessageClass();
+            createOption();
+        }
+    });
+}
+addOptions();
+
 
 // 5.3 removing options
 
@@ -578,83 +631,98 @@ addFrameworkBtn.addEventListener('click', () => {
             selectBox.remove(0);
         }
 */
-// get the element with the id of 'removeOptionBtn'
-const removeOptionBtn = document.querySelector('#removeOptionBtn');
+function removeOptions() {
+    function removeSingleOrMultiple() {
+        // get the element with the id of 'removeOptionBtn'
+        const removeOptionBtn = document.querySelector('#removeOptionBtn');
 
-// add a 'click' event listener to 'removeOptionBtn' element
-removeOptionBtn.addEventListener('click', () => {
-    const selected = [];
+        // add a 'click' event listener to 'removeOptionBtn' element
+        removeOptionBtn.addEventListener('click', () => {
+            const selected = [];
 
-    // loop through the 'options' element of 'frameworks' select box
-    for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
-        // if the option is selected
-        if (frameworks.options[ctr].selected) {
-            // push it's index to the 'selected' array
-            selected.push(ctr);
-        }
+            // loop through the 'options' element of 'frameworks' select box
+            for (let ctr = 0; ctr < frameworks.options.length; ctr++) {
+                // if the option is selected
+                if (frameworks.options[ctr].selected) {
+                    // push it's index to the 'selected' array
+                    selected.push(ctr);
+                }
+            }
+
+            // when removing options from a select element, it is important to loop through the selected options in reverse order because, as the options are removed, the indices of the remaining options changes. If the options were removed in the forward direction, then after removing the first option, the index of the next option would be different.
+            let reversed = selected.reverse();
+
+            // remove the selected options using 'remove()' method
+            reversed.forEach(option => frameworks.remove(option));
+
+            // for (let ctr1 = selected.length - 1; ctr1 >= 0; ctr1--) {
+            //     frameworks.remove(selected[ctr1]);
+            // }
+        });
     }
+    removeSingleOrMultiple();
 
-    // when removing options from a select element, it is important to loop through the selected options in reverse order because, as the options are removed, the indices of the remaining options changes. If the options were removed in the forward direction, then after removing the first option, the index of the next option would be different.
-    let reversed = selected.reverse();
+    function removingFromTop() {
+        // get the element with the id of 'removeFromTop'
+        const removeFromTop = document.querySelector('#removeFromTop');
 
-    // remove the selected options using 'remove()' method
-    reversed.forEach(option => frameworks.remove(option));
+        // add a 'click' event listener to 'removeFromTop' element
+        removeFromTop.addEventListener('click', () => {
+            // if there are still option elements of 'frameworks' select box
+            (frameworks.options.length > 0) ?
+                // remove the first element
+                frameworks.options[0] = null
+            :
+                // if there is no remaining, show an alert
+                alert('No options left!');
+        });
+    };
+    removingFromTop();
 
-    // for (let ctr1 = selected.length - 1; ctr1 >= 0; ctr1--) {
-    //     frameworks.remove(selected[ctr1]);
-    // }
-});
+    function removingFromBottom() {
+        // get the element with the id of 'removeOptionBtn'
+        const removeFromBottom = document.querySelector('#removeFromBottom');
 
-// get the element with the id of 'removeFromTop'
-const removeFromTop = document.querySelector('#removeFromTop');
+        // add a 'click' event listener to 'removeFromBottom' element
+        removeFromBottom.addEventListener('click', () => {
+            // if there are still option elements of 'frameworks' select box
+            (frameworks.options.length > 0) ?
+                // remove the last element
+                frameworks.removeChild(frameworks.options[frameworks.options.length - 1])
+            :
+                // if there is no remaining, show an alert
+                alert('No options left!');
+        });
+    }
+    removingFromBottom();
+};
+removeOptions();
 
-// add a 'click' event listener to 'removeFromTop' element
-removeFromTop.addEventListener('click', () => {
-    // if there are still option elements of 'frameworks' select box
-    (frameworks.options.length > 0) ?
-        // remove the first element
-        frameworks.options[0] = null
-    :
-        // if there is no remaining, show an alert
-        alert('No options left!');
-});
-
-// get the element with the id of 'removeOptionBtn'
-const removeFromBottom = document.querySelector('#removeFromBottom');
-
-// add a 'click' event listener to 'removeFromBottom' element
-removeFromBottom.addEventListener('click', () => {
-    // if there are still option elements of 'frameworks' select box
-    (frameworks.options.length > 0) ?
-        // remove the last element
-        frameworks.removeChild(frameworks.options[frameworks.options.length - 1])
-    :
-        // if there is no remaining, show an alert
-        alert('No options left!');
-});
 
 // 5.4 removing items from a select element conditionally
 
 /* 
     - a common mistake is to iterate over the options of a '<select>' element and remove the element inside the loop without being aware that the indices have been adjusted.
 */
-// get the element with the id of 'removeNew'
-const removeNew = document.querySelector('#removeNew');
+function removeConditionally() {
+    // get the element with the id of 'removeNew'
+    const removeNew = document.querySelector('#removeNew');
 
-// add a 'click' event listener to 'removeNew' element
-removeNew.addEventListener('click', () => {
-    // loop through the options element in reverse
-    for (let ctr = frameworks.options.length - 1; ctr >= 0 ; ctr--) {
-        // store the 'text' value of each option to 'text' variable
-        let text = frameworks.options[ctr].text;
-        // if the 'text' ends with 'js'
-        if (text.endsWith('js')) {
-            // remove it from the 'frameworks' select box
-            frameworks.remove(ctr);
+    // add a 'click' event listener to 'removeNew' element
+    removeNew.addEventListener('click', () => {
+        // loop through the options element in reverse
+        for (let ctr = frameworks.options.length - 1; ctr >= 0 ; ctr--) {
+            // store the 'text' value of each option to 'text' variable
+            let text = frameworks.options[ctr].text;
+            // if the 'text' ends with 'js'
+            if (text.endsWith('js')) {
+                // remove it from the 'frameworks' select box
+                frameworks.remove(ctr);
+            }
         }
-    }
-});
-
+    });
+}
+removeConditionally();
 
 // 6. change event
 
@@ -669,95 +737,105 @@ removeNew.addEventListener('click', () => {
     - the change event DOES NOT fire when you're TYPING.
     - note that if you want to handle every change of the value, you use the 'input' event instead.
 */
-// get the element with the id of 'sendMessageBtn'
-const sendMessageBtn = document.querySelector('#sendMessageBtn');
-// get the element with the id of 'input-message'
-const inputMessage = document.querySelector('#input-message');
+function changeInput() {
+    // get the element with the id of 'input-message'
+    const inputMessage = document.querySelector('#input-message');
 
-// add a 'change' event listener to the 'inputMessage' element
-inputMessage.addEventListener('change', (e) => {
-    const yourMessage = document.querySelector('#your-message');
-    yourMessage.textContent = e.target.value;
-});
+    // add a 'change' event listener to the 'inputMessage' element
+    inputMessage.addEventListener('change', (e) => {
+        const yourMessage = document.querySelector('#your-message');
+        yourMessage.textContent = e.target.value;
+    });
+};
+changeInput();
 
 // 6.2 change event for radio buttons
 
 /* 
     - a radio button fires the 'change' event after you select it
 */
-// get the element with the id of 'education'
-const education = document.querySelector('#education');
+function changeRadioButton() {
+    // get the element with the id of 'education'
+    const education = document.querySelector('#education');
 
-// add a 'change' event listener to the 'education' element
-education.addEventListener('change', (e) => {
-    // get the element with the id of 'edu'
-    const edu = document.querySelector('#edu');
-    let eduString;
+    // add a 'change' event listener to the 'education' element
+    education.addEventListener('change', (e) => {
+        // get the element with the id of 'edu'
+        const edu = document.querySelector('#edu');
+        let eduString;
 
-    // store the target element to 'target' variable
-    let target = e.target;
+        // store the target element to 'target' variable
+        let target = e.target;
 
-    // switch case to determine which radio button has changed
-    switch(target.id) {
-        case 'undergraduate':
-            eduString = 'You are an undergraduate';
-            break;
-        case 'college':
-            eduString = 'College graduate';
-            break;
-        case 'masters':
-            eduString = 'Have a masters degree';
-            break;
-    }
+        // switch case to determine which radio button has changed
+        switch(target.id) {
+            case 'undergraduate':
+                eduString = 'You are an undergraduate';
+                break;
+            case 'college':
+                eduString = 'College graduate';
+                break;
+            case 'masters':
+                eduString = 'Have a masters degree';
+                break;
+        }
 
-    // update the textContent of 'edu' based on the result of switch case
-    edu.textContent = eduString;
-});
+        // update the textContent of 'edu' based on the result of switch case
+        edu.textContent = eduString;
+    });
+};
+changeRadioButton();
 
 // 6.3 change event for checkboxes
 
 /* 
     - checkboxes fire the 'change' event after selection, whether checked or unchecked.
 */
-// get the element with the id of 'devices'
-const devices = document.querySelector('#devices');
-// get the element with the id of 'gadgets'
-const gadgets = document.querySelector('#gadgets');
+function changeCheckbox() {
+    // get the element with the id of 'devices'
+    const devices = document.querySelector('#devices');
+    // get the element with the id of 'gadgets'
+    const gadgets = document.querySelector('#gadgets');
 
-// add a 'change' event listener to the 'devices' element
-devices.addEventListener('change', (e) => {
-    let gadgetString;
+    // add a 'change' event listener to the 'devices' element
+    devices.addEventListener('change', (e) => {
+        let gadgetString;
 
-    // store the target element to 'target' variable
-    let target = e.target;
+        // store the target element to 'target' variable
+        let target = e.target;
 
-    // switch case to determine which checkbox has changed
-    switch(target.id) {
-        case 'pc':
-        case 'laptop':
-        case 'tablet':
-            gadgetString = target.value;
-            break;
-    }
+        // switch case to determine which checkbox has changed
+        switch(target.id) {
+            case 'pc':
+            case 'laptop':
+            case 'tablet':
+                gadgetString = target.value;
+                break;
+        }
 
-    // update the textContent of 'gadgets' based on the result of switch case
-    gadgets.textContent = `You have a ${gadgetString}`;
-});
+        // update the textContent of 'gadgets' based on the result of switch case
+        gadgets.textContent = `You have a ${gadgetString}`;
+    });
+};
+changeCheckbox();
 
 // 6.4 change event for select element
 
 /* 
     - the '<select>' element fires the 'change' event once the selection has completed
 */
-// get the element with the id of 'languages'
-const languages = document.querySelector('#languages');
-// get the element with the id of 'fav'
-const favorite = document.querySelector('#fav');
+function changeSelect() {
+    // get the element with the id of 'languages'
+    const languages = document.querySelector('#languages');
+    // get the element with the id of 'fav'
+    const favorite = document.querySelector('#fav');
 
-// add a 'change' event listener to the 'languages' element
-languages.addEventListener('change', (e) => {
-    favorite.textContent = `Your favorite is ${e.target.value}`;
-});
+    // add a 'change' event listener to the 'languages' element
+    languages.addEventListener('change', (e) => {
+        favorite.textContent = `Your favorite is ${e.target.value}`;
+    });
+};
+changeSelect();
 
 
 // 7. input event
@@ -769,12 +847,15 @@ languages.addEventListener('change', (e) => {
     - if you're typing on the '<input>' element, the element fires the 'input' event CONTINUOUSLY.
     - However, the 'change' event only fires when the '<input>' element LOSES FOCUS.
 */
-// get the element with the id of 'email'
-const email = document.querySelector('#email');
-// get the element with the id of 'composed-email'
-const composedEmail = document.querySelector('#composed-email');
+function inputEvent() {
+    // get the element with the id of 'email'
+    const email = document.querySelector('#email');
+    // get the element with the id of 'composed-email'
+    const composedEmail = document.querySelector('#composed-email');
 
-// add a 'input' event listener to the 'email' element
-email.addEventListener('input', (e) => {
-    composedEmail.textContent = e.target.value;
-});
+    // add a 'input' event listener to the 'email' element
+    email.addEventListener('input', (e) => {
+        composedEmail.textContent = e.target.value;
+    });
+}
+inputEvent();
