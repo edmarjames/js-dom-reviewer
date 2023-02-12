@@ -740,3 +740,20 @@ const favorite = document.querySelector('#fav');
 languages.addEventListener('change', (e) => {
     favorite.textContent = `Your favorite is ${e.target.value}`;
 });
+
+
+// 7. input event
+
+/* 
+    - the 'input' event fires every time whenever the value of the '<input>', '<select>', or '<textarea>' element changes
+    - unlike the 'change' event that only fires when the value is committed.
+    - the 'input' event fires whenever the value changes.
+    - if you're typing on the '<input>' element, the element fires the 'input' event continuously.
+    - However, the 'change' event only fires when the '<input>' element loses focus.
+*/
+const email = document.querySelector('#email');
+const composedEmail = document.querySelector('#composed-email');
+
+email.addEventListener('input', (e) => {
+    composedEmail.textContent = e.target.value;
+});
