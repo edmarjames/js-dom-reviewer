@@ -669,9 +669,12 @@ removeNew.addEventListener('click', () => {
     - the change event DOES NOT fire when you're TYPING.
     - note that if you want to handle every change of the value, you use the 'input' event instead.
 */
+// get the element with the id of 'sendMessageBtn'
 const sendMessageBtn = document.querySelector('#sendMessageBtn');
+// get the element with the id of 'input-message'
 const inputMessage = document.querySelector('#input-message');
 
+// add a 'change' event listener to the 'inputMessage' element
 inputMessage.addEventListener('change', (e) => {
     const yourMessage = document.querySelector('#your-message');
     yourMessage.textContent = e.target.value;
@@ -682,14 +685,19 @@ inputMessage.addEventListener('change', (e) => {
 /* 
     - a radio button fires the 'change' event after you select it
 */
+// get the element with the id of 'education'
 const education = document.querySelector('#education');
 
+// add a 'change' event listener to the 'education' element
 education.addEventListener('change', (e) => {
+    // get the element with the id of 'edu'
     const edu = document.querySelector('#edu');
     let eduString;
 
+    // store the target element to 'target' variable
     let target = e.target;
 
+    // switch case to determine which radio button has changed
     switch(target.id) {
         case 'undergraduate':
             eduString = 'You are an undergraduate';
@@ -702,6 +710,7 @@ education.addEventListener('change', (e) => {
             break;
     }
 
+    // update the textContent of 'edu' based on the result of switch case
     edu.textContent = eduString;
 });
 
@@ -710,14 +719,19 @@ education.addEventListener('change', (e) => {
 /* 
     - checkboxes fire the 'change' event after selection, whether checked or unchecked.
 */
+// get the element with the id of 'devices'
 const devices = document.querySelector('#devices');
+// get the element with the id of 'gadgets'
 const gadgets = document.querySelector('#gadgets');
 
+// add a 'change' event listener to the 'devices' element
 devices.addEventListener('change', (e) => {
     let gadgetString;
 
+    // store the target element to 'target' variable
     let target = e.target;
 
+    // switch case to determine which checkbox has changed
     switch(target.id) {
         case 'pc':
         case 'laptop':
@@ -726,6 +740,7 @@ devices.addEventListener('change', (e) => {
             break;
     }
 
+    // update the textContent of 'gadgets' based on the result of switch case
     gadgets.textContent = `You have a ${gadgetString}`;
 });
 
@@ -734,9 +749,12 @@ devices.addEventListener('change', (e) => {
 /* 
     - the '<select>' element fires the 'change' event once the selection has completed
 */
+// get the element with the id of 'languages'
 const languages = document.querySelector('#languages');
+// get the element with the id of 'fav'
 const favorite = document.querySelector('#fav');
 
+// add a 'change' event listener to the 'languages' element
 languages.addEventListener('change', (e) => {
     favorite.textContent = `Your favorite is ${e.target.value}`;
 });
@@ -747,13 +765,16 @@ languages.addEventListener('change', (e) => {
 /* 
     - the 'input' event fires every time whenever the value of the '<input>', '<select>', or '<textarea>' element changes
     - unlike the 'change' event that only fires when the value is committed.
-    - the 'input' event fires whenever the value changes.
-    - if you're typing on the '<input>' element, the element fires the 'input' event continuously.
-    - However, the 'change' event only fires when the '<input>' element loses focus.
+    - the 'input' event fires WHENEVER the value changes.
+    - if you're typing on the '<input>' element, the element fires the 'input' event CONTINUOUSLY.
+    - However, the 'change' event only fires when the '<input>' element LOSES FOCUS.
 */
+// get the element with the id of 'email'
 const email = document.querySelector('#email');
+// get the element with the id of 'composed-email'
 const composedEmail = document.querySelector('#composed-email');
 
+// add a 'input' event listener to the 'email' element
 email.addEventListener('input', (e) => {
     composedEmail.textContent = e.target.value;
 });
