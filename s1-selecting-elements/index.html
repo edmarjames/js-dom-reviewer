@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+    <!-- typeit CDN -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
     <title>Session 1 - Selecting elements</title>
 </head>
 <body>
@@ -59,6 +62,41 @@
             <button id="resetBtn" type="reset" class="button-layout">Reset</button>
         </div>
 
+        <!-- Syntax cards -->
+        <h2>Here are the syntax</h2>
+        <div class="row">
+            <div class="result" id="getElementByIdSyntax">
+                <h3>Using <em>getElementById</em></h3>
+                <h5>Syntax: document.getElementById('elementId');</h5>
+            </div>
+            <div class="result" id="getElementsByNameSyntax">
+                <h3>Using <em>getElementsByName</em></h3>
+                <h5>Syntax: document.getElementById('document.getElementsByName('nameAttribute');</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="result" id="getElementsByTagNameSyntax">
+                <h3>Using <em>getElementsByTagName</em></h3>
+                <h5>Syntax: document.getElementsByTagName('tagName');</h5>
+            </div>
+            <div class="result" id="getElementsByClassNameSyntax">
+                <h3>Using <em>getElementsByClassName</em></h3>
+                <h5>Syntax: document.getElementsByClassName('className');</h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="result" id="querySelectorSyntax">
+                <h3>Using <em>querySelector</em></h3>
+                <h5>Syntax: document.querySelector('cssSelector');</h5>
+            </div>
+            <div class="result" id="querySelectorAllSyntax">
+                <h3>Using <em>querySelectorAll</em></h3>
+                <h5>Syntax: document.querySelectorAll('cssSelector');</h5>
+            </div>
+        </div>
+
         <!-- footer -->
         <h3>languages used for this page</h3>
         <div class="icon-container">
@@ -75,7 +113,7 @@
                 <small>JavaScript</small>
             </div>
         </div>
-        <p><span>Copyright &#169; 2023, All rights reserved.</span></p>
+        <p><span id="copyright">Copyright &#169; 2023, All rights reserved.</span></p>
     </div>
 
     <!-- External JS -->

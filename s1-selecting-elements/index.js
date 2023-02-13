@@ -19,6 +19,12 @@ function getContainer() {
 }
 getContainer();
 
+// generate dynamic typing effect
+new TypeIt("#getElementByIdSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+  }).go();
+
 function getNullId() {
     // This will return null since the id selected is not existing on the document
     const firstElement = document.getElementById('first');
@@ -111,6 +117,12 @@ function getElementByNameSelector() {
 }
 getElementByNameSelector();
 
+// generate dynamic typing effect
+new TypeIt("#getElementsByNameSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 
 // 3. getElementsByTagName
 
@@ -134,6 +146,12 @@ function getElementsByTagNameSelector() {
     });
 }
 getElementsByTagNameSelector();
+
+// generate dynamic typing effect
+new TypeIt("#getElementsByTagNameSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 
 // 4. getElementsByClassName
@@ -183,6 +201,13 @@ function resetSelected() {
 }
 resetSelected();
 
+// generate dynamic typing effect
+new TypeIt("#getElementsByClassNameSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
+
 // 5. querySelector
 
 /* 
@@ -211,11 +236,18 @@ resetSelected();
 */
 function useQuerySelector() {
     // get the 'span' element
-    const copyright = document.querySelector('span');
+    const copyright = document.querySelector('#copyright');
     // assign it's CSS class
     copyright.className = "copyright";
 };
 useQuerySelector();
+
+// generate dynamic typing effect
+new TypeIt("#querySelectorSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 
 // 6. querySelectorAll
 
@@ -234,3 +266,9 @@ function useQuerySelectorAll() {
     }
 };
 useQuerySelectorAll();
+
+// generate dynamic typing effect
+new TypeIt("#querySelectorAllSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
