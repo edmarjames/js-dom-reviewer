@@ -9,20 +9,32 @@
         document.getElementById('elementId');
         NOTE: the id is case-sensitive. For example the 'root' and 'Root' are totally different
 */
-
+// get the element with the id of 'container'
 const container = document.getElementById('container');
-console.log(container);
-container.className = "myContainer";
+function getContainer() {
+    // print the 'container' element on the console
+    console.log(container);
+    // assign the CSS class
+    container.className = "myContainer";
+}
+getContainer();
 
-// This will return null since the id selected is not existing on the document
-const firstElement = document.getElementById('first');
-console.log(firstElement);
+function getNullId() {
+    // This will return null since the id selected is not existing on the document
+    const firstElement = document.getElementById('first');
+    console.log(firstElement);
+}
+getNullId();
 
 /* 
     If your HTML document has multiple elements with the same id, the method returns the first element it encounters.
 */
-const message = document.getElementById('message');
-console.log(message.innerHTML);
+function getFirstElementById() {
+    // get the element with the id of 'message'
+    const message = document.getElementById('message');
+    console.log(message.innerHTML);
+}
+getFirstElementById();
 
 
 // 2. getElementsByName
@@ -35,60 +47,69 @@ console.log(message.innerHTML);
     Syntax:
         document.getElementsByName('nameAttribute');
 */
-const btn = document.getElementById('submitBtn');
+function getElementByNameSelector() {
+    // get the element with the id of 'submitBtn'
+    const btn = document.getElementById('submitBtn');
 
-btn.addEventListener('click', () => {
-    let themes = document.getElementsByName('theme');
+    // add a 'click' event listener to 'btn' element
+    btn.addEventListener('click', () => {
+        // get all elements with the name of 'theme'
+        let themes = document.getElementsByName('theme');
 
-    themes.forEach(color => {
-        if (color.checked) {
-            container.style.backgroundColor = color.value;
-            if (color.value === "#131313") {
-                const para = document.getElementsByTagName('p');
-                for (const p of para) {
-                    p.style.color = "white";
+        // loop through to the 'themes'
+        themes.forEach(color => {
+            if (color.checked) {
+                container.style.backgroundColor = color.value;
+                // changes the color of text to white
+                if (color.value === "#131313") {
+                    const para = document.getElementsByTagName('p');
+                    for (const p of para) {
+                        p.style.color = "white";
+                    }
+                    const heading = document.getElementsByTagName('h3');
+                    for (const h of heading) {
+                        h.style.color = "white";
+                    }
+                    const label = document.getElementsByTagName('label');
+                    for (const l of label) {
+                        l.style.color = "white";
+                    }
+                    const icons = document.querySelectorAll('.icon-container i');
+                    for (const i of icons) {
+                        i.style.color = "white";
+                    }
+                    const small = document.getElementsByTagName('small');
+                    for (const s of small) {
+                        s.style.color = "white";
+                    }
+                // changes the color of text to black
+                } else {
+                    const para = document.getElementsByTagName('p');
+                    for (const p of para) {
+                        p.style.color = "black";
+                    }
+                    const heading = document.getElementsByTagName('h3');
+                    for (const h of heading) {
+                        h.style.color = "black";
+                    }
+                    const label = document.getElementsByTagName('label');
+                    for (const l of label) {
+                        l.style.color = "black";
+                    }
+                    const icons = document.querySelectorAll('.icon-container i');
+                    for (const i of icons) {
+                        i.style.color = "black";
+                    }
+                    const small = document.getElementsByTagName('small');
+                    for (const s of small) {
+                        s.style.color = "black";
+                    }
                 }
-                const heading = document.getElementsByTagName('h3');
-                for (const h of heading) {
-                    h.style.color = "white";
-                }
-                const label = document.getElementsByTagName('label');
-                for (const l of label) {
-                    l.style.color = "white";
-                }
-                const icons = document.querySelectorAll('.icon-container i');
-                for (const i of icons) {
-                    i.style.color = "white";
-                }
-                const small = document.getElementsByTagName('small');
-                for (const s of small) {
-                    s.style.color = "white";
-                }
-            } else {
-                const para = document.getElementsByTagName('p');
-                for (const p of para) {
-                    p.style.color = "black";
-                }
-                const heading = document.getElementsByTagName('h3');
-                for (const h of heading) {
-                    h.style.color = "black";
-                }
-                const label = document.getElementsByTagName('label');
-                for (const l of label) {
-                    l.style.color = "black";
-                }
-                const icons = document.querySelectorAll('.icon-container i');
-                for (const i of icons) {
-                    i.style.color = "black";
-                }
-                const small = document.getElementsByTagName('small');
-                for (const s of small) {
-                    s.style.color = "black";
-                }
-            }
-        } 
+            } 
+        });
     });
-});
+}
+getElementByNameSelector();
 
 
 // 3. getElementsByTagName
@@ -100,12 +121,19 @@ btn.addEventListener('click', () => {
     Syntax:
         document.getElementsByTagName('tagName');
 */
-const countBtn = document.getElementById('countBtn');
+function getElementsByTagNameSelector() {
+    // get the element with the id of 'countBtn'
+    const countBtn = document.getElementById('countBtn');
 
-countBtn.addEventListener('click', () => {
-    let totalCount = document.getElementsByTagName('p');
-    alert(`The total number of paragraphs is ${totalCount.length}`);
-});
+    // add a 'click' event listener to 'countBtn' element
+    countBtn.addEventListener('click', () => {
+        // get all 'p' elements and store it to 'totalCount' variable
+        let totalCount = document.getElementsByTagName('p');
+        // shows how many 'p' elements in the document
+        alert(`The total number of paragraphs is ${totalCount.length}`);
+    });
+}
+getElementsByTagNameSelector();
 
 
 // 4. getElementsByClassName
@@ -119,23 +147,41 @@ countBtn.addEventListener('click', () => {
         document.getElementsByClassName('className');
         NOTE: to use multiple class names, you separate them by space
 */
+// get the element with the id of 'languages'
 const select = document.getElementById('languages');
-const selectBtn = document.getElementById('selectBtn');
-const resetBtn = document.getElementById('resetBtn');
 
-selectBtn.addEventListener('click', () => {
-    const options = Array.from(select.getElementsByClassName('lang'));
-    const languages = options.map(lang => {
-        if (lang.selected) {
-            return lang.innerText;
-        }
-    }).filter(x => x);
-    alert(`You selected ${languages} `);
-});
+function getElementsByClassNameSelector() {
+    
+    // get the element with the id of 'selectBtn'
+    const selectBtn = document.getElementById('selectBtn');
+    // get the element with the id of 'resetBtn'
+    const resetBtn = document.getElementById('resetBtn');
 
-resetBtn.addEventListener('click', () => {
-    select.selectedIndex = -1;
-});
+    // add a 'click' event listener to 'selectBtn' element
+    selectBtn.addEventListener('click', () => {
+        // get all elements with the class of 'lang' and convert the return value to an array
+        const options = Array.from(select.getElementsByClassName('lang'));
+        // loop through the options array
+        const languages = options.map(lang => {
+            // checks if the option is selected
+            if (lang.selected) {
+                return lang.innerText;
+            }
+        }).filter(x => x);
+        // shows the selected options
+        alert(`You selected ${languages} `);
+    });
+}
+getElementsByClassNameSelector();
+
+function resetSelected() {
+    // add a 'click' event listener to 'resetBtn' element
+    resetBtn.addEventListener('click', () => {
+        // resets the selected options
+        select.selectedIndex = -1;
+    });
+}
+resetSelected();
 
 // 5. querySelector
 
@@ -163,8 +209,13 @@ resetBtn.addEventListener('click', () => {
         NOTE: We can also group multiple selectors, just separate them with commas
         document.querySelector('div, p');
 */
-const copyright = document.querySelector('span');
-copyright.className = "copyright";
+function useQuerySelector() {
+    // get the 'span' element
+    const copyright = document.querySelector('span');
+    // assign it's CSS class
+    copyright.className = "copyright";
+};
+useQuerySelector();
 
 // 6. querySelectorAll
 
@@ -173,7 +224,13 @@ copyright.className = "copyright";
     - this method returns a "STATIC" nodelist of elements that match the CSS selector. If no element matches, it returns an empty NodeList.
 
 */
-const icons = document.querySelectorAll('.icon-container i');
-for (let i = 0; i < icons.length; i++) {
-    icons[i].classList.add("icons");
-}
+function useQuerySelectorAll() {
+    // get all descending 'i' elements of 'icon-container' class
+    const icons = document.querySelectorAll('.icon-container i');
+    // loop through the 'icons'
+    for (let i = 0; i < icons.length; i++) {
+        // add a CSS class to each element
+        icons[i].classList.add("icons");
+    }
+};
+useQuerySelectorAll();
