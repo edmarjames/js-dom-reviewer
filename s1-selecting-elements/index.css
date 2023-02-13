@@ -1,13 +1,20 @@
+/* ----------- CSS reset ----------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* --------------------------------- */
 
+
+/* ---------- body section --------- */
 body {
     font-family: 'Montserrat', sans-serif;
 }
+/* --------------------------------- */
 
+
+/* -------- container section ------- */
 .myContainer {
     display: flex;
     flex-direction: column;
@@ -33,7 +40,10 @@ body {
 .myContainer input {
     margin: 0 10px;
 }
+/* --------------------------------- */
 
+
+/* ---------- theme section -------- */
 .button-layout {
     display: block;
     margin: 5px auto;
@@ -51,7 +61,10 @@ body {
 code {
     text-transform: lowercase;
 }
+/* --------------------------------- */
 
+
+/* ------- languages section ------- */
 #languages {
     width: 50%;
     text-align: center;
@@ -71,7 +84,10 @@ code {
     width: 50%;
     padding: 5px;
 }
+/* --------------------------------- */
 
+
+/* --------- footer section -------- */
 .copyright {
     font-size: 13px;
     font-weight: 500;
@@ -102,3 +118,4 @@ code {
     justify-content: center;
     align-items: center;
 }
+/* --------------------------------- */
