@@ -42,6 +42,12 @@ function getFirstChild() {
 };
 getFirstChild();
 
+// generate dynamic typing effect
+new TypeIt("#firstChildSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 /* 
     The console window show #text because a text node is inserted to maintain the whitespace between the opening <ul> and <li> tags. This whitespace creates a #text node
 
@@ -62,6 +68,12 @@ function getFirstElementChild() {
 };
 getFirstElementChild();
 
+// generate dynamic typing effect
+new TypeIt("#firstElementChildSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 /* 
     lastChild
     - to get the last child element of a node
@@ -77,6 +89,12 @@ function getLastChild() {
 };
 getLastChild();
 
+// generate dynamic typing effect
+new TypeIt("#lastChildSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 /* 
     lastElementChild
     - to get the last child element with the element node type
@@ -90,6 +108,12 @@ function getLastElementChild() {
     console.log(field.lastElementChild);
 };
 getLastElementChild();
+
+// generate dynamic typing effect
+new TypeIt("#lastElementChildSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 /* 
     childNodes
@@ -105,6 +129,12 @@ function getChildNodes() {
 };
 getChildNodes();
 
+// generate dynamic typing effect
+new TypeIt("#childNodesSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 /* 
     children
     - to get the child element with only the element node type
@@ -119,6 +149,11 @@ function getChildren() {
 };
 getChildren();
 
+// generate dynamic typing effect
+new TypeIt("#childrenSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 3. nextElementSibling, previousElementSibling
 // Selecting Siblings
@@ -139,6 +174,13 @@ function getNextElementSibling() {
     console.log(current.nextElementSibling);
 };
 getNextElementSibling();
+
+// generate dynamic typing effect
+new TypeIt("#nextElementSiblingSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 
 /* 
     To get all the next siblings of an element you can use the following code
@@ -174,6 +216,12 @@ function getPreviousElementSibling() {
     console.log(loveToTry.previousElementSibling);
 };
 getPreviousElementSibling();
+
+// generate dynamic typing effect
+new TypeIt("#previousElementSiblingSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 /* 
     To get all siblings of an element, we'll use this logic

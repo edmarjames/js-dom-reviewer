@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+    <!-- TypeIt CDN -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
     <title>Session 2 - Traversing elements</title>
 </head>
 <body>
@@ -37,12 +40,12 @@
 
         <!-- Syntax cards -->
         <div class="row">
-            <div class="result">
+            <div class="result" id="firstChildSyntax">
                 <h3>Using <em>firstChild</em></h3>
                 <h5>The firstChild of UL is</h5>
                 <h5>#text</h5>
             </div>
-            <div class="result">
+            <div class="result" id="firstElementChildSyntax">
                 <h3>Using <em>firstElementChild</em></h3>
                 <h5>The firstElementChild of UL is</h5>
                 <li>Web Development</li>
@@ -50,12 +53,12 @@
         </div>
         
         <div class="row">
-            <div class="result">
+            <div class="result" id="lastChildSyntax">
                 <h3>Using <em>lastChild</em></h3>
                 <h5>The lastChild of UL is</h5>
                 <h5>#text</h5>
             </div>
-            <div class="result">
+            <div class="result" id="lastElementChildSyntax">
                 <h3>Using <em>lastElementChild</em></h3>
                 <h5>The lastElementChild of UL is</h5>
                 <li>Game Development</li>
@@ -63,7 +66,7 @@
         </div>
         
         <div class="row">
-            <div class="result">
+            <div class="result" id="childNodesSyntax">
                 <h3>Using <em>childNodes</em></h3>
                 <h5>This are all the child nodes of UL with ANY node type</h5>
                 <code>text</code>
@@ -78,7 +81,7 @@
                 <code>li</code>
                 <code>text</code>
             </div>
-            <div class="result">
+            <div class="result" id="childrenSyntax">
                 <h3>Using <em>children</em></h3>
                 <h5>This are all the child nodes of UL with ELEMENT node type</h5>
                 <code>li</code>
@@ -90,12 +93,12 @@
         </div>
 
         <div class="row">
-            <div class="result">
+            <div class="result" id="nextElementSiblingSyntax">
                 <h3>Using <em>nextElementSibling</em></h3>
                 <h5>This is the next sibling element of the element with id="current"</h5>
                 <li>Mobile Development</li>
             </div>
-            <div class="result">
+            <div class="result" id="previousElementSiblingSyntax">
                 <h3>Using <em>previousElementSibling</em></h3>
                 <h5>This is the previous sibling element of the element with id="would-love-to-try"</h5>
                 <li>Web Development</li>
