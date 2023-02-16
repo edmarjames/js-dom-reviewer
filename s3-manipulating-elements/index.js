@@ -8,38 +8,69 @@
     Syntax:
         document.createElement('HTMLTagName');
 */
+// get the element with the class of 'myContainer'
 const container = document.querySelector(".myContainer");
+// create a 'div' element
 const square = document.createElement("div");
-square.className = "main-square";
-container.appendChild(square);
 
-// to add an id to a div, you set the id attribute of the element to a value. See example below.
+function useCreateElement() {
+  // assign the CSS class to 'square' element
+  square.className = "main-square";
+  // append the 'square' element to 'container' element
+  container.appendChild(square);
+};
+useCreateElement();
+
+// create a 'div' element
 const childSquare = document.createElement("div");
-childSquare.className = "child-square";
-childSquare.id = "first-child";
-square.appendChild(childSquare);
+function assignElementId() {
+  // assign the CSS class
+  childSquare.className = "child-square";
+  // to add an id to a div, you set the id attribute of the element to a value. See example below.
+  childSquare.id = "first-child";
+  // append 'childSquare' to 'square' element
+  square.appendChild(childSquare);
+};
+assignElementId();
 
-// to add a CSS class use 'className'. See example below.
+// create a 'div' element
 const alternateChildSquare = document.createElement("div");
-alternateChildSquare.className = "child-square-alternate";
-alternateChildSquare.id = "middle-child";
-childSquare.appendChild(alternateChildSquare);
+function assignElementClass(assignElementId) {
+  // to add a CSS class use 'className'. See example below.
+  alternateChildSquare.className = "child-square-alternate";
+  // assign the id of element
+  alternateChildSquare.id = "middle-child";
+  // append 'alternateChildSquare' to 'childSquare' element
+  childSquare.appendChild(alternateChildSquare);
+};
+assignElementClass();
 
-// to add a piece of text, you can use the innerHTML property. See example below.
+// create a 'div' element
 const innerChildSquare = document.createElement("div");
-innerChildSquare.className = "child-square";
-innerChildSquare.id = "last-child";
-innerChildSquare.innerHTML =
-  "This squares are created using <em>createElement</em>";
-alternateChildSquare.appendChild(innerChildSquare);
+function assignInnerHTML() {
+  // assign the CSS class
+  innerChildSquare.className = "child-square";
+  // assign the id of element
+  innerChildSquare.id = "last-child";
+  // to add a piece of text, you can use the innerHTML property. See example below.
+  innerChildSquare.innerHTML =
+    "This squares are created using <em>createElement</em>";
+  // append 'innerChildSquare' to 'alternateChildSquare'
+  alternateChildSquare.appendChild(innerChildSquare);
+};
+assignInnerHTML();
+
 
 // If you want to load a JavaScript file dynamically. You can do that using "createElement" to create the script element and add it to the document.
 
 // first create a function that creates a script and assign it's attributes one by one
 function loadJS(url) {
+  // create a 'script' element
   let script = document.createElement("script");
+  // assign its 'src' attribute
   script.src = url;
   script.async = true;
+  // append the 'script' element to the body
   document.body.appendChild(script);
 }
 
@@ -56,24 +87,38 @@ loadJS("./hello.js");
     Syntax:
         parentNode.appendChild(childNode);
 */
+// get the element with the id of 'choices'
 const choices = document.querySelector("#choices");
 
 function createChoices(content, id) {
+  // create a 'li' element
   let li = document.createElement("li");
+
+  // create a 'input' element
   let radio = document.createElement("input");
+  // assign it's 'radio' type attribute
   radio.type = "radio";
+  // assign it's name attribute
   radio.name = "answer";
+  // assign it's id attribute
   radio.id = id;
 
+  // create a 'label' element
   let label = document.createElement("label");
+  // assign it's id attribute
   label.for = id;
+  // assign it's textContent
   label.textContent = content;
 
+  // append the created radio button and label to 'li'
   li.appendChild(radio);
   li.appendChild(label);
+
+  // return the 'li' element
   return li;
 }
 
+// append new 'li' elements to 'choices' element by invoking the 'createChoices' function and passing arguments
 choices.appendChild(createChoices("2 (two)", "answer-1"));
 choices.appendChild(createChoices("4 (four)", "answer-2"));
 choices.appendChild(createChoices("3 (three)", "answer-3"));
@@ -87,17 +132,23 @@ choices.appendChild(createChoices("3 (three)", "answer-3"));
     Syntax:
         node.textContent;
 */
-console.log("\t\t This is the textContent of container \n\n".toUpperCase());
-console.log(container.textContent);
-// As you can see on the console, it returns the concatenation of the textContent of every child node, excluding comments (and also processing instructions).
+function getTextContent() {
+  console.log("\t\t This is the textContent of container \n\n".toUpperCase());
+  console.log(container.textContent);
+  // As you can see on the console, it returns the concatenation of the textContent of every child node, excluding comments (and also processing instructions).
+};
+getTextContent();
 
 /* 
     To SET the text content of a node here is the syntax
     Syntax:
         element.textContent = "string";
 */
-innerChildSquare.textContent = "This is the innermost child square";
-// when you set textContent on a node, all the  node's children will be removed and replaced by a single text node.
+function setTextContent() {
+  innerChildSquare.textContent = "This is the innermost child square";
+  // when you set textContent on a node, all the  node's children will be removed and replaced by a single text node.
+};
+setTextContent();
 
 /* 
     - on the other hand, the "innerText" takes the CSS style into account and returns only human readable text.
@@ -105,8 +156,11 @@ innerChildSquare.textContent = "This is the innermost child square";
     Syntax:
         element.innerText;
 */
-console.log("\n\t\t These are the innerText of container \n\n".toUpperCase());
-console.log(container.innerText);
+function getInnerText() {
+  console.log("\n\t\t These are the innerText of container \n\n".toUpperCase());
+  console.log(container.innerText);
+};
+getInnerText();
 
 
 /* 4. innerHTML
@@ -117,20 +171,30 @@ console.log(container.innerText);
     Syntax:
         element.innerHTML;
 */
-console.log(
-  '\n\t\t This is the innerHTML of element with id="choices" \n\n'.toUpperCase()
-);
-console.log(choices.innerHTML);
+function getInnerHTML() {
+  console.log(
+    '\n\t\t This is the innerHTML of element with id="choices" \n\n'.toUpperCase()
+  );
+  console.log(choices.innerHTML);
+};
+getInnerHTML();
 
 /* 
     Setting the innerHTML property of an element
     Syntax:
         element.innerHTML = "HtmlMarkup"
 */
-const how = document.createElement("h2");
-how.innerHTML = "Here's how to <em>manipulate</em> the elements";
-how.id = "how";
-container.appendChild(how);
+function setInnerHTML() {
+  // create a 'h2' element
+  const how = document.createElement("h2");
+  // assign it's 'innerHTML'
+  how.innerHTML = "Here's how to <em>manipulate</em> the elements";
+  // assign it's id
+  how.id = "how";
+  // append the 'how' element to the body
+  container.appendChild(how);
+};
+setInnerHTML();
 
 /* 
     - The setting will replace the existing content of an element with the new content
@@ -152,33 +216,57 @@ container.appendChild(how);
     - createElement is more performant, you can create new elements to a div element by creating an element and appending it
     - createElement is more secure, you should only use innerHTML when the data comes from a trusted source like a database.
 */
+// create a 'div' element
 let row = document.createElement("div");
-row.className = "row";
-container.appendChild(row);
+
+function createRow() {
+  // assign it's CSS class
+  row.className = "row";
+  // append the 'row' to 'container' element
+  container.appendChild(row);
+};
+createRow();
 
 /* 
     - You can also manipulate an element's HTML directly using innerHTML
     - using innerHTML is cleaner and shorter when you want to add attributes to the element.
     - however, using innerHTML causes the web browsers to reparse and recreate all DOM nodes inside the div element. Therefore, it is less efficient than creating a new element and appending to the div. In other words, creating a new element and appending it to the DOM tree provides better performance.
 */
-row.innerHTML =
+function rowInnerHTML() {
+  // insert content to 'row' element using 'innerHTML'
+  row.innerHTML =
   '<div class="result"><h3>Using <em>createElement</em><br><small>Syntax: document.createElement("HtmlTag")</small></h3></div>';
-row.innerHTML +=
-  '<div class="result"><h3>Using <em>appendChild</em><br><small>Syntax: parentNode.appendChild(childNode)</small></h3></div>';
+  row.innerHTML +=
+    '<div class="result"><h3>Using <em>appendChild</em><br><small>Syntax: parentNode.appendChild(childNode)</small></h3></div>';
+};
+rowInnerHTML();
 
 // Create a new container and append it to the body
 const newContainer = document.createElement("div");
-newContainer.className = "newContainer";
-document.body.appendChild(newContainer);
+function createNewContainer() {
+  // assign the CSS class
+  newContainer.className = "newContainer";
+  document.body.appendChild(newContainer);
+};
+createNewContainer();
 
 // Create a new row and append it to the new container
 let row_2 = document.createElement("div");
-row_2.className = "row";
-newContainer.appendChild(row_2);
-row_2.innerHTML =
+function createSecondRow() {
+  // assign the CSS class
+  row_2.className = "row";
+  newContainer.appendChild(row_2);
+};
+createSecondRow();
+
+function secondRowInnerHTML() {
+  // insert content to 'row_2' element using 'innerHTML'
+  row_2.innerHTML =
   '<div class="result"><h3>Using <em>textContent</em><br><small>Syntax: document.textContent = "string"</small></h3></div>';
-row_2.innerHTML +=
-  '<div class="result"><h3>Using <em>innerHTML</em><br><small>Syntax: document.innerHTML = "HtmlMarkup"</small></h3></div>';
+  row_2.innerHTML +=
+    '<div class="result"><h3>Using <em>innerHTML</em><br><small>Syntax: document.innerHTML = "HtmlMarkup"</small></h3></div>';
+};
+secondRowInnerHTML();
 
 
 // 6. DocumentFragment
@@ -195,14 +283,24 @@ row_2.innerHTML +=
         let fragment = document.createDocumentFragment();
 */
 
-let fragment = document.createDocumentFragment();
-for (let ctr = 1; ctr < 6; ctr++) {
-  let text = document.createElement("small");
-  text.innerHTML = `<br> ${ctr} this is the innermost child square<br>`;
-  fragment.appendChild(text);
-}
+function useDocumentFragment() {
+  // create a 'DocumentFragment'
+  let fragment = document.createDocumentFragment();
 
-innerChildSquare.appendChild(fragment);
+  for (let ctr = 1; ctr < 6; ctr++) {
+    // create a 'small' element
+    let text = document.createElement("small");
+    // assign it's 'innerHTML'
+    text.innerHTML = `<br> ${ctr} this is the innermost child square<br>`;
+    // append the create elements to 'fragment' element
+    fragment.appendChild(text);
+  }
+
+  // append the 'fragment' to 'innerChildSquare' element
+  innerChildSquare.appendChild(fragment);
+};
+useDocumentFragment();
+
 /* 
     -In this example, we composed the DOM nodes by using the DocumentFragment object and append the fragment to the active DOM tree once at the end.
     - A fragment does not link to the active DOM tree, therefore it doesn't incur any performance.
@@ -221,69 +319,75 @@ innerChildSquare.appendChild(fragment);
         OR
         element.after(node1, node2, node3, ...nodeN);
 */
+function useAfter() {
+  // create a div and assign the result class
+  const div = document.createElement("div");
+  div.className = "result";
+  div.innerHTML = '<h3 id="heading-after">Using <em>after</em></h3>';
 
-// create a div and assign the result class
-const div = document.createElement("div");
-div.className = "result";
-div.innerHTML = '<h3 id="heading-after">Using <em>after</em></h3>';
+  // create a div, assign it with the row class and append it to the new container
+  let row_3 = document.createElement("div");
+  row_3.className = "row";
+  newContainer.appendChild(row_3);
 
-// create a div, assign it with the row class and append it to the new container
-let row_3 = document.createElement("div");
-row_3.className = "row";
-newContainer.appendChild(row_3);
+  // append the div to the new row_3
+  row_3.appendChild(div);
 
-// append the div to the new row_3
-row_3.appendChild(div);
+  // select the heading inside result-div
+  const afterHeading = document.getElementById("heading-after");
 
-// select the heading inside result-div
-const afterHeading = document.getElementById("heading-after");
-// create a subheading
-const syntax = document.createElement("h3");
-syntax.innerHTML = "<small>Syntax: element.after(node)</small>";
+  // create a subheading
+  const syntax = document.createElement("h3");
+  syntax.innerHTML = "<small>Syntax: element.after(node)</small>";
 
-// insert the subheading after the selected heading
-afterHeading.after(syntax);
+  // insert the subheading after the selected heading
+  afterHeading.after(syntax);
+};
+useAfter();
 
 
 // 7.1 using after to insert multiple nodes after an element
 
-// create an array of objects for the new choices
-const moreChoices = [
-  {
-    content: "5 (five)",
-    id: "answer-4",
-  },
-  {
-    content: "6 (six)",
-    id: "answer-5",
-  },
-];
+function appendMultipleElementsUsingAfter() {
+  // create an array of objects for the new choices
+  const moreChoices = [
+    {
+      content: "5 (five)",
+      id: "answer-4",
+    },
+    {
+      content: "6 (six)",
+      id: "answer-5",
+    },
+  ];
 
-// map the moreChoices array
-const items = moreChoices.map((item) => {
-  // create an li element
-  const li = document.createElement("li");
+  // map the moreChoices array
+  const items = moreChoices.map((item) => {
+    // create an li element
+    const li = document.createElement("li");
 
-  // create a radio input element and assign its properties
-  const radio = document.createElement("input");
-  radio.type = "radio";
-  (radio.name = "answer"), (radio.id = item.id);
+    // create a radio input element and assign its properties
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    (radio.name = "answer"), (radio.id = item.id);
 
-  // create a label element and assign its properties
-  const label = document.createElement("label");
-  label.textContent = item.content;
-  label.for = item.id;
+    // create a label element and assign its properties
+    const label = document.createElement("label");
+    label.textContent = item.content;
+    label.for = item.id;
 
-  // append the radio and label to the li element
-  li.appendChild(radio);
-  li.appendChild(label);
+    // append the radio and label to the li element
+    li.appendChild(radio);
+    li.appendChild(label);
 
-  // return the new li element
-  return li;
-});
+    // return the new li element
+    return li;
+  });
 
-// append the new li elements on the lastChild of choices
-choices.lastChild.after(...items);
+  // append the new li elements on the lastChild of choices
+  choices.lastChild.after(...items);
+}
+appendMultipleElementsUsingAfter();
 
 
 // 8. append
@@ -298,42 +402,47 @@ choices.lastChild.after(...items);
         parentNode.append(...DOMString);
 */
 
-// create an array of objects for the new choices
-const moreChoices_2 = [
-  {
-    content: "7 (seven)",
-    id: "answer-5",
-  },
-  {
-    content: "8 (eight)",
-    id: "answer-6",
-  },
-];
+function useAppend() {
+  // create an array of objects for the new choices
+  const moreChoices_2 = [
+    {
+      content: "7 (seven)",
+      id: "answer-5",
+    },
+    {
+      content: "8 (eight)",
+      id: "answer-6",
+    },
+  ];
 
-// map the moreChoices array
-const items_2 = moreChoices_2.map((item) => {
-  // create an li element
-  const li = document.createElement("li");
+  // map the moreChoices array
+  const items_2 = moreChoices_2.map((item) => {
+    // create an li element
+    const li = document.createElement("li");
 
-  // create a radio input element and assign its properties
-  const radio = document.createElement("input");
-  radio.type = "radio";
-  (radio.name = "answer"), (radio.id = item.id);
+    // create a radio input element and assign its properties
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    (radio.name = "answer"), (radio.id = item.id);
 
-  // create a label element and assign its properties
-  const label = document.createElement("label");
-  label.textContent = item.content;
-  label.for = item.id;
+    // create a label element and assign its properties
+    const label = document.createElement("label");
+    label.textContent = item.content;
+    label.for = item.id;
 
-  // append the radio and label to the li element
-  li.appendChild(radio);
-  li.appendChild(label);
+    // append the radio and label to the li element
+    li.appendChild(radio);
+    li.appendChild(label);
 
-  // return the new li element
-  return li;
-});
+    // return the new li element
+    return li;
+  });
 
-choices.append(...items_2);
+  // use 'append' to append created elements at the end
+  choices.append(...items_2);
+};
+useAppend();
+
 
 // IMPORTANT: DIFFERENCE BETWEEN append and appendChild
 
@@ -368,40 +477,45 @@ choices.append(...items_2);
         parentNode.prepend(...DOMStrings);
 */
 
-// create an array of objects for the new choices
-const moreChoices_3 = [
-  {
-    content: "0 (zero)",
-    id: "answer-7",
-  },
-  {
-    content: "1 (one)",
-    id: "answer-8",
-  },
-];
-const items_3 = moreChoices_3.map((item) => {
-  // create an li element
-  const li = document.createElement("li");
+function usePrepend() {
+  // create an array of objects for the new choices
+  const moreChoices_3 = [
+    {
+      content: "0 (zero)",
+      id: "answer-7",
+    },
+    {
+      content: "1 (one)",
+      id: "answer-8",
+    },
+  ];
 
-  // create a radio input element and assign its properties
-  const radio = document.createElement("input");
-  radio.type = "radio";
-  (radio.name = "answer"), (radio.id = item.id);
+  const items_3 = moreChoices_3.map((item) => {
+    // create an li element
+    const li = document.createElement("li");
 
-  // create a label element and assign its properties
-  const label = document.createElement("label");
-  label.textContent = item.content;
-  label.for = item.id;
+    // create a radio input element and assign its properties
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    (radio.name = "answer"), (radio.id = item.id);
 
-  // append the radio and label to the li element
-  li.appendChild(radio);
-  li.appendChild(label);
+    // create a label element and assign its properties
+    const label = document.createElement("label");
+    label.textContent = item.content;
+    label.for = item.id;
 
-  // return the new li element
-  return li;
-});
+    // append the radio and label to the li element
+    li.appendChild(radio);
+    li.appendChild(label);
 
-choices.prepend(...items_3);
+    // return the new li element
+    return li;
+  });
+
+  // use 'prepend' to append created elements at the beginning
+  choices.prepend(...items_3);
+};
+usePrepend();
 
 
 // 10. insertAdjacentHTML
@@ -428,47 +542,50 @@ choices.prepend(...items_3);
     2. text - is a string that parses as HTML or XML. It cannot be node objects
 */
 
-// create a new div and assign the footer class
-const tools = document.createElement("div");
-tools.className = "footer";
+function useInsertAdjacentHTML() {
+  // create a new div and assign the footer class
+  const tools = document.createElement("div");
+  tools.className = "footer";
 
-// append the tools to the newContainer
-newContainer.appendChild(tools);
+  // append the tools to the newContainer
+  newContainer.appendChild(tools);
 
-// create a div and assign the icon-container class
-const iconContainer = document.createElement("div");
-iconContainer.className = "icon-container";
+  // create a div and assign the icon-container class
+  const iconContainer = document.createElement("div");
+  iconContainer.className = "icon-container";
 
-// tools.insertAdjacentHTML('beforebegin', '<hr>');
+  // tools.insertAdjacentHTML('beforebegin', '<hr>');
 
-// insert a heading before the first child of the element
-tools.insertAdjacentHTML(
-  "afterbegin",
-  '<h3 id="tools-header">Tools used for this page</h3>'
-);
+  // insert a heading before the first child of the element
+  tools.insertAdjacentHTML(
+    "afterbegin",
+    '<h3 id="tools-header">Tools used for this page</h3>'
+  );
 
-// select the inserted header
-const toolsHeader = document.querySelector("#tools-header");
+  // select the inserted header
+  const toolsHeader = document.querySelector("#tools-header");
 
-// insert the iconContainer after the toolsHeader
-toolsHeader.after(iconContainer);
+  // insert the iconContainer after the toolsHeader
+  toolsHeader.after(iconContainer);
 
-// insert the icons using 'afterbegin' and 'beforeend' to the iconContainer
-iconContainer.insertAdjacentHTML(
-  "afterbegin",
-  '<div class="icon-holder"><i class="bx bxl-visual-studio icons"></i><small>VS code</small></div>'
-);
-iconContainer.insertAdjacentHTML(
-  "beforeend",
-  '<div class="icon-holder"><i class="bx bxl-chrome icons"></i></i><small>Chrome dev tools</small></div>'
-);
-iconContainer.insertAdjacentHTML(
-  "beforeend",
-  '<div class="icon-holder"><i class="bx bxs-server icons"></i><small>Live server</small></div>'
-);
+  // insert the icons using 'afterbegin' and 'beforeend' to the iconContainer
+  iconContainer.insertAdjacentHTML(
+    "afterbegin",
+    '<div class="icon-holder"><i class="bx bxl-visual-studio icons"></i><small>VS code</small></div>'
+  );
+  iconContainer.insertAdjacentHTML(
+    "beforeend",
+    '<div class="icon-holder"><i class="bx bxl-chrome icons"></i></i><small>Chrome dev tools</small></div>'
+  );
+  iconContainer.insertAdjacentHTML(
+    "beforeend",
+    '<div class="icon-holder"><i class="bx bxs-server icons"></i><small>Live server</small></div>'
+  );
 
-// insert a horizontal rule after the tools element
-tools.insertAdjacentHTML("afterend", "<hr>");
+  // insert a horizontal rule after the tools element
+  tools.insertAdjacentHTML("afterend", "<hr>");
+};
+useInsertAdjacentHTML();
 
 
 // 11. replaceChild
@@ -480,28 +597,32 @@ tools.insertAdjacentHTML("afterend", "<hr>");
     - parentNode.replaceChild(newChild, oldChild);
 */
 
-// create a new li element
-const lastChoice = document.createElement('li');
+function useReplaceChild() {
+  // create a new li element
+  const lastChoice = document.createElement('li');
 
-// create a label element and assign the textContent and for attributes
-const lastChoiceLabel = document.createElement('label');
-lastChoiceLabel.textContent = "9 (nine)";
-lastChoiceLabel.for = "answer-nine";
+  // create a label element and assign the textContent and for attributes
+  const lastChoiceLabel = document.createElement('label');
+  lastChoiceLabel.textContent = "9 (nine)";
+  lastChoiceLabel.for = "answer-nine";
 
-// create an input element and assign the type, name and id attribute
-const lastChoiceRadio = document.createElement('input');
-lastChoiceRadio.type = "radio";
-lastChoiceRadio.name = "answer";
-lastChoiceRadio.id = "answer-nine";
+  // create an input element and assign the type, name and id attribute
+  const lastChoiceRadio = document.createElement('input');
+  lastChoiceRadio.type = "radio";
+  lastChoiceRadio.name = "answer";
+  lastChoiceRadio.id = "answer-nine";
 
-// append the label and radio element to the li element
-lastChoice.appendChild(lastChoiceRadio);
-lastChoice.appendChild(lastChoiceLabel);
+  // append the label and radio element to the li element
+  lastChoice.appendChild(lastChoiceRadio);
+  lastChoice.appendChild(lastChoiceLabel);
 
-const lastChild = choices.lastElementChild;
+  // get the 'lastElementChild' of 'choices'
+  const lastChild = choices.lastElementChild;
 
-// replace the lastElementChild of the UL with the newly created one
-choices.replaceChild(lastChoice, lastChild)
+  // replace the 'lastElementChild' of the UL with the newly created one
+  choices.replaceChild(lastChoice, lastChild)
+};  
+useReplaceChild();
 
 
 // 12. cloneNode
@@ -522,15 +643,16 @@ choices.replaceChild(lastChoice, lastChild)
       - if you clone a node with an id attribute and place the cloned node in the same document, the id will be duplicate. In this case you need to change the id before adding it to the DOM tree.
 */
 
-// get the lastElementChild of newContainer
-const lastRow = newContainer.lastElementChild;
+function useCloneNode() {
+  // get the lastElementChild of newContainer
+  const lastRow = newContainer.lastElementChild;
   // traverse to the previousElementSibling
   const prevSibling = lastRow.previousElementSibling;
   // traverse again to the previousElementSibling
   const anotherPrevSibling = prevSibling.previousElementSibling;
 
-// clone the third to the last children of newContainer and pass true as deep
-const clonedRow = anotherPrevSibling.cloneNode(true);
+  // clone the third to the last children of newContainer and pass true as deep
+  const clonedRow = anotherPrevSibling.cloneNode(true);
   // create the cloned element
   const clonedRowFirstChild = clonedRow.firstElementChild;
   // create a header for the cloned element
@@ -539,8 +661,8 @@ const clonedRow = anotherPrevSibling.cloneNode(true);
   // put the new cloned element after the third to the last children of newContainer
   anotherPrevSibling.after(clonedRow);
 
-// create an h3 for the syntax label
-const clonedRowSyntax = document.createElement('h3');
+  // create an h3 for the syntax label
+  const clonedRowSyntax = document.createElement('h3');
   // assign it's innerHTML
   clonedRowSyntax.innerHTML = "<small>Syntax: element.append('...node')</small>"
 
@@ -548,6 +670,8 @@ const clonedRowSyntax = document.createElement('h3');
   const clonedRowHeader = document.querySelector("#cloned-row-header");
   // put the syntax label after the header
   clonedRowHeader.after(clonedRowSyntax);
+};
+useCloneNode();
 
 
 // 13. removeChild
@@ -567,10 +691,13 @@ const clonedRowSyntax = document.createElement('h3');
     parentNode.removeChild(childNode);
 */
 
-// select the firstElementChild of choices
-const choiceFirstElement = choices.firstElementChild
-// remove it using the removeChild method
-choices.removeChild(choiceFirstElement)
+function useRemoveChild() {
+  // select the 'firstElementChild' of choices
+  const choiceFirstElement = choices.firstElementChild
+  // remove it using the 'removeChild' method
+  choices.removeChild(choiceFirstElement)
+};
+useRemoveChild();
 
 
 // 13.1 to remove all child nodes
@@ -601,26 +728,29 @@ choices.removeChild(choiceFirstElement)
       - 'existingNode' is the node before which the new node is inserted. If the 'existingNode' is null, the insertBefore() inserts the newNode at the end of the parentNode's child nodes.
 */
 
-// create a new Li element
-const newChoice = document.createElement('li');
+function useInsertBefore() {
+  // create a new Li element
+  const newChoice = document.createElement('li');
 
-// create a new label element for the li and assign its attributes
-const newChoiceLabel = document.createElement('label');
-newChoiceLabel.textContent = "10 (ten)"
-newChoiceLabel.for = "answer-10"
+  // create a new label element for the li and assign its attributes
+  const newChoiceLabel = document.createElement('label');
+  newChoiceLabel.textContent = "10 (ten)"
+  newChoiceLabel.for = "answer-10"
 
-// create a new radio element for the li and assign its attributes
-const newChoiceRadio = document.createElement('input');
-newChoiceRadio.type = "radio";
-newChoiceRadio.name = "answer"
-newChoiceRadio.id = "answer-10"
+  // create a new radio element for the li and assign its attributes
+  const newChoiceRadio = document.createElement('input');
+  newChoiceRadio.type = "radio";
+  newChoiceRadio.name = "answer"
+  newChoiceRadio.id = "answer-10"
 
-// append the radio and label element to the newChoice li
-newChoice.appendChild(newChoiceRadio);
-newChoice.appendChild(newChoiceLabel);
+  // append the radio and label element to the newChoice li
+  newChoice.appendChild(newChoiceRadio);
+  newChoice.appendChild(newChoiceLabel);
 
-// insert the newChoice li before the firstElementChild of choices
-choices.insertBefore(newChoice, choices.firstElementChild);
+  // insert the newChoice li before the firstElementChild of choices
+  choices.insertBefore(newChoice, choices.firstElementChild);
+};
+useInsertBefore();
 
 
 // 15. insertAfter() helper function
@@ -631,32 +761,38 @@ choices.insertBefore(newChoice, choices.firstElementChild);
     Syntax:
       parentNode.insertAfter(newNode, existingNode)
 */
-// create a new Li element
-const newChoice_2 = document.createElement('li');
 
-// create a new label element for the li and assign its attributes
-const newChoice_2_Label = document.createElement('label');
-newChoice_2_Label.textContent = "11 (eleven)"
-newChoice_2_Label.for = "answer-11"
+function useInsertAfter() {
+  // create a new Li element
+  const newChoice_2 = document.createElement('li');
 
-// create a new radio element for the li and assign its attributes
-const newChoice_2_Radio = document.createElement('input');
-newChoice_2_Radio.type = "radio";
-newChoice_2_Radio.name = "answer"
-newChoice_2_Radio.id = "answer-11"
+  // create a new label element for the li and assign its attributes
+  const newChoice_2_Label = document.createElement('label');
+  newChoice_2_Label.textContent = "11 (eleven)"
+  newChoice_2_Label.for = "answer-11"
 
-// append the radio and label element to the newChoice li
-newChoice_2.appendChild(newChoice_2_Radio);
-newChoice_2.appendChild(newChoice_2_Label);
+  // create a new radio element for the li and assign its attributes
+  const newChoice_2_Radio = document.createElement('input');
+  newChoice_2_Radio.type = "radio";
+  newChoice_2_Radio.name = "answer"
+  newChoice_2_Radio.id = "answer-11"
 
-// NOTE: JS DOM hasn't supported the insertAfter() method yet
-// Use the insertBefore() method and the nextSibling property to insert a new node after an existing node as a child of a parent node
-insertAfter(newChoice_2, choices.lastElementChild);
+  // append the radio and label element to the newChoice li
+  newChoice_2.appendChild(newChoice_2_Radio);
+  newChoice_2.appendChild(newChoice_2_Label);
 
-function insertAfter(newNode, existingNode) {
-  existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
-}
+  // NOTE: JS DOM hasn't supported the insertAfter() method yet
+  // Use the insertBefore() method and the nextSibling property to insert a new node after an existing node as a child of a parent node
+  insertAfter(newChoice_2, choices.lastElementChild);
+
+  function insertAfter(newNode, existingNode) {
+    existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+  }
+};
+useInsertAfter();
 
 // Footer
+// get the element with the class of 'footer'
 const footer = document.querySelector(".footer");
+// append the 'footer' to 'newContainer' element
 newContainer.appendChild(footer);
