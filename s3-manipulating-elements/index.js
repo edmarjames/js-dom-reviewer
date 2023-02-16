@@ -235,11 +235,23 @@ createRow();
 function rowInnerHTML() {
   // insert content to 'row' element using 'innerHTML'
   row.innerHTML =
-  '<div class="result"><h3>Using <em>createElement</em><br><small>Syntax: document.createElement("HtmlTag")</small></h3></div>';
+  '<div class="result" id="createElementSyntax"><h3>Using <em>createElement</em><br><small>Syntax: document.createElement("HtmlTag")</small></h3></div>';
   row.innerHTML +=
-    '<div class="result"><h3>Using <em>appendChild</em><br><small>Syntax: parentNode.appendChild(childNode)</small></h3></div>';
+    '<div class="result" id="appendChildSyntax"><h3>Using <em>appendChild</em><br><small>Syntax: parentNode.appendChild(childNode)</small></h3></div>';
 };
 rowInnerHTML();
+
+// generate dynamic typing effect
+new TypeIt("#createElementSyntax", {
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
+
+// generate dynamic typing effect
+new TypeIt("#appendChildSyntax", {
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
 
 // Create a new container and append it to the body
 const newContainer = document.createElement("div");
@@ -262,11 +274,23 @@ createSecondRow();
 function secondRowInnerHTML() {
   // insert content to 'row_2' element using 'innerHTML'
   row_2.innerHTML =
-  '<div class="result"><h3>Using <em>textContent</em><br><small>Syntax: document.textContent = "string"</small></h3></div>';
+  '<div class="result" id="textContentSyntax"><h3>Using <em>textContent</em><br><small>Syntax: document.textContent = "string"</small></h3></div>';
   row_2.innerHTML +=
-    '<div class="result"><h3>Using <em>innerHTML</em><br><small>Syntax: document.innerHTML = "HtmlMarkup"</small></h3></div>';
+    '<div class="result" id="innerHTMLSyntax"><h3>Using <em>innerHTML</em><br><small>Syntax: document.innerHTML = "HtmlMarkup"</small></h3></div>';
 };
 secondRowInnerHTML();
+
+// generate dynamic typing effect
+new TypeIt("#textContentSyntax", {
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
+
+// generate dynamic typing effect
+new TypeIt("#innerHTMLSyntax", {
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
 
 
 // 6. DocumentFragment
@@ -323,6 +347,7 @@ function useAfter() {
   // create a div and assign the result class
   const div = document.createElement("div");
   div.className = "result";
+  div.id = "afterSyntax"
   div.innerHTML = '<h3 id="heading-after">Using <em>after</em></h3>';
 
   // create a div, assign it with the row class and append it to the new container
@@ -344,6 +369,12 @@ function useAfter() {
   afterHeading.after(syntax);
 };
 useAfter();
+
+// generate dynamic typing effect
+new TypeIt("#afterSyntax", {
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
 
 
 // 7.1 using after to insert multiple nodes after an element
@@ -653,6 +684,8 @@ function useCloneNode() {
 
   // clone the third to the last children of newContainer and pass true as deep
   const clonedRow = anotherPrevSibling.cloneNode(true);
+  // update it's id
+  clonedRow.id = "appendSyntax";
   // create the cloned element
   const clonedRowFirstChild = clonedRow.firstElementChild;
   // create a header for the cloned element
@@ -673,6 +706,11 @@ function useCloneNode() {
 };
 useCloneNode();
 
+// generate dynamic typing effect
+new TypeIt("#appendSyntax", {
+  speed: 50,
+  waitUntilVisible: true,
+}).go();
 
 // 13. removeChild
 
