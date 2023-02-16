@@ -1,13 +1,20 @@
+/* ------------ CSS reset ------------ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* ----------------------------------- */
 
+
+/* ----------- body section ---------- */
 body {
     font-family: 'Montserrat', sans-serif;
 }
+/* ----------------------------------- */
 
+
+/* -------- container section -------- */
 .myContainer {
     display: flex;
     flex-direction: column;
@@ -41,7 +48,10 @@ body {
     width: 100%;
     height: auto;
 }
+/* ----------------------------------- */
 
+
+/* --------- squares section --------- */
 .main-square {
     width: 50%;
     height: 50%;
@@ -73,7 +83,10 @@ body {
     left: 5%;
     top: 5%;
 }
+/* ----------------------------------- */
 
+
+/* --------- choices section ---------*/
 #choices {
     list-style-type: none;
 }
@@ -85,7 +98,10 @@ body {
 #choices li label,  #choices li input{
     margin: 0 5px;
 }
+/* -----------------------------------*/
 
+
+/* --------- syntax section --------- */
 em {
     color: orangered;
 }
@@ -116,7 +132,10 @@ em {
     margin: 20px 0;
     letter-spacing: 0.5px;
 }
+/* ----------------------------------- */
 
+
+/* --------- footer section --------- */
 .icon-container {
     display: flex;
     column-gap: 20px;
@@ -164,3 +183,4 @@ hr {
     margin: 10px 0;
     transform: translateX(50%);
 }
+/* ----------------------------------- */
