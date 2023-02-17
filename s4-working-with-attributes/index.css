@@ -1,13 +1,20 @@
+/* ------------ CSS reset ------------ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* ----------------------------------- */
 
+
+/* ----------- body section ---------- */
 body {
     font-family: 'Montserrat', sans-serif;
 }
+/* ----------------------------------- */
 
+
+/* -------- container section -------- */
 .myContainer {
     display: flex;
     flex-direction: column;
@@ -29,7 +36,10 @@ body {
     letter-spacing: 0.5px;
     line-height: 40px;
 }
+/* ----------------------------------- */
 
+
+/* ---------- theme section ---------- */
 #submitBtn {
     display: block;
     margin: 5px auto;
@@ -54,7 +64,48 @@ label {
     display: flex;
     column-gap: 20px;
 }
+/* ----------------------------------- */
 
+
+/* ------ global class section ------- */
+hr {
+    border: 1px solid black;
+    width: 50%;
+    margin: 5px auto;
+}
+
+.hr-white {
+    border: 1px solid white;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    column-gap: 20px;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    background: #f8ece0;
+    width: 100%;
+    height: auto;
+    padding: 1em;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.result em {
+    color: orangered;
+}
+/* ----------------------------------- */
+
+
+/* ---------- footer section --------- */
 .footer {
     display: flex;
     row-gap: 5px;
@@ -95,38 +146,4 @@ label {
     bottom: 0;
     letter-spacing: 1px;
 }
-
-hr {
-    border: 1px solid black;
-    width: 50%;
-    margin: 5px auto;
-}
-
-.hr-white {
-    border: 1px solid white;
-}
-
-.row {
-    display: flex;
-    width: 100%;
-    column-gap: 20px;
-}
-
-.result {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-    background: #f8ece0;
-    width: 100%;
-    height: auto;
-    padding: 1em;
-    margin: 10px auto;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.result em {
-    color: orangered;
-}
+/* ----------------------------------- */
