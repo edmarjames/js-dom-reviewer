@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
+    <!-- TypeIt CDN -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
     <title>Session 4 - Working with attributes</title>
 </head>
 <body>
@@ -45,22 +48,22 @@
 
         <!-- Syntax cards -->
         <div class="row">
-            <div class="result">
+            <div class="result" id="setAttributeSyntax">
                 <h3>Using <em>setAttribute</em></h3>
                 <h5>Syntax: element.setAttribute('name', 'value')</h5>
             </div>
-            <div class="result">
+            <div class="result" id="getAttributeSyntax">
                 <h3>Using <em>getAttribute</em></h3>
                 <h5>Syntax: element.getAttribute('name')</h5>
             </div>
         </div>
 
         <div class="row">
-            <div class="result">
+            <div class="result" id="removeAttributeSyntax">
                 <h3>Using <em>removeAttribute</em></h3>
                 <h5>Syntax: element.removeAttribute('name')</h5>
             </div>
-            <div class="result">
+            <div class="result" id="hasAttributeSyntax">
                 <h3>Using <em>hasAttribute</em></h3>
                 <h5>Syntax: element.hasAttribute('name')</h5>
             </div>

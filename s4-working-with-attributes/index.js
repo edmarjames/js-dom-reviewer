@@ -174,6 +174,11 @@ function useSetAttribute() {
 };
 useSetAttribute();
 
+// generate dynamic typing effect
+new TypeIt("#setAttributeSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 6. getAttribute
 
@@ -194,6 +199,12 @@ function useGetAttribute() {
     console.log(themeContainer.getAttribute('title'));
 };
 useGetAttribute();
+
+// generate dynamic typing effect
+new TypeIt("#getAttributeSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 7. removeAttribute
 
@@ -217,6 +228,12 @@ function useRemoveAttribute() {
 };
 useRemoveAttribute();
 
+// generate dynamic typing effect
+new TypeIt("#removeAttributeSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 // 8. hasAttribute
 
 /* 
@@ -236,6 +253,11 @@ function useHasAttribute() {
 };
 useHasAttribute();
 
+// generate dynamic typing effect
+new TypeIt("#hasAttributeSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // footer
 function footerSection() {
