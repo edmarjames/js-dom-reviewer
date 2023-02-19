@@ -1,13 +1,20 @@
+/* ------------ CSS reset ------------ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* ----------------------------------- */
 
+
+/* ----------- body section ---------- */
 body {
     font-family: 'Montserrat', sans-serif;
 }
+/* ----------------------------------- */
 
+
+/* -------- container section -------- */
 .myContainer {
     display: flex;
     flex-direction: column;
@@ -29,7 +36,10 @@ body {
     letter-spacing: 0.5px;
     line-height: 40px;
 }
+/* ----------------------------------- */
 
+
+/* ------ global class section ------- */
 .row {
     display: flex;
     width: 100%;
@@ -66,47 +76,6 @@ body {
     background-color: black;
     display: block;
     margin: 15px 0;
-}
-
-.footer {
-    display: flex;
-    row-gap: 5px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 20px 0;
-}
-
-.icon-container {
-    display: flex;
-    column-gap: 20px;
-    width: 50%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.icons {
-    font-size: 2.5rem;
-}
-
-.icon-holder {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.copyright {
-    font-size: 13px;
-    font-weight: 500;
-    margin: 0 auto;
-    position: static;
-    bottom: 0;
-    letter-spacing: 1px;
 }
 
 .hidden {
@@ -148,3 +117,48 @@ button {
 .result em {
     color: orangered;
 }
+/* ----------------------------------- */
+
+
+/* ---------- footer section --------- */
+.footer {
+    display: flex;
+    row-gap: 5px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.icon-container {
+    display: flex;
+    column-gap: 20px;
+    width: 50%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.icons {
+    font-size: 2.5rem;
+}
+
+.icon-holder {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0 auto;
+    position: static;
+    bottom: 0;
+    letter-spacing: 1px;
+}
+/* ----------------------------------- */
