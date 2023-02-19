@@ -35,6 +35,12 @@ function useStyle() {
 };
 useStyle();
 
+// generate dynamic typing effect
+new TypeIt("#styleSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 // change the styling of header using 'cssText'
 function useCssText() {
     // get the element with the id of 'csstext'
@@ -45,6 +51,12 @@ function useCssText() {
     });
 };
 useCssText();
+
+// generate dynamic typing effect
+new TypeIt("#cssTextSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // change the styling of header using 'setAttribute'
 function useSetAttribute() {
@@ -57,6 +69,12 @@ function useSetAttribute() {
 };
 useSetAttribute();
 
+// generate dynamic typing effect
+new TypeIt("#setAttributeSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 // change the styling of header by using cssText by appending new css to the existing one
 function useCssTextToAppend() {
     // get the element with the id of 'append'
@@ -67,6 +85,12 @@ function useCssTextToAppend() {
     });
 }
 useCssTextToAppend();
+
+// generate dynamic typing effect
+new TypeIt("#cssTextAppendingSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 
 // 2. getComputedStyle
@@ -109,6 +133,11 @@ function useGetComputedStyleForPseudoElements() {
 };
 useGetComputedStyleForPseudoElements();
 
+// generate dynamic typing effect
+new TypeIt("#getComputedStyleSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 3. className
 
@@ -132,6 +161,11 @@ function useClassName() {
 };
 useClassName();
 
+// generate dynamic typing effect
+new TypeIt("#classNameSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 4. classList
 
@@ -254,6 +288,11 @@ function useClassListToggle() {
 };
 useClassListToggle();
 
+// generate dynamic typing effect
+new TypeIt("#classListSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 5. Getting the width and height of an element
 
@@ -271,6 +310,12 @@ function getOffsetWidthAndOffsetHeight() {
 };
 getOffsetWidthAndOffsetHeight();
 
+// generate dynamic typing effect
+new TypeIt("#offsetWidthAndOffsetHeightSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
+
 // 5.1 clientWidth & clientHeight
 /* 
     - to get the element's width and height that include padding but without border
@@ -285,6 +330,12 @@ function getClientWidthAndClientHeight() {
     console.log(`This is the height of the container ${container.clientHeight}`);
 };
 getClientWidthAndClientHeight();
+
+// generate dynamic typing effect
+new TypeIt("#clientWidthAndClientHeightSyntax", {
+    speed: 50,
+    waitUntilVisible: true,
+}).go();
 
 // 5.2 Get the height and width of the window
 function getWindowWidthAndHeight() {
