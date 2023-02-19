@@ -17,36 +17,56 @@
     Syntax:
         element.setAttribute('style', 'color:red;background-color:yellow');
 
-    - if you do not want to completely overwrite the existing CSS properties, you can concatenate the new CSS propert to the 'cssText'
+    - if you do not want to completely overwrite the existing CSS properties, you can concatenate the new CSS property to the 'cssText'
     Syntax:
         element.style.cssText += 'color:red; background-color:yellow';
 */
-// get the element with id of title
+// get the element with id of 'title'
 const title = document.querySelector('#title');
 
 // change the styling of header using 'style'
-const btnStyle = document.querySelector('#italic');
-btnStyle.addEventListener('click', () => {
-    title.style.fontStyle = "Italic";
-});
+function useStyle() {
+    // get the element with the id of 'italic'
+    const btnStyle = document.querySelector('#italic');
+    // add a 'click' event listener to 'btnStyle' element
+    btnStyle.addEventListener('click', () => {
+        title.style.fontStyle = "Italic";
+    });
+};
+useStyle();
 
 // change the styling of header using 'cssText'
-const btnCssText = document.querySelector('#csstext');
-btnCssText.addEventListener('click', () => {
-    title.style.cssText = 'font-size: 3rem; color: red';
-});
+function useCssText() {
+    // get the element with the id of 'csstext'
+    const btnCssText = document.querySelector('#csstext');
+    // add a 'click' event listener to 'btnCssText' element
+    btnCssText.addEventListener('click', () => {
+        title.style.cssText = 'font-size: 3rem; color: red';
+    });
+};
+useCssText();
 
 // change the styling of header using 'setAttribute'
-const btnSetAttr = document.querySelector('#setattribute');
-btnSetAttr.addEventListener('click', () => {
-    title.setAttribute('style', 'font-weight: 600; color: black')
-});
+function useSetAttribute() {
+    // get the element with the id of 'setattribute'
+    const btnSetAttr = document.querySelector('#setattribute');
+    // add a 'click' event listener to 'btnSetAttr' element
+    btnSetAttr.addEventListener('click', () => {
+        title.setAttribute('style', 'font-weight: 600; color: black')
+    });
+};
+useSetAttribute();
 
 // change the styling of header by using cssText by appending new css to the existing one
-const btnAppend = document.querySelector('#append');
-btnAppend.addEventListener('click', () => {
-    title.style.cssText += 'font-size: 4rem; color: orangered; line-height: 50px';
-});
+function useCssTextToAppend() {
+    // get the element with the id of 'append'
+    const btnAppend = document.querySelector('#append');
+    // add a 'click' event listener to 'btnAppend' element
+    btnAppend.addEventListener('click', () => {
+        title.style.cssText += 'font-size: 4rem; color: orangered; line-height: 50px';
+    });
+}
+useCssTextToAppend();
 
 
 // 2. getComputedStyle
@@ -64,21 +84,30 @@ btnAppend.addEventListener('click', () => {
 */
 
 // 2.1 Simple getComputedStyle example
-const row = document.querySelector('.row');
-const style = getComputedStyle(row);
+function useGetComputedStyle() {
+    // get the element with the class of 'row'
+    const row = document.querySelector('.row');
+    // store the results of 'getComputedStyle' to 'style' variable
+    const style = getComputedStyle(row);
 
-console.log('\n\t\tThis is the css styling of element with class of row\n\n'.toUpperCase());
-console.log(style.display);
-console.log(style.width);
-console.log(style.columnGap);
+    console.log('\n\t\tThis is the css styling of element with class of row\n\n'.toUpperCase());
+    console.log(style.display);
+    console.log(style.width);
+    console.log(style.columnGap);
+};
+useGetComputedStyle();
 
 // 2.2 The getComputedStyle for pseudo-elements example
-const titleStyle = getComputedStyle(title, '::after');
+function useGetComputedStyleForPseudoElements() {
+    // get the computed style of the 'after' pseudo element of 'title' element
+    const titleStyle = getComputedStyle(title, '::after');
 
-console.log('\n\t\tThis is the css styling of a pseudo-element\n\n'.toUpperCase());
-console.log(titleStyle.backgroundColor);
-console.log(titleStyle.display);
-console.log(titleStyle.margin);
+    console.log('\n\t\tThis is the css styling of a pseudo-element\n\n'.toUpperCase());
+    console.log(titleStyle.backgroundColor);
+    console.log(titleStyle.display);
+    console.log(titleStyle.margin);
+};
+useGetComputedStyleForPseudoElements();
 
 
 // 3. className
@@ -97,8 +126,11 @@ console.log(titleStyle.margin);
 // get the element with the id of 'container'
 const container = document.querySelector('#container');
 
-console.log('\n\t\tThis is the class of the element with id of container using className\n\n'.toUpperCase());
-console.log(container.className);
+function useClassName() {
+    console.log('\n\t\tThis is the class of the element with id of container using className\n\n'.toUpperCase());
+    console.log(container.className);
+};
+useClassName();
 
 
 // 4. classList
@@ -110,13 +142,16 @@ console.log(container.className);
     Syntax:
         'element.classList' - to get the list of CSS classes of an element
 */
-console.log('\n\t\tThis is the class of the element with id of container using classList\n\n'.toUpperCase());
+function useClassList() {
+    console.log('\n\t\tThis is the class of the element with id of container using classList\n\n'.toUpperCase());
 
-// unlike the className which returns the classes in a space-separated string
-// the classList returns the classes as array-like so we need to loop through it to access every classes.
-for (let classes of container.classList) {
-    console.log(classes);
-}
+    // unlike the className which returns the classes in a space-separated string
+    // the classList returns the classes as array-like so we need to loop through it to access every classes.
+    for (let classes of container.classList) {
+        console.log(classes);
+    }
+};
+useClassList();
 
 // 4.1 Add one or more classes to the class list of an element
 /* 
@@ -124,13 +159,16 @@ for (let classes of container.classList) {
         'element.classList.add("className")' - to add a new class to an element
         'element.classList.add("className1", "className2", "className3")' - to add multiple classes to an element
 */
-// get the 'i' element
-const icons = document.getElementsByTagName('i');
+function useClassListAdd() {
+    // get all the 'i' element
+    const icons = document.getElementsByTagName('i');
 
-// use .add() to add a new class
-for (let i of icons) {
-    i.classList.add('icons');
+    // use .add() to add a new class
+    for (let i of icons) {
+        i.classList.add('icons');
+    };
 };
+useClassListAdd();
 
 // 4.2 Remove element's classes
 /* 
@@ -141,38 +179,45 @@ for (let i of icons) {
 // get all the 'button' element
 const buttons = document.querySelectorAll('button');
 
-// use .remove() to remove a class
-for (let btn of buttons) {
-    btn.classList.remove('large-text');
+function useClassListRemove() {
+    // use .remove() to remove a class
+    for (let btn of buttons) {
+        btn.classList.remove('large-text');
+    };
 };
+useClassListRemove();
 
 // 4.3 Replace a class of an element
 /* 
     Syntax:
         element.classList.replace('className', 'newClassName');
 */
-// get the checkbox element
-const checkBox = document.querySelector('#show-hide');
-// get the label of the checkbox
-const label = document.querySelector('[for="show-hide"]');
+function useClassListReplace() {
+    // get the checkbox element
+    const checkBox = document.querySelector('#show-hide');
+    // get the label of the checkbox
+    const label = document.querySelector('[for="show-hide"]');
 
-checkBox.addEventListener('change', () => {
-    if (checkBox.checked) {
-        // change the text of the label
-        label.textContent = "Hide the buttons"
-        for (let btn of buttons) {
-            // use .replace() to replace 'hidden' to 'show'
-            btn.classList.replace('hidden', 'show');
+    // add a 'change' event listener to 'checkBox' element
+    checkBox.addEventListener('change', () => {
+        if (checkBox.checked) {
+            // change the text of the label
+            label.textContent = "Hide the buttons"
+            for (let btn of buttons) {
+                // use .replace() to replace 'hidden' to 'show'
+                btn.classList.replace('hidden', 'show');
+            }
+        } else {
+            // change the text of the label
+            label.textContent = "Show the buttons"
+            for (let btn of buttons) {
+                // use .replace() to replace 'show' to 'hidden'
+                btn.classList.replace('show', 'hidden');
+            }
         }
-    } else {
-        // change the text of the label
-        label.textContent = "Show the buttons"
-        for (let btn of buttons) {
-            // use .replace() to replace 'show' to 'hidden'
-            btn.classList.replace('show', 'hidden');
-        }
-    }
-});
+    });
+};
+useClassListReplace();
 
 // 4.4 Check if an element has a specific class
 /* 
@@ -180,11 +225,14 @@ checkBox.addEventListener('change', () => {
     Syntax:
         element.classList.contains('className');
 */
-console.log('\n\t\tIt checks if the buttons contains a class of hidden\n\n'.toUpperCase());
-for (let btn of buttons) {
-    // use .contains() to check if the element contains a specific class
-    console.log(btn.classList.contains('hidden'));
-}
+function useClassListContains() {
+    console.log('\n\t\tIt checks if the buttons contains a class of hidden\n\n'.toUpperCase());
+    for (let btn of buttons) {
+        // use .contains() to check if the element contains a specific class
+        console.log(btn.classList.contains('hidden'));
+    }
+};
+useClassListContains();
 
 // 4.5 Toggle a class
 /* 
@@ -192,14 +240,19 @@ for (let btn of buttons) {
     Syntax:
         element.classList.toggle('className');
 */
-const toggle = document.querySelector('#toggle');
+function useClassListToggle() {
+    // get the element with the id of 'toggle'
+    const toggle = document.querySelector('#toggle');
 
-toggle.addEventListener('change', () => {
-    for (let btn of buttons) {
-        // use .toggle() to toggle the 'large-button' class on every change event
-        btn.classList.toggle('large-buttons');
-    }    
-});
+    // add a 'change' event listener to 'toggle' element
+    toggle.addEventListener('change', () => {
+        for (let btn of buttons) {
+            // use .toggle() to toggle the 'large-button' class on every 'change' event
+            btn.classList.toggle('large-buttons');
+        }    
+    });
+};
+useClassListToggle();
 
 
 // 5. Getting the width and height of an element
@@ -211,9 +264,12 @@ toggle.addEventListener('change', () => {
         element.offsetWidth
         element.offsetHeight
 */
-console.log('\n\t\tGetting the width and height of an element using offsetWidth and offsetHeight\n\n'.toUpperCase());
-console.log(`This is the width of the container ${container.offsetWidth}`);
-console.log(`This is the height of the container ${container.offsetHeight}`);
+function getOffsetWidthAndOffsetHeight() {
+    console.log('\n\t\tGetting the width and height of an element using offsetWidth and offsetHeight\n\n'.toUpperCase());
+    console.log(`This is the width of the container ${container.offsetWidth}`);
+    console.log(`This is the height of the container ${container.offsetHeight}`);
+};
+getOffsetWidthAndOffsetHeight();
 
 // 5.1 clientWidth & clientHeight
 /* 
@@ -223,17 +279,26 @@ console.log(`This is the height of the container ${container.offsetHeight}`);
         element.clientWidth;
         element.clientHeight;
 */
-console.log('\n\t\tGetting the width and height of an element using clientWidth and clientHeight\n\n'.toUpperCase());
-console.log(`This is the width of the container ${container.clientWidth}`);
-console.log(`This is the height of the container ${container.clientHeight}`);
+function getClientWidthAndClientHeight() {
+    console.log('\n\t\tGetting the width and height of an element using clientWidth and clientHeight\n\n'.toUpperCase());
+    console.log(`This is the width of the container ${container.clientWidth}`);
+    console.log(`This is the height of the container ${container.clientHeight}`);
+};
+getClientWidthAndClientHeight();
 
 // 5.2 Get the height and width of the window
-console.log('\n\t\tGetting the width of the window\n\n'.toUpperCase());
-console.log(window.innerWidth);
-console.log(document.documentElement.clientWidth);
-console.log(document.body.clientWidth);
+function getWindowWidthAndHeight() {
+    // width
+    console.log('\n\t\tGetting the width of the window\n\n'.toUpperCase());
+    console.log(window.innerWidth);
+    console.log(document.documentElement.clientWidth);
+    console.log(document.body.clientWidth);
 
-console.log('\n\t\tGetting the height of the window\n\n'.toUpperCase());
-console.log(window.innerHeight);
-console.log(document.documentElement.clientHeight);
-console.log(document.body.clientHeight);
+    // height
+    console.log('\n\t\tGetting the height of the window\n\n'.toUpperCase());
+    console.log(window.innerHeight);
+    console.log(document.documentElement.clientHeight);
+    console.log(document.body.clientHeight);
+};
+getWindowWidthAndHeight();
+
