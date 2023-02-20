@@ -9,7 +9,7 @@
 const btnAlert = document.querySelector('#click-me');
 
 function firstClickEvent(btnAlert) {
-    // add a 'click' event listener to the button
+    // add a 'click' event listener to the 'btnAlert' element
     btnAlert.addEventListener('click', () => {
         alert("Welcome to Session 6!");
     });
@@ -60,6 +60,7 @@ firstClickEvent(btnAlert);
 */
 function eventTypeAndTarget(btnAlert) {
     console.log('\n\t\tThis is the type of event on the button and the target of the event\n\n'.toUpperCase());
+    // add a 'click' event listener to the 'btnAlert' element
     btnAlert.addEventListener('click', (e) => {
         // get the type of event
         console.log(`Type of event is ${e.type}`);
@@ -78,8 +79,10 @@ eventTypeAndTarget(btnAlert);
 */
 // get the element with the id of 'docs-events'
 function usePreventDefault() {
+    // get the element with the id of 'docs-events'
     const link = document.querySelector('#docs-events');
 
+    // add a 'click' event listener to 'link' element
     link.addEventListener('click', (e) => {
         alert("You have clicked the link!");
         // use preventDefault to prevent the default behavior of the anchor tag/link
@@ -95,6 +98,7 @@ usePreventDefault();
     - this method immediately stops the flow of an event through the DOM tree. However, it does not stop the browsers default behavior
 */
 function useStopPropagation(btnAlert) {
+    // add a 'click' event listener to 'btnAlert' element
     btnAlert.addEventListener('click', (e) => {
         console.log('You have clicked the button!');
         e.stopPropagation();
@@ -166,8 +170,9 @@ const showAlert = () => alert('Here is the alert!');
 const showConfirm = document.querySelector('#show-confirm');
 
 function domLevelZero(showConfirm) {
-    // add a 'onclick' event listener
+    // add a 'onclick' event listener to 'showConfirm' element
     showConfirm.onclick = () => {
+        // store the value of confirm to 'feelings' variable
         let feelings = confirm("Are you having fun?");
         (feelings) ? 
             console.log(`${feelings} the user is having fun`) 
@@ -208,7 +213,7 @@ const generateLoremIpsum = () => {
 };
 
 function useAddEventListener(showConfirm) {
-    // add an event listener to the showConfirm button and attach the generateLoremIpsum function
+    // add an event listener to the 'showConfirm' button and attach the 'generateLoremIpsum' function
     showConfirm.addEventListener('click', generateLoremIpsum);
 
     showConfirm.addEventListener('click', (e) => {
@@ -238,7 +243,7 @@ useAddEventListener(showConfirm);
             // statement
         });
 */
-// remove the event listener of showConfirm button where it invokes the generateLoremIpsum function
+// remove the event listener of 'showConfirm' button where it invokes the 'generateLoremIpsum' function
 function useRemoveEventListener(showConfirm) {
     showConfirm.removeEventListener('click', generateLoremIpsum);
 }
@@ -484,14 +489,17 @@ useUnload();
 const mouseEvents = document.querySelector('#mouse-events');
 
 function mouseEvent(mouseEvents) {
+    // add a 'mousedown' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('mousedown', () => {
         console.log('Mousedown event is triggered!');
     });
 
+    // add a 'mouseup' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('mouseup', () => {
         console.log('Mouseup event is triggered!');
     });
 
+    // add a 'click' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('click', () => {
         console.log('Click event is triggered!');
     });
@@ -516,7 +524,7 @@ mouseEvent(mouseEvents);
     - as you can see, the 'click' events always take place before the 'dblclick' event. If you register both 'click' and 'dblclick' event handlers on the same element, you will now know exactly if the user has clicked or double-clicked the element.
 */
 function useDblclick(mouseEvents) {
-    // add a 'doubleclick' event on the 'mouseEvents'
+    // add a 'doubleclick' event listener on the 'mouseEvents'
     mouseEvents.addEventListener('dblclick', () => {
         alert('You double clicked the button');
     });
@@ -553,10 +561,12 @@ useMousemove();
     - 'mouseout' fires when the mouse cursor is over an element and then moves to another element
 */
 function useMouseOverAndMouseOut(mouseEvents) {
+    // add a 'mouseover' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('mouseover', () => {
         mouseEvents.title = "You hover over me!";
     });
     
+    // add a 'mouseout' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('mouseout', () => {
         alert('You hover out of the button!');
     });
@@ -572,10 +582,12 @@ useMouseOverAndMouseOut(mouseEvents);
     - both 'mouseenter' and 'mouseleave' does not bubble and does not fire when the mouse cursor moves over descendant elements
 */
 function useMouseEnterAndMouseLeave(mouseEvents) {
+    // add a 'mouseenter' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('mouseenter', () => {
         console.log('You hover over the button!');
     });
     
+    // add a 'mouseleave' event listener to 'mouseEvents' element
     mouseEvents.addEventListener('mouseleave', () => {
         console.log('You hover out of the button!');
     });
@@ -683,9 +695,12 @@ function getCoordinates() {
 
     // add a 'mousemove' event to the 'coordinateContainer'
     coordinateContainer.addEventListener('mousemove', (e) => {
+        // get the element with the id of 'screenXY'
         const screen = document.querySelector('#screenXY');
+        // get the element with the id of 'clientXY'
         const client = document.querySelector('#clientXY');
 
+        // update the textContent of 'screen' and 'client' element
         screen.textContent = `Screen X/Y: ${e.screenX}, ${e.screenY}`;
         client.textContent = `Client X/Y: ${e.clientX}, ${e.clientY}`;
     });
@@ -744,6 +759,7 @@ keyboardEvents(message);
         if you press the 'z' character key, the 'event.key' returns 'z' and 'event.code' returns 'KeyZ'
 */
 function keyboardEventProperties(message) {
+    // add a 'keydown' event listener to 'message' element
     message.addEventListener('keydown', (e) => {
         console.log(`Key = ${e.key} Code = ${e.code}`);
     });
@@ -880,7 +896,7 @@ function useScrollIntoView() {
     // get the element with the id of 'scroll-into-view'
     const btn = document.querySelector('#scroll-into-view');
 
-    // add a 'click' event listener to 'btn'
+    // add a 'click' event listener to 'btn' element
     btn.addEventListener('click', () => {
         const fav = document.querySelector('#favorite');
         // fav.scrollIntoView(true);
@@ -1204,7 +1220,7 @@ function useMutationObserver() {
         // switch case to determine which button is pressed based on its id
         switch(target.id) {
             case 'btn-start':
-                // observer changes on 'frameworks' element and set the 'childList' option to true
+                // observe changes on 'frameworks' element and set the 'childList' option to true
                 observer.observe(frameworks, {
                     childList: true
                 });
