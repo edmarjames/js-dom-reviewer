@@ -64,8 +64,10 @@
 
 // to access the elements of the form, you get the form element first
 function formEvents() {
+    // get the element with the id of 'login-form'
     const form = document.querySelector('#login-form');
 
+    // add a 'submit' event listener to 'form' element
     form.addEventListener('submit', () => {
         // use either index, id or name to access the element.
 
@@ -102,8 +104,8 @@ formEvents();
         - get the 'checked' property of the radio button, if the 'checked' property is 'true', the radio button is checked; otherwise, it is unchecked.
     - to know which radio button is checked, you use the 'value' attribute
 */
-// get the element with the id of 'submitBtn'
 function radioButtonEvents() {
+    // get the element with the id of 'submitBtn'
     const submit = document.querySelector('#submitBtn');
 
     // add a 'click' event listener to the 'submit' element
@@ -214,13 +216,14 @@ checkboxValue();
 
 
 // 3.3 getting values of multiple selected checkboxes
+
 // get the element with the id of 'strengthZoneBtn'
 const strengthZoneBtn = document.querySelector('#strengthZoneBtn');
 
 function multipleCheckbox(strengthZoneBtn) {
     // add a 'click' event listener to the 'strengthZoneBtn' element
     strengthZoneBtn.addEventListener('click', () => {
-        // get all elements with the name attribute of 'strength'
+        // get all elements with the 'name' attribute of 'strength'
         let strengthZones = document.getElementsByName('strength');
         let strengths = [];
 
@@ -251,6 +254,7 @@ multipleCheckbox(strengthZoneBtn);
 
 
 // 3.4 check/uncheck all checkboxes
+
 // get the element with the id of 'select-all'
 const selectAll = document.querySelector('#select-all');
 
@@ -437,6 +441,7 @@ changeBackgroundColor();
 */
 
 // 4.1.1 selectedIndex property
+
 // get the element with the id of 'frameworkBtn'
 const frameworkBtn = document.querySelector('#frameworkBtn');
 // get the element with the id of 'framework'
