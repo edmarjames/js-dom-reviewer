@@ -199,9 +199,13 @@ The only one thing that is missing for this project is a home page wherein you c
 
 ## Installation
 
-If you want to checkout the code and install it on your local machine you may clone my repo by simply running this command.
+If you want to check the code and modify it on your local machine you may clone my repo by simply running this command.
 
-### `git clone git@gitlab.com:batch-211-bautista/capstone-2-bautista.git`
+### `git clone https://github.com/edmarjames/js-dom-reviewer.git`
+
+**or**
+
+### `git clone git@github.com:edmarjames/js-dom-reviewer.git`
 
 ## <a name="#language-and-tools"></a>Languages and tools used
 
