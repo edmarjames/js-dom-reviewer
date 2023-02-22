@@ -33,11 +33,13 @@ I welcome feedback and suggestions from other developers, and I encourage you to
 
 ## Topics
 
-1. Session 1 - Selecting elements
+1. ### **Session 1 - Selecting elements**
 
     ![s1](https://user-images.githubusercontent.com/112933982/220562294-f439a9e6-96f8-4c73-8c92-87e690f5e80f.png)
 
-    ### Subtopics
+    On this session, you will learn different ways on how to select an element/s in JavaScript together with their return values and differences with each other. So that you can decide which one to use on a specific scenario.
+
+    **Subtopics**
     + `getElementById`
     + `getElementsByName`
     + `getElementsByTagName`
@@ -45,22 +47,149 @@ I welcome feedback and suggestions from other developers, and I encourage you to
     + `querySelector`
     + `querySelectorAll`
 
-2. Session 2 - Traversing elements
+2. ### **Session 2 - Traversing elements**
 
+    ![s2](https://user-images.githubusercontent.com/112933982/220563632-d53f1b1f-b766-48d7-b592-9e383c20d254.png)
 
-3. Session 3 - Manipulating elements
+    On this session, you will learn how to get the firstChild, lastChild, firstElementChild, lastElementChild, sibling elements and child nodes of a parent node.
+
+    **Subtopic**
+    + `parentNode`
+    + `firstChild`
+    + `firstElementChild`
+    + `lastChild`
+    + `lastElementChild`
+    + `childNodes`
+    + `children`
+    + `nextElementSibling`
+    + `previousElementSibling`
+
+3. ### **Session 3 - Manipulating elements**
+
+    ![s3](https://user-images.githubusercontent.com/112933982/220565076-140dd56e-e7be-4a94-bd2a-1e4970fc0f23.png)
     
+    On this session, you will learn how to create a new element, append it to a parent node, set it's innerHTML, innerText or textContent, creating a documentFragment, append an element after a specific element, insert multiple nodes after the lastChild of the parentNode, insert multiple nodes before the firstChild of the parentNode, insert nodes on specific positions using insertAdjacentHTML, replace a child node, clone a node, remove a child node, insert a single node before the firstChild of the parentNode and use insertAfter helper function to insert a single node after the lastChild of the parent node.
 
-4. Session 4 - Working with attributes
+    **Subtopics**
+    + `createElement`
+    + `appendChild`
+    + `textContent`
+    + `innerHTML`
+    + `innerText`
+    + `documentFragment`
+    + `after`
+    + `append`
+    + `prepend`
+    + `insertAdjacentHTML`
+    + `replaceChild`
+    + `cloneNode`
+    + `removeChild`
+    + `insertBefore`
+    + `insertAfter` helper function
+
+4. ### **Session 4 - Working with attributes**
+
+    ![s4](https://user-images.githubusercontent.com/112933982/220567575-5bba4d58-39b0-4c9a-baac-700a02af50ec.png)
+
+    On this session, you will learn how to add or modify an element's attribute, get the value of a specific attribute, remove a certain attribute and check if the element contains an attribute
+
+    **Subtopics**
+    + `element.attributes`
+    + Attribute-property synchronization
+    + DOM properties are typed
+    + The data-* attributes
+    + `setAttribute`
+    + `getAttribute`
+    + `removeAttribute`
+    + `hasAttribute`
+
+5. ### **Session 5 - Manipulating elements styles**
     
+    ![s5](https://user-images.githubusercontent.com/112933982/220568773-2c4ccbf0-b734-480b-ac46-045da1226ae6.png)
 
-5. Session 5 - Manipulating elements styles
-    
+    On this session, you will learn how to manipulate the CSS style of an element using different methods and get the width and height of an element.
 
-6. Session 6 - Working with events
-    
+    **Subtopics**
+    + `element.style`
+    + `cssText`
+    + Using `setAttribute` to set a style attribute
+    + Using `cssText` to append a new styling to the existing one
+    + `getComputedStyle`
+    + `className`
+    + `classList`
+    + `clientWidth` and `clientHeight`
+    + `offsetWidth` and `offsetHeight`
 
-7. Session 7 - Scripting web forms
+6. ### **Session 6 - Working with events**
+
+    ![s6](https://user-images.githubusercontent.com/112933982/220570193-1c12ad10-8f06-4f5a-9b92-f9c9c4286a8d.png)
+
+    On this session, you will learn how to add and remove event listeners, different load events, mouse events, keyboard events, scroll events, event throttling, scrollIntoView, focus events, hashChange event, event delegation, dispatchEvent, custom event and MutationObserver
+
+    **Subtopics**
+    + event
+    + event flow
+    + event bubbling
+    + event capturing
+    + event object
+    + `preventDefault`
+    + `stopPropagation`
+    + HTML event handler
+    + DOM level 0 event handler
+    + DOM level 2 event handler
+    + `addEventListener`
+    + `removeEventListener`
+    + `DOMContentLoaded`
+    + `load`
+    + `beforeunload`
+    + `unload`
+    + `mousedown`
+    + `mouseup`
+    + `click`
+    + `dblclick`
+    + `mousemove`
+    + `mouseover`
+    + `mouseout`
+    + `mouseenter`
+    + `mouseleave`
+    + detecting mouse buttons
+    + modifier keys
+    + `keydown`
+    + `keypress`
+    + `keyup`
+    + `scroll`
+    + `scrollTop`
+    + `scrollLeft`
+    + event throttling
+    + passive events
+    + `scrollIntoView`
+    + `focus`
+    + `blur`
+    + `hashchange`
+    + event delegation
+    + `dispatchEvent`
+    + custom events
+    + `MutationObserver`
+
+7. ### **Session 7 - Scripting web forms**
+
+    ![s7](https://user-images.githubusercontent.com/112933982/220573652-c6c1b071-2a58-4ae2-9a50-9e09966b946c.png)
+
+    On this session, you will learn how to work with form events, radio events, checkbox events, select box events, change event and input event.
+
+    **Subtopics**
+    + Form basics
+    + Form referencing
+    + Submitting a form
+    + Accessing form fields
+    + `checked`
+    + `selectedIndex`
+    + `select.value`
+    + `select.options[ctr]`
+    + `select.add`
+    + `select.remove`
+    + `change`
+    + `input`
 
 ## <a name="#upcoming-new-features"></a>Upcoming New Features
 
