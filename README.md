@@ -7,6 +7,30 @@
 
 ## <a name="#js-dom-manipulation"></a>JavaScript DOM Manipulation reviewer
 
+The goal of this repository is for me to study about JavaScript DOM manipulation even though some might say that it is not worth studying for since we already have frameworks for frontend now such as React, Vue, Svelte, etc. But I really want to understand the most native way so that I can have a much better understanding of events, event listeners and DOM whenever I am using a framework for frontend.
+
+### DOM Manipulation is still important
+
+While frameworks like React and Vue have simplified front-end development, understanding the underlying principles of DOM manipulation is still important for several reasons.
+
++ DOM manipulation is at the core of web development, and a solid understanding of how it works can help developers diagnose and fix problems in their code more effectively.
+
++ By learning the basics of DOM manipulation, developers can write more efficient and performant code, even when working with frameworks.
+
+### Repository structure
+
+This repository is organized into several topics, covering everything from basic DOM selection to more advanced event handling, I created this repository in a way that I am documenting every key points and examples for each topics so that I can use it as my reference in the future. 
+
+Each topic is separated by folders and you can find the subtopics on the JavaScript file. Within each topic, you'll find examples of how to manipulate the DOM using vanilla JavaScript, along with comments that explain how each line of code works. Each code example is clearly labeled and organized, making it easy to find what you're looking for and learn at your own pace.
+
+### This is useful for all levels
+
+This repository is designed for anyone looking to learn or refresh their knowledge of DOM manipulation, regardless of their experience level. If you're a beginner just starting out in web development, this repository can help you build a strong foundation in the basics of JavaScript and the DOM. Even experienced developers can benefit from this repository, using it as a quick reference guide for specific topics or as a way to refresh their memory on certain techniques.
+
+### Feedback and contributions
+
+I welcome feedback and suggestions from other developers, and I encourage you to leave a comment or open an issue if you have any ideas or recommendations for improving the repository. If you find an error in one of the code examples, please feel free to submit a pull request with a fix or create an issue so that I can correct it. As an open-source project, this repository is meant to be a collaborative effort, and I hope that others can contribute to it and benefit from it as much as I have.
+
 ## Topics
 
 1. Session 1 - Selecting elements
