@@ -193,9 +193,9 @@ I welcome feedback and suggestions from other developers, and I encourage you to
 
 ## <a name="#upcoming-new-features"></a>Upcoming New Features
 
-Here is an overview of the upcoming features
+The only one thing that is missing for this project is a home page wherein you can navigate through each topics. Since as of now each topic is separated by a folder.
 
-+ Add shipping address on checkout
++ Add a home page
 
 ## Installation
 
