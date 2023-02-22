@@ -34,7 +34,16 @@ I welcome feedback and suggestions from other developers, and I encourage you to
 ## Topics
 
 1. Session 1 - Selecting elements
-    
+
+    ![s1](https://user-images.githubusercontent.com/112933982/220562294-f439a9e6-96f8-4c73-8c92-87e690f5e80f.png)
+
+    ### Subtopics
+    + `getElementById`
+    + `getElementsByName`
+    + `getElementsByTagName`
+    + `getElementsByClassName`
+    + `querySelector`
+    + `querySelectorAll`
 
 2. Session 2 - Traversing elements
 
