@@ -210,9 +210,9 @@ If you want to check the code and modify it on your local machine you may clone 
 ## <a name="#language-and-tools"></a>Languages and tools used
 
 <p align="center">
-    ![logo-html5-with-name](https://ibb.co/hX44SBy)
-    ![logo-css3-with-name](https://ibb.co/sw8J5c2)
-    ![logo-javascript-with-name](https://ibb.co/mDCQ90C)
+    <img src="https://i.ibb.co/k3wwt4x/logo-html5-with-name.png" alt="HTML5" width="130" height="150"/>
+    <img src="https://i.ibb.co/SnF7QHP/logo-css3-with-name.png" alt="CSS3" width="130" height="150"/>
+    <img src="https://i.ibb.co/HFDmtCD/logo-javascript-with-name.png" alt="JS" width="130" height="150"/>
 </p>
 
 
