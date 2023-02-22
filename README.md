@@ -210,9 +210,9 @@ If you want to check the code and modify it on your local machine you may clone 
 ## <a name="#language-and-tools"></a>Languages and tools used
 
 <p align="center">
-    ![logo-html5-with-name](https://user-images.githubusercontent.com/112933982/220577849-8330ffc6-771d-4e90-a161-5a87c5aadcfb.png)
-    ![logo-css3-with-name](https://user-images.githubusercontent.com/112933982/220577998-f3df3b1f-bc3e-4e33-b3dd-80275213f1fa.png)
-    ![logo-javascript-with-name](https://user-images.githubusercontent.com/112933982/220578054-676e3054-db6e-4610-8166-3e391c2ffff7.png)
+    ![logo-html5-with-name](https://ibb.co/hX44SBy)
+    ![logo-css3-with-name](https://ibb.co/sw8J5c2)
+    ![logo-javascript-with-name](https://ibb.co/mDCQ90C)
 </p>
 
 
