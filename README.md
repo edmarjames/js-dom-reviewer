@@ -210,12 +210,9 @@ If you want to check the code and modify it on your local machine you may clone 
 ## <a name="#language-and-tools"></a>Languages and tools used
 
 <p align="center">
-    ![logo-mongodb-with-name](/uploads/f860dec26db0a69ef9a12488812057c8/logo-mongodb-with-name.png)
-    ![logo-expressjs-with-name](/uploads/ee4325e407dec9709d189b97ce4cc69c/logo-expressjs-with-name.png)
-    ![logo-nodejs-with-name](/uploads/0603502f0b4cded65579c5d773ae3fec/logo-nodejs-with-name.png)
-    ![logo-git-with-name](/uploads/048bca6c9875b9bc7a4a35acabb6ec35/logo-git-with-name.png)
-    ![logo-postman-with-name](/uploads/44a043b21779f3075455ec8867d3d92b/logo-postman-with-name.png)
-    ![logo-sublime-text-3-with-name](/uploads/a41216bc7af655f6d540456e61b216c7/logo-sublime-text-3-with-name.png)
+    ![logo-html5-with-name](https://user-images.githubusercontent.com/112933982/220577849-8330ffc6-771d-4e90-a161-5a87c5aadcfb.png)
+    ![logo-css3-with-name](https://user-images.githubusercontent.com/112933982/220577998-f3df3b1f-bc3e-4e33-b3dd-80275213f1fa.png)
+    ![logo-javascript-with-name](https://user-images.githubusercontent.com/112933982/220578054-676e3054-db6e-4610-8166-3e391c2ffff7.png)
 </p>
 
 
