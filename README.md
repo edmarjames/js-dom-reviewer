@@ -201,9 +201,11 @@ The only one thing that is missing for this project is a home page wherein you c
 
 If you want to check the code and modify it on your local machine you may clone my repo by simply running this command.
 
+**With SSH key**
+
 ### `git clone https://github.com/edmarjames/js-dom-reviewer.git`
 
-**or**
+**For Https**
 
 ### `git clone git@github.com:edmarjames/js-dom-reviewer.git`
 
