@@ -210,11 +210,10 @@ If you want to check the code and modify it on your local machine you may clone 
 ### `git clone git@github.com:edmarjames/js-dom-reviewer.git`
 
 ## <a name="#language-and-tools"></a>Languages and tools used
-
-<p align="center">
-    <img src="https://i.ibb.co/k3wwt4x/logo-html5-with-name.png" alt="HTML5" width="130" height="150"/>
-    <img src="https://i.ibb.co/SnF7QHP/logo-css3-with-name.png" alt="CSS3" width="130" height="150"/>
-    <img src="https://i.ibb.co/HFDmtCD/logo-javascript-with-name.png" alt="JS" width="130" height="150"/>
+<p align="left"> 
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/>
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/>
 </p>
 
 
